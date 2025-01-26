@@ -1,10 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp2bgxhmng23o"]
+[gd_scene load_steps=8 format=3 uid="uid://bp2bgxhmng23o"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_rhd8k"]
+[ext_resource type="Shader" path="res://scenes/vignette_new.gdshader" id="2_2n8no"]
 [ext_resource type="Texture2D" uid="uid://dte3wq3upbudu" path="res://assets/1545215.png" id="2_i80d8"]
 [ext_resource type="Script" path="res://scripts/looking_at_check.gd" id="3_wb2xg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_chi0x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lc6g1"]
+render_priority = 0
+shader = ExtResource("2_2n8no")
+shader_parameter/luminance = Color(0.3086, 0.6094, 0.082, 1)
+shader_parameter/brightness = 0.26
+shader_parameter/contrast = 3.0
+shader_parameter/scale = 1.0
+shader_parameter/rotation = 0.08
+shader_parameter/resolution_downsampling = 4.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_mjftx"]
+flip_faces = true
+size = Vector2(2, 2)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_rhd8k")
@@ -14,6 +29,14 @@ shape = SubResource("CapsuleShape3D_chi0x")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1)
+material_override = SubResource("ShaderMaterial_lc6g1")
+extra_cull_margin = 16384.0
+custom_aabb = AABB(0, 0, -0.1, 0, 0, 0)
+mesh = SubResource("QuadMesh_mjftx")
+skeleton = NodePath("../../../..")
 
 [node name="CenterContainer" type="CenterContainer" parent="Camera3D"]
 anchors_preset = 15

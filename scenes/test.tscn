@@ -65,3 +65,5 @@ text = "BANANANANANANA"
 
 [node name="CriticalEvent" type="Node3D" parent="RigidBody3D"]
 script = ExtResource("2_2attc")
+
+[node name="Camera3D2" type="Camera3D" parent="."]
