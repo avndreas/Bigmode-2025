@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bp2bgxhmng23o"]
+[gd_scene load_steps=5 format=3 uid="uid://bp2bgxhmng23o"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_rhd8k"]
 [ext_resource type="Texture2D" uid="uid://dte3wq3upbudu" path="res://assets/1545215.png" id="2_i80d8"]
+[ext_resource type="Script" path="res://scripts/looking_at_check.gd" id="3_wb2xg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_chi0x"]
 
@@ -39,5 +40,8 @@ layout_mode = 2
 texture = ExtResource("2_i80d8")
 expand_mode = 1
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-collision_mask = 4
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -1)
+collision_mask = 12
+collide_with_areas = true
+script = ExtResource("3_wb2xg")

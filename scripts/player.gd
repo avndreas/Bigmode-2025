@@ -16,7 +16,7 @@ func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode >= Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity_y)
 		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity_x)
-		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(70), deg_to_rad(70))
+		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(89), deg_to_rad(89)) # has the bounds on the up and down looking
 
 		
 	if event.is_action_released("escape"):

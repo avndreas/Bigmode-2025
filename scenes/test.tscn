@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://5ixwdm5s0yll"]
+[gd_scene load_steps=10 format=3 uid="uid://5ixwdm5s0yll"]
 
-[ext_resource type="PackedScene" uid="uid://q5dvsyevr1w3" path="res://scenes/player.tscn" id="1_ukhir"]
+[ext_resource type="PackedScene" uid="uid://bp2bgxhmng23o" path="res://scenes/player.tscn" id="1_ukhir"]
+[ext_resource type="Script" path="res://scripts/critical_event.gd" id="2_2attc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ak0qb"]
 
@@ -21,6 +22,8 @@ background_mode = 2
 sky = SubResource("Sky_b0xt8")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wl3on"]
 
 [node name="Test" type="Node3D"]
 
@@ -44,3 +47,21 @@ environment = SubResource("Environment_dgqhh")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73689, 0, 0)
+collision_layer = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_wl3on")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D/CollisionShape3D"]
+
+[node name="Label3D" type="Label3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+visible = false
+billboard = 2
+text = "BANANANANANANA"
+
+[node name="CriticalEvent" type="Node3D" parent="RigidBody3D"]
+script = ExtResource("2_2attc")
