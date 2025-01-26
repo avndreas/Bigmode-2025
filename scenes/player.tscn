@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://q5dvsyevr1w3"]
+[gd_scene load_steps=4 format=3 uid="uid://bp2bgxhmng23o"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_rhd8k"]
 [ext_resource type="Texture2D" uid="uid://dte3wq3upbudu" path="res://scenes/1545215.png" id="2_i80d8"]
@@ -38,3 +38,6 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("2_i80d8")
 expand_mode = 1
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+collision_mask = 4
