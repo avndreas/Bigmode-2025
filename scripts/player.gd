@@ -1,14 +1,56 @@
-extends RigidBody3D
+extends CharacterBody3D
 
-# Called when the node enters the scene tree for the first time.
+
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
+
+var mouse_sensitivity_y : float = 0.002
+var mouse_sensitivity_x : float = 0.002
+var mouse_locked : bool = false
+
 func _ready():
-	pass # Replace with function body.
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	mouse_locked = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var input := Vector3.ZERO
-	input.x = Input.get_axis("move_left", "move_right")
-	input.z = Input.get_axis("move_forward", "move_back")
+func _input(event):
+	if event is InputEventMouseMotion and Input.mouse_mode >= Input.MOUSE_MODE_CAPTURED:
+		rotate_y(-event.relative.x * mouse_sensitivity_y)
+		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity_x)
+		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(70), deg_to_rad(70))
 
-	apply_central_force(input * 1200.0 * delta) #make constant value a variable
-	
+		
+	if event.is_action_released("escape"):
+		if mouse_locked:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			mouse_locked = false
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			mouse_locked = true
+
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	move_and_slide()
+
+
+func _process(delta:float) -> void:
+	pass
+
