@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://lgjul71ba0r2"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_wfvwc"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1280.0
+offset_top = 720.0
+offset_right = -1280.0
+offset_bottom = -720.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wfvwc")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "BANANANANANANA
+Game"
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Play"
+autowrap_mode = 3
+
+[node name="Options" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Options"
+
+[node name="Credits" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Credits"
+
+[node name="Quit" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Quit"
+
+[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

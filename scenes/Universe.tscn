@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfim37g0f7c43"]
+
+[ext_resource type="Script" path="res://scripts/universe.gd" id="1_1vroa"]
+
+[node name="UniverseSingleton" type="Node"]
+script = ExtResource("1_1vroa")

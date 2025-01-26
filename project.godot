@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="omori shippuden"
-run/main_scene="res://scenes/test.tscn"
+run/main_scene="res://scenes/Universe.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Universe="*res://scenes/Universe.tscn"
 
 [display]
 
@@ -64,7 +68,6 @@ interact={
 3d_physics/layer_2="Wall"
 3d_physics/layer_3="Interactable"
 3d_physics/layer_4="Named"
-
 
 [rendering]
 
