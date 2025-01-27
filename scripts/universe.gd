@@ -24,7 +24,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if (get_tree().current_scene != null):
 		current_scene = get_tree().current_scene
 	#print(get_tree().current_scene)
@@ -40,8 +40,8 @@ func switch_scene(sceneNo: int) -> void:
 			get_tree().change_scene_to_packed(main_menu_scene)
 		2:
 			#current_level = 2
-			get_tree().change_scene_to_packed(level_one)
-			#get_tree().change_scene_to_packed(tilemap_test)
+			#get_tree().change_scene_to_packed(level_one)
+			get_tree().change_scene_to_packed(tilemap_test)
 		#3:
 			#current_level = 3
 			#get_tree().change_scene_to_packed(credits)

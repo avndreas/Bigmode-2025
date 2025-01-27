@@ -24,7 +24,6 @@ flip_faces = true
 size = Vector2(2, 2)
 
 [node name="Player" type="CharacterBody3D"]
-input_ray_pickable = false
 script = ExtResource("1_rhd8k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

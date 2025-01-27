@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://5ixwdm5s0yll"]
+[gd_scene load_steps=11 format=3 uid="uid://5ixwdm5s0yll"]
 
 [ext_resource type="Script" path="res://scripts/game_play_loop.gd" id="1_dqpqx"]
 [ext_resource type="PackedScene" uid="uid://bp2bgxhmng23o" path="res://scenes/player.tscn" id="1_ukhir"]
 [ext_resource type="Script" path="res://scripts/critical_event.gd" id="2_2attc"]
-[ext_resource type="Script" path="res://scripts/door.gd" id="4_jwi8h"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ak0qb"]
 
@@ -25,9 +24,6 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wl3on"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fxrfa"]
-size = Vector3(1, 2, 2)
 
 [node name="Test" type="Node3D"]
 script = ExtResource("1_dqpqx")
@@ -75,22 +71,5 @@ text = "BANANANANANANA"
 script = ExtResource("2_2attc")
 crit_time = 20.0
 
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-collision_layer = 14
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
-shape = SubResource("BoxShape3D_fxrfa")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="AnimatableBody3D"]
-size = Vector3(1, 2, 2)
-
-[node name="Door" type="Node3D" parent="AnimatableBody3D" node_paths=PackedStringArray("door_body")]
-script = ExtResource("4_jwi8h")
-door_body = NodePath("..")
-pos2 = Vector3(0, 3, 0)
-
-[node name="Label3D" type="Label3D" parent="AnimatableBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
-billboard = 2
-text = "Press \"E\" to interact"
+[node name="Camera3D2" type="Camera3D" parent="."]
+visible = false
