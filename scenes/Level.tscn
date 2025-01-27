@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cu8qcnlbt673b"]
 
 [ext_resource type="PackedScene" uid="uid://bp2bgxhmng23o" path="res://scenes/player.tscn" id="1_x7a3a"]
-[ext_resource type="Shader" path="res://scenes/vignette_new.gdshader" id="2_oipom"]
+[ext_resource type="Shader" path="res://shaders/vignette_new.gdshader" id="2_oipom"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfsio"]
 render_priority = 0

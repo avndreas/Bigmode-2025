@@ -46,6 +46,13 @@ func switch_scene(sceneNo: int) -> void:
 			#get_tree().change_scene_to_packed(credits)
 	pass
 	
+static func LabelSettings3D(label : Label3D) -> Label3D:
+	label.alpha_cut = Label3D.ALPHA_CUT_DISCARD
+	label.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
+	label.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+	label.visible = false
+	return label
+	
 #func switch_scene(scene_name : String) -> void:
 	#var fullname = "res://levels/scenes/" + scene_name + ".tscn"
 	#if ResourceLoader.exists(fullname, "PackedScene"):

@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://5ixwdm5s0yll"]
+[gd_scene load_steps=11 format=3 uid="uid://5ixwdm5s0yll"]
 
+[ext_resource type="Script" path="res://scripts/game_play_loop.gd" id="1_dqpqx"]
 [ext_resource type="PackedScene" uid="uid://bp2bgxhmng23o" path="res://scenes/player.tscn" id="1_ukhir"]
 [ext_resource type="Script" path="res://scripts/critical_event.gd" id="2_2attc"]
 
@@ -26,6 +27,7 @@ glow_enabled = true
 [sub_resource type="SphereShape3D" id="SphereShape3D_wl3on"]
 
 [node name="Test" type="Node3D"]
+script = ExtResource("1_dqpqx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -61,9 +63,13 @@ shape = SubResource("SphereShape3D_wl3on")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 visible = false
 billboard = 2
+alpha_cut = 1
+texture_filter = 5
 text = "BANANANANANANA"
 
-[node name="CriticalEvent" type="Node3D" parent="RigidBody3D"]
+[node name="CriticalEvent" type="Node3D" parent="RigidBody3D" groups=["CriticalEvents"]]
 script = ExtResource("2_2attc")
+crit_time = 5.0
 
 [node name="Camera3D2" type="Camera3D" parent="."]
+visible = false

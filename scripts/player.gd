@@ -53,3 +53,6 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta:float) -> void:
 	pass
+	
+func _exit_tree() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
