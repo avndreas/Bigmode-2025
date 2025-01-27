@@ -10,7 +10,7 @@ class_name UniverseSingleton
 @onready var level_one = load("res://scenes/test.tscn")
 #@onready var credits = load("res://menus/title/Credits.tscn")
 #@onready var opening_cutscene: = load("res://scenes/opening_cutscene.tscn")
-
+@onready var tilemap_test = load("res://scenes/tilemap-test.tscn")
 #@onready var current_level = -1
 @onready var current_scene: Node
 
@@ -40,7 +40,8 @@ func switch_scene(sceneNo: int) -> void:
 			get_tree().change_scene_to_packed(main_menu_scene)
 		2:
 			#current_level = 2
-			get_tree().change_scene_to_packed(level_one)
+			#get_tree().change_scene_to_packed(level_one)
+			get_tree().change_scene_to_packed(tilemap_test)
 		#3:
 			#current_level = 3
 			#get_tree().change_scene_to_packed(credits)

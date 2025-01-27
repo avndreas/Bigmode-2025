@@ -1,16 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://bs0rr62ti3u1n"]
+[gd_scene load_steps=3 format=3 uid="uid://bs0rr62ti3u1n"]
 
-[ext_resource type="MeshLibrary" uid="uid://dfxrav3f2syk6" path="res://assets/tilesets/tileset.tres" id="1_2g5tr"]
+[ext_resource type="MeshLibrary" uid="uid://cvswhjf8chiye" path="res://assets/tilesets/tileset.tres" id="1_2g5tr"]
+[ext_resource type="PackedScene" uid="uid://bp2bgxhmng23o" path="res://scenes/player.tscn" id="2_5f7ms"]
 
 [node name="Tilemap-test" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_2g5tr")
 cell_size = Vector3(1, 1, 1)
-cell_center_x = false
 cell_center_y = false
-cell_center_z = false
 data = {
-"cells": PackedInt32Array(0, 0, 655366, 65535, 65535, 1048581, 0, 65535, 655362)
+"cells": PackedInt32Array(65534, 65534, 1441797, 1, 65534, 1441797, 65534, 65533, 1048581, 1, 65533, 1048581, 65531, 65534, 1441798, 65531, 65533, 1048581, 65529, 0, 1441793, 65528, 65533, 1048576, 65528, 0, 655365, 65529, 65534, 3, 65529, 65533, 3, 65528, 65534, 3, 65528, 5, 1048578, 65529, 5, 2, 65528, 3, 1048577, 65529, 3, 6, 65526, 5, 1048582, 65531, 5, 1, 65523, 5, 1048581, 65533, 5, 0, 65533, 7, 5, 65533, 9, 1441792, 65531, 9, 1441797, 65528, 9, 1441797, 65525, 9, 1441797, 65522, 9, 1441797, 65520, 9, 655360, 65520, 7, 655365, 65520, 5, 1048576, 65521, 5, 1048579, 65522, 7, 1048580, 65525, 7, 1048580, 65528, 7, 1048580, 65531, 7, 1048580)
 }
-metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_5f7ms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.18247, 1.36189, 7.78002)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.78577, 2.34735, 7.04)
+light_color = Color(0.887578, 0.587252, 0.372525, 1)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.89469, 2.34735, -1.91253)
+light_color = Color(0.887578, 0.587252, 0.372525, 1)

@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scripts/looking_at_check.gd" id="3_wb2xg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_chi0x"]
+radius = 0.4
+height = 1.7971
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lc6g1"]
 render_priority = 0
