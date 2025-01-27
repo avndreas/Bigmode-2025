@@ -7,7 +7,6 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ak0qb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ookk"]
-size = Vector3(10, 1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6j7b6"]
 
@@ -37,7 +36,8 @@ physics_material_override = SubResource("PhysicsMaterial_ak0qb")
 shape = SubResource("BoxShape3D_0ookk")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D"]
-size = Vector3(10, 1, 10)
+use_collision = true
+size = Vector3(35, 1, 35)
 material = SubResource("StandardMaterial3D_6j7b6")
 
 [node name="Player" parent="." instance=ExtResource("1_ukhir")]
@@ -69,7 +69,7 @@ text = "BANANANANANANA"
 
 [node name="CriticalEvent" type="Node3D" parent="RigidBody3D" groups=["CriticalEvents"]]
 script = ExtResource("2_2attc")
-crit_time = 5.0
+crit_time = 20.0
 
 [node name="Camera3D2" type="Camera3D" parent="."]
 visible = false

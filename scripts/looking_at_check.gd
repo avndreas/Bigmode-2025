@@ -5,7 +5,7 @@ var last_looked_at : Node
 var interact_time : float
 var crit_event : CriticalEvent
 
-var range : float = 3
+@export var range : float = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

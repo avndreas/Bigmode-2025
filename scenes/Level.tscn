@@ -45,6 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.863358, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Camera3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+visible = false
 material_override = SubResource("ShaderMaterial_xfsio")
 extra_cull_margin = 16384.0
 custom_aabb = AABB(0, 0, -0.1, 0, 0, 0)
