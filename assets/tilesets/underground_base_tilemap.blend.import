@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ldf7x8gc26u0"
-path="res://.godot/imported/underground_base_tilemap.blend-a18d5a9c7f4d96132c138752f7ae4898.scn"
+uid="uid://b03j7p4bis7cf"
+path="res://.godot/imported/underground_base_tilemap.blend-d3db211d47c67a179f6c317dc2d6d6ee.scn"
 
 [deps]
 
-source_file="res://assets/underground_base_tilemap.blend"
-dest_files=["res://.godot/imported/underground_base_tilemap.blend-a18d5a9c7f4d96132c138752f7ae4898.scn"]
+source_file="res://assets/tilesets/underground_base_tilemap.blend"
+dest_files=["res://.godot/imported/underground_base_tilemap.blend-d3db211d47c67a179f6c317dc2d6d6ee.scn"]
 
 [params]
 
