@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs0rr62ti3u1n"]
+[gd_scene load_steps=4 format=3 uid="uid://d4m700c07k5eg"]
 
-[ext_resource type="MeshLibrary" uid="uid://cvswhjf8chiye" path="res://assets/tilesets/tileset.tres" id="1_2g5tr"]
+[ext_resource type="MeshLibrary" uid="uid://bd2lalsogdrlw" path="res://assets/tilesets/tileset.tres" id="1_2g5tr"]
 [ext_resource type="PackedScene" uid="uid://bp2bgxhmng23o" path="res://scenes/player.tscn" id="2_5f7ms"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5vy31"]
 
 [node name="Tilemap-test" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_2g5tr")
+physics_material = SubResource("PhysicsMaterial_5vy31")
 cell_size = Vector3(1, 1, 1)
 cell_center_y = false
 data = {
