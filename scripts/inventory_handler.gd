@@ -56,3 +56,28 @@ func refresh_inventory():
 			#print("hi ", counter)
 			
 		counter += 1
+		
+func has_item_of_type(type : Item.Items) -> bool:
+	for item in inv.get_items():
+		if item.type == type:
+			return true
+	return false
+	
+func get_item_of_type(type : Item.Items) -> Item:
+	for item in inv.get_items():
+		if item.type == type:
+			return item
+	return null
+	
+func pop_item_of_type(type : Item.Items) -> Item:
+	for item in inv.get_items():
+		if item.type == type:
+			print(item.type, " ", type)
+			inv.remove_item(item)
+			refresh_inventory()
+			return item
+	return null
+	
+func push_item(item : Item) -> void:
+	inv.add_item(item)
+	refresh_inventory()

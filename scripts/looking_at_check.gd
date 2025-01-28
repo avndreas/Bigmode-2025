@@ -2,7 +2,7 @@ extends RayCast3D
 
 
 var last_looked_at : Node
-var interact_time : float
+#var interact_time : float
 var label : Label3D
 var crit_event : CriticalEvent
 var activation_item : Activator
@@ -44,8 +44,14 @@ func _process(delta: float) -> void:
 	if is_colliding():
 		var colliding_obj = get_collider()
 		if colliding_obj != last_looked_at:
+			#resets here
+			if label and is_instance_valid(label):
+				label.visible = false
+			if crit_event and is_instance_valid(crit_event):
+				crit_event.halt_interaction()
+			
 			set_items(colliding_obj)
-				
+
 				
 		#print("hi")
 		if get_collision_mask_value(4) and colliding_obj != last_looked_at: # 4 is hard coded as the collision layer number for named
@@ -55,30 +61,39 @@ func _process(delta: float) -> void:
 		
 		if get_collision_mask_value(3):
 			#colliding_obj
-			if Input.is_action_pressed("interact"):
-				if not crit_event == null:
-					if last_looked_at != colliding_obj:
-						interact_time = 0
-					else:
-						interact_time += delta
-						
-					if crit_event.repair_time <= interact_time:
-						crit_event.reset_timer_to_max()
-						interact_time = 0
+			#if Input.is_action_pressed("interact"):
+				#if not crit_event == null:
+					#if last_looked_at != colliding_obj:
+						#interact_time = 0
+					#else:
+						#interact_time += delta
+						#
+					#if crit_event.repair_time <= interact_time:
+						#crit_event.reset_timer_to_max()
+						#interact_time = 0
 					
-			else:
-				interact_time = 0
+			#else:
+				#interact_time = 0
 					
 			if Input.is_action_just_pressed("interact"):
 				#if not activation_item == null: # door not activated by hand
 					#activation_item.activate()
 					#pass # do any door code here? just an "activate" function
 				#print(inventory, " ", pickup_item)
+				if crit_event:
+					crit_event.begin_interaction(inventory)
+					
+				
 				if pickup_item and inventory:
-					print("hi")
+					#print("hi")
 					inventory.inv.add_item(pickup_item.pickup())
 					inventory.refresh_inventory()
 					pass
+					
+			if Input.is_action_just_released("interact"):
+				
+				if crit_event:
+					crit_event.halt_interaction()
 				
 				
 	

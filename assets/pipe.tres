@@ -10,4 +10,4 @@ name = "Pipe"
 UI_sprite = ExtResource("1_5od8s")
 node_for_3D = ExtResource("2_518md")
 description = "a pipe  :)"
-type = 0
+type = 1

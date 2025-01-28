@@ -7,6 +7,13 @@ var timer : Timer
 var label : Label3D
 var base_time : float = 30
 
+var interact_timer : Timer
+@export var required_item : Item.Items = Item.Items.NONE
+var held_inv : Inventory
+
+var held_item : Item
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer = Timer.new()
@@ -30,6 +37,16 @@ func _ready() -> void:
 	var level = get_tree().get_current_scene()
 	if level is Level:
 		timer.timeout.connect(level._end_game.bind(false))
+		
+		
+	interact_timer = Timer.new()
+	interact_timer.autostart = false
+	interact_timer.one_shot = true
+	interact_timer.wait_time = repair_time
+	
+	interact_timer.timeout.connect(finish_interaction) # set up the signal connection here
+	
+	add_child(interact_timer)
 	
 #
 #
@@ -47,4 +64,40 @@ func reset_timer_to_max() -> void:
 	
 func stop_timer() -> void:
 	timer.stop()
+	
+func begin_interaction(inventory : Inventory) -> void:
+	print("beginning interaction")
+	if inventory.has_item_of_type(required_item) or held_item or required_item == Item.Items.NONE:
+		print("starting interaction timer")
+		interact_timer.start()
+		held_inv = inventory
+	#pass
+	#if (item == null and required_item == Item.Items.NONE) or \
+							#(item and item.type == required_item): # a null check on the item
+		#interact_timer.start()
+		# figure out the timer conenction stuff here to dynamincally connect and disconnect from the player initiating it or something?
+		
+func halt_interaction() -> void:
+	print("halting interaction")
+	interact_timer.stop()
+	held_inv = null
+	
+func finish_interaction() -> void:
+	print("finishing interaction")
+	if held_item:
+		held_inv.push_item(held_item)
+		held_item = null
+	else:
+		var popped_item = held_inv.pop_item_of_type(required_item)
+		print(popped_item)
+		if popped_item:
+			held_item = popped_item
+			
+		if required_item == Item.Items.NONE:
+			reset_timer_to_max()
+			
+	held_inv = null
+
+	
+	
 	
