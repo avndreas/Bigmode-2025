@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://5ixwdm5s0yll"]
+[gd_scene load_steps=15 format=3 uid="uid://5ixwdm5s0yll"]
 
 [ext_resource type="Script" path="res://scripts/game_play_loop.gd" id="1_dqpqx"]
 [ext_resource type="PackedScene" uid="uid://bp2bgxhmng23o" path="res://scenes/player.tscn" id="1_ukhir"]
 [ext_resource type="Script" path="res://scripts/critical_event.gd" id="2_2attc"]
 [ext_resource type="Script" path="res://scripts/door.gd" id="4_bhpmc"]
+[ext_resource type="PackedScene" uid="uid://d227xm7q6f6dq" path="res://scenes/pipe.tscn" id="5_k70rv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ak0qb"]
 
@@ -76,7 +77,7 @@ text = "BANANANANANANA"
 
 [node name="CriticalEvent" type="Node3D" parent="RigidBody3D" groups=["CriticalEvents"]]
 script = ExtResource("2_2attc")
-crit_time = 20.0
+crit_time = 600.0
 
 [node name="Camera3D2" type="Camera3D" parent="."]
 visible = false
@@ -100,6 +101,9 @@ collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door/Area3D"]
 shape = SubResource("BoxShape3D_uu41x")
+
+[node name="Pipe" parent="." instance=ExtResource("5_k70rv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34221, 6.90363)
 
 [connection signal="body_entered" from="Door/Area3D" to="Door" method="open"]
 [connection signal="body_exited" from="Door/Area3D" to="Door" method="close"]

@@ -9,3 +9,16 @@ func _physics_process(delta: float) -> void:
 
 func get_item() -> Item:
 	return load("res://assets/pipe.tres")
+
+
+func pickup() -> Item:
+	var ret_item : Item = load("res://assets/pipe.tres")
+	if ret_item == null:
+		print("ERROR: could not load item")
+	else:
+		var parent = get_parent()
+		if parent:
+			parent.remove_child(self)
+			self.queue_free()
+		
+	return ret_item

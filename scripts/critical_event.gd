@@ -14,6 +14,7 @@ func _ready() -> void:
 	add_child(timer)
 	add_child(label)
 	base_time = crit_time if crit_time >= 0 else base_time # default 30 second crit time
+	#print(base_time)
 	timer.wait_time = base_time
 	timer.one_shot = true
 	#print(crit_time if not crit_time >= 0 else 30)

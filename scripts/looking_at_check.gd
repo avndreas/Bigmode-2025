@@ -6,6 +6,10 @@ var interact_time : float
 var label : Label3D
 var crit_event : CriticalEvent
 var activation_item : Activator
+var pickup_item : Item3D
+
+@onready var inventory : Inventory = %Inventory
+
 
 @export var interact_range : float = 3
 
@@ -18,8 +22,12 @@ func set_items(obj) -> void:
 	label = null
 	crit_event = null
 	activation_item = null
+	pickup_item = null
 
 	if not obj == null:
+		if obj is Item3D:
+			pickup_item = obj
+			
 		for child in obj.get_children():
 			if child is Label3D:
 				label = child
@@ -62,9 +70,15 @@ func _process(delta: float) -> void:
 				interact_time = 0
 					
 			if Input.is_action_just_pressed("interact"):
-				if not activation_item == null:
-					activation_item.activate()
-					pass # do any door code here? just an "activate" function
+				#if not activation_item == null: # door not activated by hand
+					#activation_item.activate()
+					#pass # do any door code here? just an "activate" function
+				#print(inventory, " ", pickup_item)
+				if pickup_item and inventory:
+					print("hi")
+					inventory.inv.add_item(pickup_item.pickup())
+					inventory.refresh_inventory()
+					pass
 				
 				
 	
