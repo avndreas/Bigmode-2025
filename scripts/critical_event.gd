@@ -48,15 +48,27 @@ func _ready() -> void:
 	
 	add_child(interact_timer)
 	
-#
-#
+func round_place(num,places):
+	return (round(num*pow(10,places))/pow(10,places))
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#print(timer.time_left)
+	
+	var time_added_per_second : float = 3
+	
+	#var num : float = timer.time_left
+	#if held_item:
+		#num = min(timer.time_left+(time_added_per_second*delta),base_time)
+		
+	if held_item:
+		timer.start(min(timer.time_left+(time_added_per_second*delta),base_time))
+	#
 	var pad : int = 0
 	if timer.time_left < 10: #threshold for visual limits
 		pad = 2
 	label.text = str(timer.time_left).pad_decimals(pad)
+	
 
 func reset_timer_to_max() -> void:
 	timer.stop()
@@ -66,9 +78,9 @@ func stop_timer() -> void:
 	timer.stop()
 	
 func begin_interaction(inventory : Inventory) -> void:
-	print("beginning interaction")
+	#print("beginning interaction")
 	if inventory.has_item_of_type(required_item) or held_item or required_item == Item.Items.NONE:
-		print("starting interaction timer")
+		#print("starting interaction timer")
 		interact_timer.start()
 		held_inv = inventory
 	#pass
@@ -78,12 +90,12 @@ func begin_interaction(inventory : Inventory) -> void:
 		# figure out the timer conenction stuff here to dynamincally connect and disconnect from the player initiating it or something?
 		
 func halt_interaction() -> void:
-	print("halting interaction")
+	#print("halting interaction")
 	interact_timer.stop()
 	held_inv = null
 	
 func finish_interaction() -> void:
-	print("finishing interaction")
+	#print("finishing interaction")
 	if held_item:
 		held_inv.push_item(held_item)
 		held_item = null
