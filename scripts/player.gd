@@ -8,9 +8,6 @@ var mouse_sensitivity_y : float = 6
 var mouse_sensitivity_x : float = 6
 var mouse_locked : bool = false
 
-func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	mouse_locked = true
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode >= Input.MOUSE_MODE_CAPTURED:
@@ -18,14 +15,6 @@ func _input(event):
 		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity_x / get_viewport().size.y)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(89), deg_to_rad(89)) # has the bounds on the up and down looking
 
-		
-	if event.is_action_released("escape"):
-		if mouse_locked:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			mouse_locked = false
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			mouse_locked = true
 
 
 func _physics_process(delta: float) -> void:

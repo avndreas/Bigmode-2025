@@ -14,11 +14,20 @@ class_name UniverseSingleton
 #@onready var current_level = -1
 @onready var current_scene: Node
 
+signal in_game_sig(state : bool)
+
+var in_game : bool = false:
+	set(value):
+		in_game = value
+		in_game_sig.emit(in_game)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#get_tree().change_scene_to_packed(opening_cutscene)
+	in_game_sig.connect(mouse_setting)
 	switch_scene(1)
+	
 	pass
 	
 
@@ -37,9 +46,11 @@ func switch_scene(sceneNo: int) -> void:
 			#get_tree().change_scene_to_packed(opening_cutscene)
 		1:
 			#current_level = 1
+			in_game = false
 			get_tree().change_scene_to_packed(main_menu_scene)
 		2:
 			#current_level = 2
+			in_game = true
 			#get_tree().change_scene_to_packed(level_one)
 			get_tree().change_scene_to_packed(tilemap_test)
 		#3:
@@ -60,3 +71,9 @@ static func LabelSettings3D(label : Label3D) -> Label3D:
 		#get_tree().change_scene_to_packed(load(fullname))
 	#else:
 		#print("DEBUG: level "+scene_name+" doesn't exist at the path \"" +fullname + "\"")
+		
+func mouse_setting(state : bool) -> void:
+	if state:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
