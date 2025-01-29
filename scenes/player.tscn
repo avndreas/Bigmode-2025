@@ -28,8 +28,8 @@ size = Vector2(2, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o2csb"]
 shader = ExtResource("5_u36gy")
-shader_parameter/dither_intensity = 1.0
-shader_parameter/color_depth = Vector3(4, 4, 4)
+shader_parameter/dither_intensity = 0.7
+shader_parameter/color_depth = Vector3(6, 10, 6)
 
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 3
@@ -101,3 +101,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443884, 0)
+light_color = Color(0.375744, 0.377158, 0.575021, 1)
+light_energy = 0.35
+omni_range = 4.3
