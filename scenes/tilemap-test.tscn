@@ -1,11 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4m700c07k5eg"]
+[gd_scene load_steps=5 format=3 uid="uid://d4m700c07k5eg"]
 
 [ext_resource type="MeshLibrary" uid="uid://beqc8iti01pgi" path="res://assets/tilesets/tileset.tres" id="1_2g5tr"]
 [ext_resource type="PackedScene" uid="uid://bp2bgxhmng23o" path="res://scenes/player.tscn" id="2_5f7ms"]
 
+[sub_resource type="Environment" id="Environment_6v8es"]
+background_mode = 1
+ambient_light_color = Color(0.112086, 5.00109e-08, 0, 1)
+ambient_light_energy = 16.0
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5vy31"]
 
 [node name="Tilemap-test" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6v8es")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_2g5tr")
@@ -13,16 +21,16 @@ physics_material = SubResource("PhysicsMaterial_5vy31")
 cell_size = Vector3(1, 1, 1)
 cell_center_y = false
 data = {
-"cells": PackedInt32Array(65534, 65534, 1441797, 1, 65534, 1441797, 65534, 65533, 1048581, 1, 65533, 1048581, 65531, 65534, 1441798, 65529, 0, 1441793, 65528, 65533, 1048576, 65528, 0, 655365, 65529, 65534, 1441794, 65528, 65534, 655367, 65528, 5, 1048578, 65529, 5, 2, 65528, 3, 1048577, 65529, 3, 6, 65526, 5, 1048582, 65531, 5, 1, 65523, 5, 1048581, 65533, 5, 0, 65533, 7, 5, 65533, 9, 1441792, 65531, 9, 1441797, 65528, 9, 1441797, 65525, 9, 1441797, 65522, 9, 1441797, 65520, 9, 655360, 65520, 7, 655365, 65520, 5, 1048576, 65521, 5, 1048583, 65522, 7, 1048580, 65525, 7, 1048580, 65528, 7, 1048580, 65531, 7, 1048580, 65531, 65533, 1048581, 65529, 65533, 1048583)
+"cells": PackedInt32Array(65534, 65534, 1441797, 1, 65534, 1441797, 65534, 65533, 1048581, 1, 65533, 1048581, 65531, 65534, 1441798, 65529, 0, 1441793, 65528, 65533, 1048576, 65528, 0, 655365, 65529, 65534, 1441794, 65528, 65534, 655367, 65528, 5, 1048578, 65529, 5, 2, 65528, 3, 1048577, 65529, 3, 6, 65531, 65533, 1048581, 65529, 65533, 1048583, 65531, 5, 1, 65529, 6, 1441794, 65528, 6, 655362, 65534, 5, 1048581, 65531, 6, 1441797, 65528, 8, 1048577, 65529, 8, 1441793, 65534, 6, 655361, 0, 5, 1048583, 1, 5, 0, 1, 6, 7, 0, 6, 655362, 1, 8, 5, 0, 8, 655366, 0, 11, 655365, 1, 11, 5, 3, 65533, 0, 3, 65534, 1441792, 1, 13, 1441792, 0, 13, 655360, 65526, 6, 655361, 65526, 5, 1048582, 65526, 10, 1048582, 65523, 10, 1, 65523, 6, 1441798, 65521, 8, 6, 65523, 5, 1048581, 65520, 8, 655365, 65526, 11, 1441797, 65523, 11, 1441797, 65528, 11, 1441799, 65529, 10, 7, 65529, 11, 1441792, 65520, 11, 655360, 65520, 5, 1048576, 65520, 6, 655367, 65521, 5, 1048583, 65521, 11, 1441799, 65520, 10, 655367, 65521, 6, 1441794, 65521, 10, 2, 65528, 10, 1048578)
 }
 
 [node name="Player" parent="." instance=ExtResource("2_5f7ms")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.18247, 1.36189, 7.78002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.15062, 1.36189, 7.78002)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.78577, 2.34735, 7.04)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.13297, 2.8758, 6.02914)
 light_color = Color(0.887578, 0.587252, 0.372525, 1)
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.89469, 2.34735, -1.91253)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9924, 2.6777, 11.0159)
 light_color = Color(0.887578, 0.587252, 0.372525, 1)
