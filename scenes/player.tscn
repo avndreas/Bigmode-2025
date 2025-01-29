@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bp2bgxhmng23o"]
+[gd_scene load_steps=12 format=3 uid="uid://bp2bgxhmng23o"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_rhd8k"]
 [ext_resource type="Shader" path="res://shaders/vignette_new.gdshader" id="2_2n8no"]
 [ext_resource type="Texture2D" uid="uid://dte3wq3upbudu" path="res://assets/1545215.png" id="2_i80d8"]
 [ext_resource type="Script" path="res://scripts/looking_at_check.gd" id="3_wb2xg"]
 [ext_resource type="Script" path="res://scripts/inventory_handler.gd" id="5_sgifl"]
+[ext_resource type="Shader" path="res://shaders/dither.gdshader" id="5_u36gy"]
 [ext_resource type="PackedScene" uid="uid://pgl5wknpodlv" path="res://scenes/pause_menu.tscn" id="6_yxeby"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_chi0x"]
@@ -24,6 +25,11 @@ shader_parameter/resolution_downsampling = 4.0
 [sub_resource type="QuadMesh" id="QuadMesh_mjftx"]
 flip_faces = true
 size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o2csb"]
+shader = ExtResource("5_u36gy")
+shader_parameter/dither_intensity = 1.0
+shader_parameter/color_depth = Vector3(4, 4, 4)
 
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 3
@@ -87,3 +93,11 @@ columns = 10
 script = ExtResource("5_sgifl")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_yxeby")]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_o2csb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
