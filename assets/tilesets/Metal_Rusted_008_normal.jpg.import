@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccwboxhm2k0ng"
-path.s3tc="res://.godot/imported/tileset_rust_pixels_n.png-8bb1c65f29fcd2a278f5ebc4612164c5.s3tc.ctex"
+uid="uid://dmmu3h64dpoh7"
+path.s3tc="res://.godot/imported/Metal_Rusted_008_normal.jpg-d68c4d13d3f65091f7f308f90b3c2e3a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "644bbb0a83fe4d793ca551ca85477858"
-}
 
 [deps]
 
-source_file="res://assets/tilesets/tileset_rust_pixels_n.png"
-dest_files=["res://.godot/imported/tileset_rust_pixels_n.png-8bb1c65f29fcd2a278f5ebc4612164c5.s3tc.ctex"]
+source_file="res://assets/tilesets/Metal_Rusted_008_normal.jpg"
+dest_files=["res://.godot/imported/Metal_Rusted_008_normal.jpg-d68c4d13d3f65091f7f308f90b3c2e3a.s3tc.ctex"]
 
 [params]
 
@@ -23,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://assets/tilesets/tileset_rust_pixels_n.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

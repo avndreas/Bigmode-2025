@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5sfpwoov7548"
-path.s3tc="res://.godot/imported/tileset_rust_pixels.png-7a29536a529a3cbb131e60d1c530fd15.s3tc.ctex"
+uid="uid://6wm8eltva6lp"
+path.s3tc="res://.godot/imported/extended-tileset_grit_n.jpg-5a8fd0c6fb9cf3ce4a53f3dba4e4766b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "51e70d20f27437c0ca71270e9da2caef"
+"md5": "37d2f89cab8f6dad960cb82fa5c57c23"
 }
 
 [deps]
 
-source_file="res://assets/tilesets/tileset_rust_pixels.png"
-dest_files=["res://.godot/imported/tileset_rust_pixels.png-7a29536a529a3cbb131e60d1c530fd15.s3tc.ctex"]
+source_file="res://assets/tilesets/extended-tileset_grit_n.jpg"
+dest_files=["res://.godot/imported/extended-tileset_grit_n.jpg-5a8fd0c6fb9cf3ce4a53f3dba4e4766b.s3tc.ctex"]
 
 [params]
 
@@ -23,12 +23,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://assets/tilesets/extended-tileset_grit_n.jpg"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
