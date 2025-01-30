@@ -3,6 +3,7 @@ extends Control
 
 func _ready() -> void:
 	$AnimationPlayer.play("RESET")
+	visible=false
 
 func resume():
 	#print("resuming")
