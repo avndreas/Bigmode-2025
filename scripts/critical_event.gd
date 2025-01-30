@@ -101,7 +101,7 @@ func finish_interaction() -> void:
 		held_item = null
 	else:
 		var popped_item = held_inv.pop_item_of_type(required_item)
-		print(popped_item)
+		#print(popped_item)
 		if popped_item:
 			held_item = popped_item
 			

@@ -4,6 +4,7 @@ class_name Item
 enum Items {NONE, PIPE, TAPE, CLAMP}
 
 static var file_name_mapping : Dictionary = {Items.PIPE : "res://assets/pipe.tres"}
+static var item_name_mapping : Dictionary = {Items.PIPE : "Pipe"}
 
 @export var name : String
 @export var UI_sprite : Texture2D

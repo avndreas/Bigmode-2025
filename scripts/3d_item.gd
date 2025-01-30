@@ -6,6 +6,8 @@ class_name Item3D
 
 func _physics_process(delta: float) -> void:
 	$Label3D.global_position = global_position+label_offset
+	if $Label3D.visible and Item.item_name_mapping.has(item_type):
+		$Label3D.text = Item.item_name_mapping[item_type]
 
 
 func get_item() -> Item:
