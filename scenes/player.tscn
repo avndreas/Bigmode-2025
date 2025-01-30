@@ -94,16 +94,16 @@ script = ExtResource("5_sgifl")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_yxeby")]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443884, 0)
+light_color = Color(0.375744, 0.377158, 0.575021, 1)
+light_energy = 0.35
+omni_range = 4.3
+
+[node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_o2csb")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443884, 0)
-light_color = Color(0.375744, 0.377158, 0.575021, 1)
-light_energy = 0.35
-omni_range = 4.3

@@ -4,8 +4,8 @@ extends CharacterBody3D
 #const SPEED = 5.0
 #const JUMP_VELOCITY = 4.5
 
-var mouse_sensitivity_y : float = 6
-var mouse_sensitivity_x : float = 6
+var mouse_sensitivity_y : float = 4
+var mouse_sensitivity_x : float = 4
 var mouse_locked : bool = false
 
 const SPEED = 5.0
@@ -19,8 +19,8 @@ var speed = SPEED
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode >= Input.MOUSE_MODE_CAPTURED:
-		rotate_y(-event.relative.x * mouse_sensitivity_y / get_viewport().size.x)
-		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity_x / get_viewport().size.y)
+		rotate_y(-event.relative.x * mouse_sensitivity_y / get_viewport().get_visible_rect().size.x)
+		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity_x / get_viewport().get_visible_rect().size.y)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(89), deg_to_rad(89)) # has the bounds on the up and down looking
 
 
