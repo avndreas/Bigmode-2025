@@ -40,7 +40,7 @@ func set_items(obj) -> void:
 	return
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_colliding():
 		var colliding_obj = get_collider()
 		if colliding_obj != last_looked_at:

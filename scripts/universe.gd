@@ -21,12 +21,16 @@ var in_game : bool = false:
 		in_game = value
 		in_game_sig.emit(in_game)
 
+var initialized : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#get_tree().change_scene_to_packed(opening_cutscene)
 	in_game_sig.connect(mouse_setting)
-	switch_scene(1)
+	if (get_tree().current_scene != null):
+		current_scene = get_tree().current_scene
+	#get_tree().reload_current_scene()
+	#switch_scene(1)
 	
 	pass
 	
@@ -36,6 +40,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if (get_tree().current_scene != null):
 		current_scene = get_tree().current_scene
+	if !initialized:
+		switch_scene(1)
+		initialized = true
 	#print(get_tree().current_scene)
 	#pass
 
@@ -46,13 +53,13 @@ func switch_scene(sceneNo: int) -> void:
 			#get_tree().change_scene_to_packed(opening_cutscene)
 		1:
 			#current_level = 1
-			in_game = false
 			get_tree().change_scene_to_packed(main_menu_scene)
+			in_game = false
 		2:
 			#current_level = 2
-			in_game = true
 			#get_tree().change_scene_to_packed(level_one)
 			get_tree().change_scene_to_packed(tilemap_test)
+			in_game = true
 		#3:
 			#current_level = 3
 			#get_tree().change_scene_to_packed(credits)

@@ -2,7 +2,7 @@ extends CenterContainer
 class_name InventorySlot
 
 
-signal item_switched_inv
+#signal item_switched_inv
 
 func init(cms: Vector2) -> void:
 	custom_minimum_size = cms

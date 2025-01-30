@@ -28,7 +28,7 @@ func _ready() -> void:
 	#timer.start(crit_time if crit_time >= 0 else 30)
 	timer.start()
 	timer.autostart = false
-	Universe.LabelSettings3D(label)
+	UniverseSingleton.LabelSettings3D(label)
 	label.visible = true
 	#label.text = str(timer.time_left)
 	label.position.y = 1
