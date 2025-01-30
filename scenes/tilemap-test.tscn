@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d4m700c07k5eg"]
 
-[ext_resource type="MeshLibrary" uid="uid://bm3085hdjmrh4" path="res://assets/tilesets/extended-tileset.tres" id="1_q5ryk"]
+[ext_resource type="MeshLibrary" uid="uid://bbnxqnoav0blt" path="res://assets/tilesets/extended-tileset.tres" id="1_q5ryk"]
 [ext_resource type="PackedScene" uid="uid://bp2bgxhmng23o" path="res://scenes/player.tscn" id="2_5f7ms"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5vy31"]
@@ -26,10 +26,9 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.18247, 1.36189, 7.78002)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89682, 1.32029, -7.31091)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.56454, 2.83243, -0.244122)
 light_color = Color(0.887578, 0.587252, 0.372525, 1)
 light_energy = 8.415
-shadow_enabled = true
 omni_range = 9.04
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
