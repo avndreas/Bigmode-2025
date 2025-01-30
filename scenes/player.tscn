@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bp2bgxhmng23o"]
+[gd_scene load_steps=15 format=3 uid="uid://bp2bgxhmng23o"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_rhd8k"]
 [ext_resource type="Shader" path="res://shaders/vignette_new.gdshader" id="2_2n8no"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://scripts/inventory_handler.gd" id="5_sgifl"]
 [ext_resource type="Shader" path="res://shaders/dither.gdshader" id="5_u36gy"]
 [ext_resource type="PackedScene" uid="uid://pgl5wknpodlv" path="res://scenes/pause_menu.tscn" id="6_yxeby"]
+[ext_resource type="Script" path="res://scripts/flashlight_battery.gd" id="7_y3dc8"]
+[ext_resource type="Texture2D" uid="uid://bcd5th3hpfqvy" path="res://assets/OuterBattery.png" id="8_gja5w"]
+[ext_resource type="Texture2D" uid="uid://rx3k7x86v7op" path="res://assets/InnerBattery.png" id="9_8dacj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_chi0x"]
 radius = 0.4
@@ -35,6 +38,7 @@ shader_parameter/color_depth = Vector3(6, 10, 6)
 collision_mask = 3
 input_ray_pickable = false
 script = ExtResource("1_rhd8k")
+time_left_on_flashlight = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_chi0x")
@@ -49,6 +53,9 @@ extra_cull_margin = 16384.0
 custom_aabb = AABB(0, 0, -0.1, 0, 0, 0)
 mesh = SubResource("QuadMesh_mjftx")
 skeleton = NodePath("../../../..")
+
+[node name="Flashlight" type="SpotLight3D" parent="Camera3D"]
+unique_name_in_owner = true
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -1)
@@ -93,6 +100,30 @@ columns = 10
 script = ExtResource("5_sgifl")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_yxeby")]
+
+[node name="Container" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="FlashlightBattery" type="TextureProgressBar" parent="CanvasLayer/Container"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -102.0
+offset_bottom = 162.0
+grow_horizontal = 0
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("8_gja5w")
+texture_progress = ExtResource("9_8dacj")
+texture_progress_offset = Vector2(5, 17.5)
+tint_progress = Color(0, 1, 0, 1)
+script = ExtResource("7_y3dc8")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443884, 0)

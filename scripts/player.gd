@@ -16,12 +16,19 @@ const SENSITIVITY = 0.003
 var gravity = 9.8 * 4
 var speed = SPEED
 
+@export var time_left_on_flashlight : float = 3 # in seconds
+var flashlight_on : bool = false
+#var flashlight : SpotLight3D
+
+
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode >= Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity_y / get_viewport().get_visible_rect().size.x)
 		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity_x / get_viewport().get_visible_rect().size.y)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(89), deg_to_rad(89)) # has the bounds on the up and down looking
+
+
 
 
 
@@ -43,6 +50,10 @@ func _physics_process(delta: float) -> void:
 		speed = SPRINT_SPEED
 	else:
 		speed = SPEED
+		
+	if Input.is_action_just_pressed("action1") and time_left_on_flashlight > 0:
+		#print("flashlight turning")
+		flashlight_on = not flashlight_on
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -62,8 +73,15 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 #
-#func _process(delta:float) -> void:
-	#pass
+func _process(delta:float) -> void:
+	if time_left_on_flashlight <= 0:
+		flashlight_on = false
+	if flashlight_on:
+		time_left_on_flashlight -= delta
+		%Flashlight.visible = true
+	else:
+		%Flashlight.visible = false
+
 	
 func _exit_tree() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
