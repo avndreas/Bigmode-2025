@@ -172,6 +172,10 @@ alignment = 1
 layout_mode = 2
 text = "Resume"
 
+[node name="Restart" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
 [node name="Quit" type="Button" parent="AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
@@ -182,4 +186,5 @@ libraries = {
 }
 
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
