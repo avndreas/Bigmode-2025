@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d4m700c07k5eg"]
 
-[ext_resource type="MeshLibrary" uid="uid://tcm5pb6qv8xa" path="res://assets/tilesets/extended-tileset.tres" id="1_2g3i3"]
+[ext_resource type="MeshLibrary" uid="uid://d4lgamn7q4dt1" path="res://assets/tilesets/extended-tileset.tres" id="1_2g3i3"]
 [ext_resource type="PackedScene" uid="uid://bp2bgxhmng23o" path="res://scenes/player.tscn" id="2_5f7ms"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5vy31"]
