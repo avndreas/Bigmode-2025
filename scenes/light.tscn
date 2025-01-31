@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3ol4tyvbgdpj"]
+
+[ext_resource type="PackedScene" uid="uid://dp2l16a15mmxt" path="res://assets/models/light.glb" id="1_dlrlp"]
+
+[node name="Light" type="Node3D"]
+
+[node name="light" parent="." instance=ExtResource("1_dlrlp")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154264, 0)
+light_color = Color(0.827691, 0.546274, 0.364538, 1)
+light_energy = 6.315
+omni_range = 12.48

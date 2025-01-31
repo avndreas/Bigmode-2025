@@ -38,7 +38,6 @@ shader_parameter/color_depth = Vector3(6, 10, 6)
 collision_mask = 3
 input_ray_pickable = false
 script = ExtResource("1_rhd8k")
-time_left_on_flashlight = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_chi0x")
@@ -56,6 +55,7 @@ skeleton = NodePath("../../../..")
 
 [node name="Flashlight" type="SpotLight3D" parent="Camera3D"]
 unique_name_in_owner = true
+spot_range = 10.015
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -1)
@@ -128,8 +128,8 @@ script = ExtResource("7_y3dc8")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443884, 0)
 light_color = Color(0.375744, 0.377158, 0.575021, 1)
-light_energy = 15.725
-omni_range = 22.6
+light_energy = 0.23
+omni_range = 6.13
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_o2csb")

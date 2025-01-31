@@ -16,7 +16,7 @@ const SENSITIVITY = 0.003
 var gravity = 9.8 * 4
 var speed = SPEED
 
-@export var time_left_on_flashlight : float = 3 # in seconds
+@export var time_left_on_flashlight : float = 20 # in seconds
 var flashlight_on : bool = false
 #var flashlight : SpotLight3D
 
