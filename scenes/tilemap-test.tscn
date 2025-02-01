@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4m700c07k5eg"]
+[gd_scene load_steps=10 format=3 uid="uid://d4m700c07k5eg"]
 
 [ext_resource type="MeshLibrary" uid="uid://hmxaqws5yf02" path="res://assets/tilesets/extended-tileset.tres" id="1_2g3i3"]
 [ext_resource type="PackedScene" uid="uid://bp2bgxhmng23o" path="res://scenes/player.tscn" id="2_5f7ms"]
 [ext_resource type="PackedScene" uid="uid://c4lhw44v4npyg" path="res://assets/models/table.tscn" id="3_b78mr"]
 [ext_resource type="PackedScene" uid="uid://d3ol4tyvbgdpj" path="res://scenes/light.tscn" id="4_8xsgj"]
 [ext_resource type="PackedScene" uid="uid://b85i28to1u0d2" path="res://scenes/puter.tscn" id="5_fvvyl"]
+[ext_resource type="PackedScene" uid="uid://cxact0acg16ju" path="res://scenes/generator.tscn" id="6_qi71a"]
+[ext_resource type="Script" path="res://scenes/game_manager.gd" id="7_eua16"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5vy31"]
 
@@ -133,3 +135,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.62969, 2.70579, 2.2914)
 
 [node name="puter" parent="." instance=ExtResource("5_fvvyl")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.4422, 0.594604, 2.74017)
+
+[node name="generator" parent="." instance=ExtResource("6_qi71a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.66024, -1.81393, -27.7367)
+
+[node name="generator2" parent="." instance=ExtResource("6_qi71a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66024, -1.81393, -27.7367)
+
+[node name="generator3" parent="." instance=ExtResource("6_qi71a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33976, -1.81393, -27.7367)
+
+[node name="GameManager" type="Node3D" parent="."]
+script = ExtResource("7_eua16")
