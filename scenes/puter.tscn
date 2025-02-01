@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1ox0ow6n8dw2"]
+
+[ext_resource type="PackedScene" uid="uid://c0f3rrwus7bc2" path="res://assets/models/puter.glb" id="1_stdnu"]
+
+[node name="puter" instance=ExtResource("1_stdnu")]
+
+[node name="oputer" parent="." index="0"]
+transform = Transform3D(1.65, 0, 0, 0, 1.29008, -1.02869, 0, 1.02869, 1.29008, 0.211862, 0.424252, 0.199523)
