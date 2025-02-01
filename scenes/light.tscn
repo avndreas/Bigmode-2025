@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3ol4tyvbgdpj"]
+[gd_scene load_steps=6 format=3 uid="uid://d3ol4tyvbgdpj"]
 
 [ext_resource type="PackedScene" uid="uid://dp2l16a15mmxt" path="res://assets/models/light.glb" id="1_dlrlp"]
+[ext_resource type="Script" path="res://scenes/light.gd" id="2_qmsfa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgna7"]
 albedo_color = Color(0.332809, 0.225308, 0.0298656, 1)
@@ -16,6 +17,7 @@ disable_receive_shadows = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wiegt"]
 
 [node name="light" instance=ExtResource("1_dlrlp")]
+script = ExtResource("2_qmsfa")
 
 [node name="Cylinder_003" parent="." index="0"]
 cast_shadow = 0
@@ -23,7 +25,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_bgna7")
 surface_material_override/1 = SubResource("StandardMaterial3D_cnfog")
 surface_material_override/2 = SubResource("StandardMaterial3D_wiegt")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
+[node name="Light" type="OmniLight3D" parent="." index="1"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.129817, 0)
 light_color = Color(0.711305, 0.589261, 0.306583, 1)
 light_energy = 5.445

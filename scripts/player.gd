@@ -8,8 +8,8 @@ var mouse_sensitivity_y : float = 4
 var mouse_sensitivity_x : float = 4
 var mouse_locked : bool = false
 
-const SPEED = 5.0
-const SPRINT_SPEED = 8.0
+const SPEED = 3.0
+const SPRINT_SPEED = 5.0
 const JUMP_VELOCITY = 6.0
 const SENSITIVITY = 0.003
 
