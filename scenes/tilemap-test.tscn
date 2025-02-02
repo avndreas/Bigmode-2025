@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ca6m7jwxwr32g" path="res://scenes/door_large.tscn" id="9_inxf8"]
 [ext_resource type="PackedScene" uid="uid://lmfh028rrdta" path="res://scenes/door_small.tscn" id="9_ryvn4"]
 [ext_resource type="PackedScene" uid="uid://b51nyf0c4fw3m" path="res://scenes/wooden_table.tscn" id="12_wyxdx"]
-[ext_resource type="PackedScene" uid="uid://ek48qm7ol6lw" path="res://scenes/easel.tscn" id="13_dnr2y"]
+[ext_resource type="PackedScene" path="res://scenes/easel.tscn" id="13_dnr2y"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5vy31"]
 
@@ -151,7 +151,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.66024, 0.00792533, -29.233
 [node name="generator2" parent="Machines" instance=ExtResource("6_qi71a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66024, 0.00792533, -29.2331)
 
-[node name="Generator-panel" parent="Machines/generator2" instance=ExtResource("8_ykcji")]
+[node name="Generator" parent="Machines/generator2" groups=["CriticalEvents"] instance=ExtResource("8_ykcji")]
 transform = Transform3D(0.922383, 0.386276, 0, -0.386276, 0.922383, 0, 0, 0, 1, -0.72248, 1.20475, 0.445326)
 crit_time = 90.0
 required_item = 1
@@ -259,6 +259,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23648, 0, 2.33479)
 
 [node name="easel" parent="." instance=ExtResource("13_dnr2y")]
 transform = Transform3D(-0.389992, 0, -0.920818, 0, 1, 0, 0.920818, 0, -0.389992, 4.45777, -3.8147e-06, -23.8018)
-
-[connection signal="eventRestored" from="Machines/generator2/Generator-panel" to="." method="_on_generatorpanel_event_restored"]
-[connection signal="eventTriggered" from="Machines/generator2/Generator-panel" to="." method="_on_generatorpanel_event_triggered"]
