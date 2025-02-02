@@ -52,6 +52,7 @@ mesh = SubResource("ArrayMesh_gr3tt")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="seat"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="seat/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_n6jxd")
