@@ -4,10 +4,16 @@ class_name Item3D
 @export var label_offset : Vector3 = Vector3(0,1,0)
 @export var item_type : Item.Items = Item.Items.NONE
 
+@onready var label : Label3D = $Label3D
+
+func _ready() -> void:
+	label.visible = false
+	label.text = Item.item_name_mapping[item_type]
+
 func _physics_process(_delta: float) -> void:
-	$Label3D.global_position = global_position+label_offset
-	if $Label3D.visible and Item.item_name_mapping.has(item_type):
-		$Label3D.text = Item.item_name_mapping[item_type]
+	label.global_position = global_position+label_offset
+	if label.visible and Item.item_name_mapping.has(item_type):
+		label.text = Item.item_name_mapping[item_type]
 
 
 func get_item() -> Item:
