@@ -78,6 +78,7 @@ size = Vector3(0.02, 0.08, 0.02)
 [node name="fuse" type="RigidBody3D"]
 collision_layer = 12
 script = ExtResource("1_jq7mv")
+label_offset = Vector3(0, 0.5, 0)
 item_type = 2
 
 [node name="Cylinder" type="MeshInstance3D" parent="."]
@@ -90,7 +91,7 @@ transform = Transform3D(1.77, 0, 0, 0, 1.77, 0, 0, 0, 1.77, 0, 0, 0)
 shape = SubResource("BoxShape3D_hw8ml")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 billboard = 2
 alpha_cut = 1
 texture_filter = 5

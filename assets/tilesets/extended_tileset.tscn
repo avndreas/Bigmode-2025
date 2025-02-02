@@ -3,3 +3,75 @@
 [ext_resource type="PackedScene" uid="uid://ddp02cq01uycn" path="res://assets/tilesets/extended-tileset.glb" id="1_vtrfu"]
 
 [node name="extended-tileset" instance=ExtResource("1_vtrfu")]
+
+[node name="StaticBody3D" parent="outer-corner" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="corner-corridor-alt" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="inner-corner" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="small-floor" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="room" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="corridor" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="corner-corridor" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="corridor-s" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="corner-corridor-both" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="hallway" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="pipe-connector" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="hallway-end" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="doorway" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="corridor-corner-s" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="corridor-s-bend" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="outer-corner-notched" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="outer-corner-notched-alt" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="hallway-bend" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="hallway-corner" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="corridor-corner-s-alt" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="hallway-corner-alt" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="hallway-outer-corner" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="hallway-T" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="hallway-cap" index="0"]
+collision_layer = 2
