@@ -4,6 +4,8 @@ extends CharacterBody3D
 #const SPEED = 5.0
 #const JUMP_VELOCITY = 4.5
 
+@onready var dark_light: OmniLight3D = $DarkLight
+
 var mouse_sensitivity_y : float = 4
 var mouse_sensitivity_x : float = 4
 var mouse_locked : bool = false
@@ -25,6 +27,7 @@ var gloom : bool = false
 
 func _ready() -> void:
 	var parent = get_parent()
+	dark_light.visible = false
 	if parent is Level:
 		parent.game_state_update.connect(player_state_updater)
 
@@ -98,10 +101,12 @@ func player_state_updater(update : GameStateUpdate) -> void:
 	if update.light:
 		if not update.light_on:
 			gloom = true
+			dark_light.visible = true
 			if update.light_off_time > gloom_limit:
 					var parent = get_parent()
 					if parent is Level:
 						parent._end_game(false)
 		else:
 			gloom = false
+			dark_light.visible = false
 	pass

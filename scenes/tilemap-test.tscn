@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d4m700c07k5eg"]
+[gd_scene load_steps=22 format=3 uid="uid://d4m700c07k5eg"]
 
 [ext_resource type="MeshLibrary" uid="uid://hmxaqws5yf02" path="res://assets/tilesets/extended-tileset.tres" id="1_2g3i3"]
 [ext_resource type="Script" path="res://scripts/game_play_loop.gd" id="1_inb86"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b51nyf0c4fw3m" path="res://scenes/wooden_table.tscn" id="12_wyxdx"]
 [ext_resource type="PackedScene" uid="uid://8tahx8wrefr" path="res://scenes/horro.tscn" id="13_4n6m3"]
 [ext_resource type="PackedScene" uid="uid://ek48qm7ol6lw" path="res://scenes/easel.tscn" id="13_dnr2y"]
+[ext_resource type="PackedScene" uid="uid://pwdhof0mdim8" path="res://scenes/seat.tscn" id="13_uxcoe"]
 [ext_resource type="PackedScene" uid="uid://dj20c17s6x1vo" path="res://scenes/life_support.tscn" id="16_6ufxx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5vy31"]
@@ -43,43 +44,8 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="Player" parent="." instance=ExtResource("2_5f7ms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.18247, 1.36189, 7.78002)
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6552, 1.97989, -8.11995)
-visible = false
-light_color = Color(0.887578, 0.587252, 0.372525, 1)
-light_energy = 8.415
-shadow_enabled = true
-omni_range = 9.04
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.56454, 2.26222, -0.244122)
-visible = false
-light_color = Color(0.887578, 0.587252, 0.372525, 1)
-light_energy = 8.415
-shadow_enabled = true
-omni_range = 9.04
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47676, 2.26222, -5.43559)
-visible = false
-light_color = Color(0.887578, 0.587252, 0.372525, 1)
-light_energy = 8.415
-shadow_enabled = true
-omni_range = 9.04
-
-[node name="OmniLight3D4" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9985, 2.26222, -13.9354)
-visible = false
-light_color = Color(0.887578, 0.587252, 0.372525, 1)
-light_energy = 8.415
-shadow_enabled = true
-omni_range = 9.04
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qnlkj")
-
-[node name="table" parent="." instance=ExtResource("3_b78mr")]
-transform = Transform3D(0.780781, 0.09681, 0.617259, 0.412266, 0.662514, -0.62539, -0.469487, 0.742767, 0.477367, -6.53227, 7.69068, 4.98337)
 
 [node name="Lights" type="Node3D" parent="."]
 
@@ -205,7 +171,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.034
 [node name="Items" type="Node3D" parent="."]
 
 [node name="pipe" parent="Items" instance=ExtResource("8_k8ujg")]
-transform = Transform3D(0.799978, 0.600029, 0, -0.600029, 0.799978, 0, 0, 0, 1, -4.21214, 1.46989, 2.26539)
+transform = Transform3D(0.0042065, 0.999991, 0, -0.999991, 0.0042065, 0, 0, 0, 1, -4.21214, 0.915084, 2.26539)
 
 [node name="Doors" type="Node3D" parent="."]
 
@@ -296,11 +262,32 @@ random_interaction_range = Vector2i(2, 8)
 [node name="wooden-table" parent="Decorations" instance=ExtResource("12_wyxdx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23648, 0, 2.33479)
 
+[node name="wooden-table2" parent="Decorations" instance=ExtResource("12_wyxdx")]
+transform = Transform3D(-0.125783, 0, -0.992058, 0, 1, 0, 0.992058, 0, -0.125783, 3.18905, 0, -24.6845)
+
+[node name="wooden-table4" parent="Decorations" instance=ExtResource("12_wyxdx")]
+transform = Transform3D(-0.998741, 0, -0.0501571, 0, 1, 0, 0.0501571, 0, -0.998741, 3.99199, 0, -28.8895)
+
+[node name="wooden-table3" parent="Decorations" instance=ExtResource("12_wyxdx")]
+transform = Transform3D(0.39577, 0.000443976, -0.918349, 3.05761e-05, -1, -0.000470273, -0.91835, 0.00015804, -0.39577, 6.5552, 0.884215, -24.2918)
+
 [node name="horro" parent="Decorations" instance=ExtResource("13_4n6m3")]
 transform = Transform3D(-0.900941, 0, 0.433942, 0, 1, 0, -0.433942, 0, -0.900941, -11.26, 1.84122, 2.80656)
 
-[node name="easel" parent="." instance=ExtResource("13_dnr2y")]
-transform = Transform3D(-0.389992, 0, -0.920818, 0, 1, 0, 0.920818, 0, -0.389992, 4.45777, -3.8147e-06, -23.8018)
+[node name="table" parent="Decorations" instance=ExtResource("3_b78mr")]
+transform = Transform3D(0.780781, 0.09681, 0.617259, 0.412266, 0.662514, -0.62539, -0.469487, 0.742767, 0.477367, -6.53227, 7.69068, 4.98337)
+
+[node name="easel" parent="Decorations" instance=ExtResource("13_dnr2y")]
+transform = Transform3D(0.418961, 0, 0.908004, 0, 1, 0, -0.908004, 0, 0.418961, 5.02983, -3.8147e-06, -23.9564)
+
+[node name="seat" parent="Decorations" instance=ExtResource("13_uxcoe")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -4.16583, 0, 1.46997)
+
+[node name="seat2" parent="Decorations" instance=ExtResource("13_uxcoe")]
+transform = Transform3D(0.612693, -0.317371, 0.723798, -0.728189, 0.129242, 0.67308, -0.307161, -0.939453, -0.15192, 7.85674, 0.106031, -24.006)
+
+[node name="seat3" parent="Decorations" instance=ExtResource("13_uxcoe")]
+transform = Transform3D(0.537147, -0.502346, 0.677585, -0.728189, 0.129242, 0.67308, -0.425692, -0.854953, -0.29638, 7.74334, 0.106031, -23.674)
 
 [connection signal="eventState" from="Machines/generator2/Generator" to="." method="_on_generator_event_state"]
 [connection signal="eventState" from="Machines/gas_pipes/gas-pipes4/Gas Pipes" to="." method="_on_gas_room_pipe_event_state"]
