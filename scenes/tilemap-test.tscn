@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bbgj7rjd3lnys" path="res://scenes/pipe.tscn" id="8_k8ujg"]
 [ext_resource type="PackedScene" uid="uid://drpexxtg5ammh" path="res://scenes/generator-panel.tscn" id="8_ykcji"]
 [ext_resource type="PackedScene" uid="uid://ca6m7jwxwr32g" path="res://scenes/door_large.tscn" id="9_inxf8"]
-[ext_resource type="PackedScene" uid="uid://bmp6e7rrcnj2j" path="res://scenes/door_small.tscn" id="9_ryvn4"]
+[ext_resource type="PackedScene" uid="uid://lmfh028rrdta" path="res://scenes/door_small.tscn" id="9_ryvn4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5vy31"]
 
@@ -166,19 +166,15 @@ transform = Transform3D(0.799978, 0.600029, 0, -0.600029, 0.799978, 0, 0, 0, 1, 
 
 [node name="Door" parent="Doors" instance=ExtResource("9_inxf8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -11.5)
-opened_rot = null
 
 [node name="Door1" parent="Doors" instance=ExtResource("9_inxf8")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.5, 0, -5)
-opened_rot = null
 
 [node name="Door2" parent="Doors" instance=ExtResource("9_inxf8")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.5, 0, 0)
-opened_rot = null
 
 [node name="Door3" parent="Doors" node_paths=PackedStringArray("activator") instance=ExtResource("9_ryvn4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 0, -17.5)
-opened_rot = null
 player_activatable = true
 activator = NodePath(".")
 needed = 0
@@ -186,16 +182,13 @@ interaction_count_needed = 1
 
 [node name="Door4" parent="Doors" instance=ExtResource("9_inxf8")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.5, 0, -26)
-opened_rot = null
 
 [node name="Door5" parent="Doors" instance=ExtResource("9_ryvn4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.5, 0, -8.5)
-opened_rot = null
 
 [node name="Door6" parent="Doors" node_paths=PackedStringArray("activator") instance=ExtResource("9_ryvn4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 0, -9.5)
 movement_speed = 20.0
-opened_rot = null
 area_activatable = false
 player_activatable = true
 locked_open = true
@@ -206,7 +199,6 @@ random_interaction_range = Vector2i(2, 8)
 [node name="Door7" parent="Doors" node_paths=PackedStringArray("activator") instance=ExtResource("9_ryvn4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.5, 0, -13.5)
 movement_speed = 20.0
-opened_rot = null
 area_activatable = false
 player_activatable = true
 locked_open = true
@@ -217,7 +209,6 @@ random_interaction_range = Vector2i(2, 8)
 [node name="Door8" parent="Doors" node_paths=PackedStringArray("activator") instance=ExtResource("9_ryvn4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -15.5)
 movement_speed = 20.0
-opened_rot = null
 area_activatable = false
 player_activatable = true
 locked_open = true
@@ -228,7 +219,6 @@ random_interaction_range = Vector2i(2, 8)
 [node name="Door9" parent="Doors" node_paths=PackedStringArray("activator") instance=ExtResource("9_ryvn4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -19.5)
 movement_speed = 20.0
-opened_rot = null
 area_activatable = false
 player_activatable = true
 locked_open = true
@@ -239,7 +229,6 @@ random_interaction_range = Vector2i(2, 8)
 [node name="Door10" parent="Doors" node_paths=PackedStringArray("activator") instance=ExtResource("9_ryvn4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -17.5)
 movement_speed = 20.0
-opened_rot = null
 area_activatable = false
 player_activatable = true
 locked_open = true
@@ -250,7 +239,6 @@ random_interaction_range = Vector2i(2, 8)
 [node name="Door11" parent="Doors" node_paths=PackedStringArray("activator") instance=ExtResource("9_ryvn4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -22.5)
 movement_speed = 20.0
-opened_rot = null
 area_activatable = false
 player_activatable = true
 locked_open = true

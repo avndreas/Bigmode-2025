@@ -11,11 +11,9 @@ class_name Door
 
 @export var movement_speed : float = 5
 @export var opened_pos : Vector3 = Vector3.UP
-@export var opened_rot : Vector3 = Vector3.ZERO
 
 @onready var closed_pos : Vector3 = Vector3.ZERO
 @onready var current_goal_pos : Vector3 = closed_pos
-@onready var closed_rot : Vector3 = Vector3.ZERO
 
 
 @export_category("activation_types")
