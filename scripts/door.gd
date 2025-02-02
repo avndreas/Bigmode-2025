@@ -54,7 +54,7 @@ var random_interaction_range : Vector2i
 
 
 
-@onready var anim_player : AnimationPlayer = $AnimationPlayer
+#@onready var anim_player : AnimationPlayer = $AnimationPlayer
 
 func _get_property_list():
 	if Engine.is_editor_hint():

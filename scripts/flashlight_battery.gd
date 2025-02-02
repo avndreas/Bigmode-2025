@@ -13,7 +13,7 @@ func _ready() -> void:
 	current_value = max_value
 	var node : Control
 	for child in get_children():
-		print("hi")
+		#print("hi")
 		#var node : TextureRect = child
 		var ratio :float = child.size.x / float(child.size.y)
 		child.size.y = (get_viewport().get_visible_rect().size.y * 1/10)
