@@ -9,6 +9,7 @@ var game_timer : Timer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var random = RandomNumberGenerator.new()
+	random.randomize()
 	var game_length = random.randfn(5, 0.7) * 60
 	game_timer = Timer.new()
 	add_child(game_timer)
