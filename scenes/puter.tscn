@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=4 uid="uid://b85i28to1u0d2"]
+[gd_scene load_steps=16 format=4 uid="uid://b85i28to1u0d2"]
 
 [ext_resource type="Script" path="res://scripts/puter.gd" id="1_b1gye"]
 [ext_resource type="Texture2D" uid="uid://omefo4u45sc7" path="res://assets/models/puter_button and lever.png" id="1_vpkop"]
 [ext_resource type="Texture2D" uid="uid://g2cgdcjohore" path="res://assets/models/puter_hrum.png" id="2_j05gm"]
 [ext_resource type="Texture2D" uid="uid://cx6l4woxudy34" path="res://assets/models/puter_your mother.jpg" id="3_wbs1r"]
 [ext_resource type="Shader" path="res://shaders/textcrt.gdshader" id="4_dko8d"]
+[ext_resource type="LabelSettings" uid="uid://c05sw21k2q2gn" path="res://assets/puter_text_settings.tres" id="5_y5wmr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3aco"]
 resource_name = "Material.002"
@@ -125,8 +126,8 @@ shader_parameter/overlay = false
 shader_parameter/scanlines_opacity = 0.4
 shader_parameter/scanlines_width = 0.25
 shader_parameter/grille_opacity = 0.3
-shader_parameter/resolution = Vector2(175, 125)
-shader_parameter/pixelate = true
+shader_parameter/resolution = Vector2(420, 300)
+shader_parameter/pixelate = false
 shader_parameter/roll = true
 shader_parameter/roll_speed = 8.0
 shader_parameter/roll_size = 45.0
@@ -163,7 +164,7 @@ transparency = 0.5
 texture = SubResource("ViewportTexture_xm813")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Sprite3D"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -0.0366211)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0366211)
 light_color = Color(0, 0.137255, 0.278431, 1)
 light_energy = 0.5
 omni_range = 1.0
@@ -196,26 +197,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(2.16588e-07, 0.136415, 0.280353, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="SubViewport/Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="SubViewport/Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -20.0
-offset_right = 40.0
-offset_bottom = 20.0
-grow_vertical = 2
-
 [node name="Lines" type="VBoxContainer" parent="SubViewport/Control"]
 unique_name_in_owner = true
 layout_mode = 1
@@ -231,8 +212,9 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="SubViewport/Control/Lines"]
 layout_mode = 2
 text = "hello"
+label_settings = ExtResource("5_y5wmr")
 
-[node name="ColorRect2" type="ColorRect" parent="SubViewport/Control"]
+[node name="Shader" type="ColorRect" parent="SubViewport/Control"]
 material = SubResource("ShaderMaterial_cqo43")
 layout_mode = 1
 anchors_preset = 15

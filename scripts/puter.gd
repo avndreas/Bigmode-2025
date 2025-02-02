@@ -17,14 +17,18 @@ func _ready() -> void:
 			lines.remove_child(child)
 			child.queue_free()
 		
+		var label_settings = load("res://assets/puter_text_settings.tres")
+		
 		
 		var temp_label := Label.new()
+		temp_label.label_settings = label_settings.duplicate()
 		temp_label.text = "Lights: " + ("OK" if level.lights_on else ("ERROR: " + format_time(level.lights_off_time) + "s offline"))
 		temp_label.name = "Lights"
 		lines.add_child(temp_label)
 		
 		
 		temp_label = Label.new()
+		temp_label.label_settings = label_settings.duplicate()
 		temp_label.text = "Oxygen Generator: " + ("OK" if level.oxygen_on else ("ERROR: " + format_time(level.oxygen_off_time) + "s offline"))
 		temp_label.name = "Oxygen"
 		lines.add_child(temp_label)
@@ -32,6 +36,7 @@ func _ready() -> void:
 		var crit_events = get_tree().get_nodes_in_group("CriticalEvents")
 		for event in crit_events:
 			var event_label = Label.new()
+			event_label.label_settings = label_settings.duplicate()
 			event_label.name = str(event)
 			event_label.text = event.name + ": " + ("Online" if event.timer.time_left > 0 else "Offline")
 			lines.add_child(event_label)
@@ -50,9 +55,15 @@ func update_screen(game_update : GameStateUpdate) -> void:
 	if level:
 		
 		if game_update.light:
-			for line in lines.get_children():
+			for line : Label in lines.get_children():
+				
 				if line.name == "Lights":
-					line.text = "Lights: " + ("OK" if game_update.light_on else ("ERROR: " + format_time(game_update.light_off_time) + "s offline"))
+					if game_update.light_on:
+						line.text = "Lights: OK"
+						line.label_settings.font_color = Color.WHITE
+					else:
+						line.text = "Lights: ERROR: " + format_time(game_update.light_off_time) + "s offline"
+						line.label_settings.font_color = Color.RED
 		
 		
 		if game_update.crit_event:
@@ -61,7 +72,12 @@ func update_screen(game_update : GameStateUpdate) -> void:
 				#print(str(game_update.crit_event).replace(":", "_"))
 				#print(line.name)
 				if line.name == str(event).replace(":", "_"):
-					line.text = event.name + ": " + ("Online" if event.timer.time_left > 0 else "Offline")
+					if event.timer.time_left > 0:
+						line.text = event.name + ": Online"
+						line.label_settings.font_color = Color.WHITE
+					else:
+						line.text = event.name + ": Offline"
+						line.label_settings.font_color = Color.RED
 					#print("hi")
 		##if level.lights_on:
 		#var temp_label := Label.new()
