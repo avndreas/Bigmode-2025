@@ -51,6 +51,7 @@ size = Vector3(5, 5, 5)
 
 [node name="Door" type="Node3D"]
 script = ExtResource("1_crapd")
+opened_pos = Vector3(0, 2.5, 0)
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
 collision_layer = 6
