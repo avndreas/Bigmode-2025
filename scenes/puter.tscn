@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://omefo4u45sc7" path="res://assets/models/puter_button and lever.png" id="1_vpkop"]
 [ext_resource type="Texture2D" uid="uid://g2cgdcjohore" path="res://assets/models/puter_hrum.png" id="2_j05gm"]
-[ext_resource type="Texture2D" uid="uid://cx6l4woxudy34" path="res://assets/models/puter_your mother.jpg" id="3_wbs1r"]
+[ext_resource type="Texture2D" uid="uid://espl3bn8u5ia" path="res://assets/models/puter_your mother.jpg" id="3_wbs1r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3aco"]
 resource_name = "Material.002"

@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://5ixwdm5s0yll"]
+[gd_scene load_steps=16 format=3 uid="uid://5ixwdm5s0yll"]
 
 [ext_resource type="Script" path="res://scripts/game_play_loop.gd" id="1_dqpqx"]
 [ext_resource type="PackedScene" uid="uid://bp2bgxhmng23o" path="res://scenes/player.tscn" id="1_ukhir"]
 [ext_resource type="Script" path="res://scripts/critical_event.gd" id="2_2attc"]
 [ext_resource type="Script" path="res://scripts/door.gd" id="4_bhpmc"]
 [ext_resource type="PackedScene" uid="uid://d227xm7q6f6dq" path="res://scenes/pipe.tscn" id="5_k70rv"]
+[ext_resource type="PackedScene" uid="uid://cwnmn0oy548ix" path="res://scenes/fuse.tscn" id="6_2k2kr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ak0qb"]
 
@@ -13,7 +14,8 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6j7b6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w5ssv"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_top_color = Color(0.137936, 0.584432, 1, 1)
+sky_horizon_color = Color(0.813397, 0.877631, 0.98892, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
 [sub_resource type="Sky" id="Sky_b0xt8"]
@@ -104,6 +106,10 @@ shape = SubResource("BoxShape3D_uu41x")
 
 [node name="Pipe" parent="." instance=ExtResource("5_k70rv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34221, 6.90363)
+item_type = 2
+
+[node name="fuse" parent="." instance=ExtResource("6_2k2kr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.778802, -0.420146, 2.868)
 
 [connection signal="body_entered" from="Door/Area3D" to="Door" method="open"]
 [connection signal="body_exited" from="Door/Area3D" to="Door" method="close"]

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d3ol4tyvbgdpj" path="res://scenes/light.tscn" id="4_8xsgj"]
 [ext_resource type="PackedScene" uid="uid://b85i28to1u0d2" path="res://scenes/puter.tscn" id="5_fvvyl"]
 [ext_resource type="PackedScene" uid="uid://cxact0acg16ju" path="res://scenes/generator.tscn" id="6_qi71a"]
-[ext_resource type="Script" path="res://scenes/game_manager.gd" id="7_eua16"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="7_eua16"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5vy31"]
 
@@ -16,6 +16,9 @@ ambient_light_color = Color(0.123651, 0.066465, 0.16671, 1)
 ambient_light_energy = 16.0
 
 [node name="Tilemap-test" type="Node3D"]
+
+[node name="GameManager" type="Node3D" parent="."]
+script = ExtResource("7_eua16")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_2g3i3")
@@ -137,13 +140,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.62969, 2.70579, 2.2914)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.4422, 0.594604, 2.74017)
 
 [node name="generator" parent="." instance=ExtResource("6_qi71a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.66024, -1.81393, -27.7367)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.66024, 0.00792533, -29.2331)
 
 [node name="generator2" parent="." instance=ExtResource("6_qi71a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66024, -1.81393, -27.7367)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66024, 0.00792533, -29.2331)
 
 [node name="generator3" parent="." instance=ExtResource("6_qi71a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33976, -1.81393, -27.7367)
-
-[node name="GameManager" type="Node3D" parent="."]
-script = ExtResource("7_eua16")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.597891, 0.00792533, -29.2331)

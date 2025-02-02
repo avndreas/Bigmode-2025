@@ -1,10 +1,10 @@
 extends Resource
 class_name Item
 
-enum Items {NONE, PIPE, TAPE, CLAMP}
+enum Items {NONE, PIPE, FUSE}
 
-static var file_name_mapping : Dictionary = {Items.PIPE : "res://assets/pipe.tres"}
-static var item_name_mapping : Dictionary = {Items.PIPE : "Pipe"}
+static var file_name_mapping : Dictionary = {Items.PIPE : "res://assets/resources/pipe.tres", Items.FUSE : "res://assets/resources/fuse.tres"}
+static var item_name_mapping : Dictionary = {Items.PIPE : "Pipe", Items.FUSE : "Fuse"}
 
 @export var name : String
 @export var UI_sprite : Texture2D

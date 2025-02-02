@@ -22,4 +22,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 2
 alpha_cut = 1
 texture_filter = 5
-text = "yabadabado"
+text = "kafkaesque"

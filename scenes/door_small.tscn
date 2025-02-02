@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmp6e7rrcnj2j"]
+
+[ext_resource type="PackedScene" uid="uid://cq0vegcnc451i" path="res://assets/models/door-small.glb" id="1_2fd2m"]
+
+[node name="door-small" instance=ExtResource("1_2fd2m")]

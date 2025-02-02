@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://cv2sx1y1oob7w"]
+
+[ext_resource type="Texture2D" uid="uid://d13t08e41vc40" path="res://assets/resources/51rI-P8RrkL.jpg" id="1_w5qlr"]
+[ext_resource type="PackedScene" uid="uid://d227xm7q6f6dq" path="res://scenes/pipe.tscn" id="2_t2p0o"]
+[ext_resource type="Script" path="res://scripts/item.gd" id="3_xpgta"]
+
+[resource]
+script = ExtResource("3_xpgta")
+name = "Pipe"
+UI_sprite = ExtResource("1_w5qlr")
+node_for_3D = ExtResource("2_t2p0o")
+description = "A pipe, used to fix the boiler, gas room, and life support."
+type = 1
