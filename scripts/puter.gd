@@ -33,12 +33,18 @@ func _ready() -> void:
 		temp_label.name = "Oxygen"
 		lines.add_child(temp_label)
 		
+		temp_label = Label.new()
+		temp_label.label_settings = label_settings.duplicate()
+		temp_label.text = "Gas Pipes: " + ("OK" if level.gas_on else ("ERROR: " + format_time(level.gas_off_time) + "s offline"))
+		temp_label.name = "Gas"
+		lines.add_child(temp_label)
+		
 		var crit_events = get_tree().get_nodes_in_group("CriticalEvents")
 		for event in crit_events:
 			var event_label = Label.new()
 			event_label.label_settings = label_settings.duplicate()
 			event_label.name = str(event)
-			event_label.text = event.name + ": " + ("Online" if event.timer.time_left > 0 else "Offline")
+			#event_label.text = event.name + ": " + ("Online" if event.timer.time_left > 0 else "Offline")
 			lines.add_child(event_label)
 
 #

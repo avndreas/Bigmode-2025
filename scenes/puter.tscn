@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://g2cgdcjohore" path="res://assets/models/puter_hrum.png" id="2_j05gm"]
 [ext_resource type="Texture2D" uid="uid://cx6l4woxudy34" path="res://assets/models/puter_your mother.jpg" id="3_wbs1r"]
 [ext_resource type="Shader" path="res://shaders/textcrt.gdshader" id="4_dko8d"]
-[ext_resource type="LabelSettings" uid="uid://c05sw21k2q2gn" path="res://assets/puter_text_settings.tres" id="5_y5wmr"]
+[ext_resource type="LabelSettings" uid="uid://b3sxvn5jtw0vy" path="res://assets/puter_text_settings.tres" id="5_y5wmr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3aco"]
 resource_name = "Material.002"
@@ -165,7 +165,7 @@ texture = SubResource("ViewportTexture_xm813")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Sprite3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0366211)
-light_color = Color(0, 0.137255, 0.278431, 1)
+light_color = Color(0.109688, 0.381894, 0.385092, 1)
 light_energy = 0.5
 omni_range = 1.0
 
@@ -195,7 +195,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(2.16588e-07, 0.136415, 0.280353, 1)
+color = Color(0.070683, 0.237562, 0.205522, 1)
 
 [node name="Lines" type="VBoxContainer" parent="SubViewport/Control"]
 unique_name_in_owner = true

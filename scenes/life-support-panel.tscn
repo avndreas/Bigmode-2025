@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn5robvlw17fw"]
+
+[ext_resource type="Script" path="res://scripts/critical_event.gd" id="1_eom2h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ubwn"]
+size = Vector3(0.1875, 0.8, 0.655273)
+
+[node name="LifeSupportPanel" type="Node3D"]
+script = ExtResource("1_eom2h")
+crit_time = 60.0
+required_item = 1
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_8ubwn")

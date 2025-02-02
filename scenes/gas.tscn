@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://durnai60du7u1"]
+
+[ext_resource type="Script" path="res://scripts/critical_event.gd" id="1_b0aap"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iyy2w"]
+size = Vector3(0.169922, 0.8, 0.451172)
+
+[node name="Gas" type="Node3D"]
+script = ExtResource("1_b0aap")
+crit_time = 120.0
+required_item = 1
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_iyy2w")

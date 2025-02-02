@@ -10,6 +10,10 @@ var lights_on : bool = true
 var lights_off_time : float = 0
 var oxygen_on : bool = true
 var oxygen_off_time : float = 0
+var gas_on : bool = true
+var gas_off_time : float = 0
+var life_support_on : bool = true
+var life_support_off_time : float = 0
 
 signal game_state_update(update : GameStateUpdate)
 
@@ -63,6 +67,26 @@ func _process(delta: float) -> void:
 		emit_signal("game_state_update", update)
 	else:
 		oxygen_off_time = 0
+	
+	if not gas_on:
+		gas_off_time += delta
+		var update := GameStateUpdate.new()
+		update.gas = true
+		update.gas_off_time = lights_off_time
+		update.gas_on = lights_on
+		emit_signal("game_state_update", update)
+	else:
+		gas_off_time = 0
+	
+	if not life_support_on:
+		life_support_off_time += delta
+		var update := GameStateUpdate.new()
+		update.life_support = true
+		update.life_support_off_time = lights_off_time
+		update.life_support_on = lights_on
+		emit_signal("game_state_update", update)
+	else:
+		life_support_off_time = 0
 
 func toggleLights() -> void:
 	lights_on = not lights_on
@@ -127,3 +151,25 @@ func _on_generator_event_state(on: bool, event: CriticalEvent) -> void:
 	else:
 		turnOffLights()
 		
+
+
+func _on_gas_room_pipe_event_state(on: bool, event: CriticalEvent) -> void:
+	var update := GameStateUpdate.new()
+	update.crit_event = event
+	emit_signal("game_state_update", update)
+	
+	if on:
+		print("Gas leak contained.")
+	else:
+		print("Gas leaking...")
+
+
+func _on_life_support_event_state(on: bool, event: CriticalEvent) -> void:
+	var update := GameStateUpdate.new()
+	update.crit_event = event
+	emit_signal("game_state_update", update)
+	
+	if on:
+		print("Life support online.")
+	else:
+		print("Oxygen lowering...")

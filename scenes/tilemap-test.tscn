@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d4m700c07k5eg"]
+[gd_scene load_steps=21 format=3 uid="uid://d4m700c07k5eg"]
 
 [ext_resource type="MeshLibrary" uid="uid://hmxaqws5yf02" path="res://assets/tilesets/extended-tileset.tres" id="1_2g3i3"]
 [ext_resource type="Script" path="res://scripts/game_play_loop.gd" id="1_inb86"]
@@ -11,8 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://dmy8fv66snys0" path="res://scenes/generator-panel.tscn" id="8_ykcji"]
 [ext_resource type="PackedScene" uid="uid://ca6m7jwxwr32g" path="res://scenes/door_large.tscn" id="9_inxf8"]
 [ext_resource type="PackedScene" uid="uid://lmfh028rrdta" path="res://scenes/door_small.tscn" id="9_ryvn4"]
+[ext_resource type="PackedScene" uid="uid://crqdav3l68dwt" path="res://scenes/gas_pipes.tscn" id="9_tbxiy"]
+[ext_resource type="PackedScene" uid="uid://durnai60du7u1" path="res://scenes/gas.tscn" id="10_12ujl"]
+[ext_resource type="PackedScene" uid="uid://bn5robvlw17fw" path="res://scenes/life-support-panel.tscn" id="12_odk50"]
 [ext_resource type="PackedScene" uid="uid://b51nyf0c4fw3m" path="res://scenes/wooden_table.tscn" id="12_wyxdx"]
-[ext_resource type="PackedScene" path="res://scenes/easel.tscn" id="13_dnr2y"]
+[ext_resource type="PackedScene" uid="uid://8tahx8wrefr" path="res://scenes/horro.tscn" id="13_4n6m3"]
+[ext_resource type="PackedScene" uid="uid://ek48qm7ol6lw" path="res://scenes/easel.tscn" id="13_dnr2y"]
+[ext_resource type="PackedScene" uid="uid://dj20c17s6x1vo" path="res://scenes/life_support.tscn" id="16_6ufxx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5vy31"]
 
@@ -164,6 +169,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.597891, 0.00792533, -29.233
 [node name="puter" parent="Machines" instance=ExtResource("5_fvvyl")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.4422, 0.594604, 2.74017)
 
+[node name="gas_pipes" type="Node3D" parent="Machines"]
+
+[node name="gas-pipes" parent="Machines/gas_pipes" instance=ExtResource("9_tbxiy")]
+transform = Transform3D(-0.733042, 0, -0.680184, 0, 1, 0, 0.680184, 0, -0.733042, 4.30175, 0, -14.4198)
+
+[node name="gas-pipes4" parent="Machines/gas_pipes" instance=ExtResource("9_tbxiy")]
+transform = Transform3D(-0.0402189, 0, -0.999191, 0, 1, 0, 0.999191, 0, -0.0402189, 0.743711, 0, -14.6585)
+
+[node name="Gas Pipes" parent="Machines/gas_pipes/gas-pipes4" groups=["CriticalEvents"] instance=ExtResource("10_12ujl")]
+transform = Transform3D(-0.0402189, 0, 0.999191, 0, 1, 0, -0.999191, 0, -0.0402189, 0.137163, 1.20401, -0.205059)
+crit_time = 10.0
+
+[node name="gas-pipes5" parent="Machines/gas_pipes" instance=ExtResource("9_tbxiy")]
+transform = Transform3D(-0.0508891, 0, -0.998704, 0, 1, 0, 0.998704, 0, -0.0508891, 2.01729, 0, -15.4912)
+
+[node name="gas-pipes6" parent="Machines/gas_pipes" instance=ExtResource("9_tbxiy")]
+transform = Transform3D(0.886187, 0, -0.463327, 0, 1, 0, 0.463327, 0, 0.886187, 1.79039, 0, -13.093)
+
+[node name="gas-pipes7" parent="Machines/gas_pipes" instance=ExtResource("9_tbxiy")]
+transform = Transform3D(0.87253, 0, 0.48856, 0, 1, 0, -0.48856, 0, 0.87253, 3.17882, 0, -12.9244)
+
+[node name="gas-pipes2" parent="Machines/gas_pipes" instance=ExtResource("9_tbxiy")]
+transform = Transform3D(0.841096, 0, 0.540887, 0, 1, 0, -0.540887, 0, 0.841096, 7.3904, 0, -16.6674)
+
+[node name="gas-pipes3" parent="Machines/gas_pipes" instance=ExtResource("9_tbxiy")]
+transform = Transform3D(0.336257, 0, -0.94177, 0, 1, 0, 0.94177, 0, 0.336257, 6.32909, 0, -14.0374)
+
+[node name="life-support" parent="Machines" instance=ExtResource("16_6ufxx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.5035, -2.38419e-07, -13.5237)
+
+[node name="Life Support" parent="Machines/life-support" groups=["CriticalEvents"] instance=ExtResource("12_odk50")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0345058, 1.04864, 0.182987)
+
 [node name="Items" type="Node3D" parent="."]
 
 [node name="pipe" parent="Items" instance=ExtResource("8_k8ujg")]
@@ -258,7 +296,12 @@ random_interaction_range = Vector2i(2, 8)
 [node name="wooden-table" parent="Decorations" instance=ExtResource("12_wyxdx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23648, 0, 2.33479)
 
+[node name="horro" parent="Decorations" instance=ExtResource("13_4n6m3")]
+transform = Transform3D(-0.900941, 0, 0.433942, 0, 1, 0, -0.433942, 0, -0.900941, -11.26, 1.84122, 2.80656)
+
 [node name="easel" parent="." instance=ExtResource("13_dnr2y")]
 transform = Transform3D(-0.389992, 0, -0.920818, 0, 1, 0, 0.920818, 0, -0.389992, 4.45777, -3.8147e-06, -23.8018)
 
 [connection signal="eventState" from="Machines/generator2/Generator" to="." method="_on_generator_event_state"]
+[connection signal="eventState" from="Machines/gas_pipes/gas-pipes4/Gas Pipes" to="." method="_on_gas_room_pipe_event_state"]
+[connection signal="eventState" from="Machines/life-support/Life Support" to="." method="_on_life_support_event_state"]
