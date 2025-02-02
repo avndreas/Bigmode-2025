@@ -28,13 +28,22 @@ func set_items(obj) -> void:
 		if obj is Item3D:
 			pickup_item = obj
 			
+		var parent = obj.get_parent()
+		if parent:
+			if parent is Activator:
+				#print("activator set 1")
+				activation_item = parent
+			elif parent is CriticalEvent:
+				crit_event = parent
+			
 		for child in obj.get_children():
 			if child is Label3D:
 				label = child
-			elif child is CriticalEvent:
-				crit_event = child
-			elif child is Activator:
-				activation_item = child
+			#elif child is CriticalEvent:
+				#crit_event = child
+			#elif child is Activator:
+				#print("activator set 2")
+				#activation_item = child
 			if not label == null and not crit_event == null and not activation_item == null:
 				break
 	return
@@ -76,9 +85,10 @@ func _process(_delta: float) -> void:
 				#interact_time = 0
 					
 			if Input.is_action_just_pressed("interact"):
-				#if not activation_item == null: # door not activated by hand
-					#activation_item.activate()
-					#pass # do any door code here? just an "activate" function
+				if activation_item:
+					#print("activate")
+					activation_item.activate()
+
 				#print(inventory, " ", pickup_item)
 				if crit_event:
 					crit_event.begin_interaction(inventory)
