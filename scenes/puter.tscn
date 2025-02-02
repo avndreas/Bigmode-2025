@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://b85i28to1u0d2"]
+[gd_scene load_steps=14 format=4 uid="uid://b85i28to1u0d2"]
 
+[ext_resource type="Script" path="res://scripts/puter.gd" id="1_b1gye"]
 [ext_resource type="Texture2D" uid="uid://omefo4u45sc7" path="res://assets/models/puter_button and lever.png" id="1_vpkop"]
 [ext_resource type="Texture2D" uid="uid://g2cgdcjohore" path="res://assets/models/puter_hrum.png" id="2_j05gm"]
 [ext_resource type="Texture2D" uid="uid://cx6l4woxudy34" path="res://assets/models/puter_your mother.jpg" id="3_wbs1r"]
+[ext_resource type="Shader" path="res://shaders/textcrt.gdshader" id="4_dko8d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3aco"]
 resource_name = "Material.002"
@@ -110,10 +112,38 @@ shadow_mesh = SubResource("ArrayMesh_b101d")
 [sub_resource type="BoxShape3D" id="BoxShape3D_m1afw"]
 size = Vector3(0.520676, 1.14673, 0.537369)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_xm813"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cqo43"]
+shader = ExtResource("4_dko8d")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(175, 125)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 45.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.2
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.3
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
 [node name="puter" type="Node3D"]
+script = ExtResource("1_b1gye")
 
 [node name="oputer" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.6, 0, 0, 0, 1.25098, -0.997516, 0, 0.997516, 1.25098, 0.211862, 0.424252, 0.199523)
+transform = Transform3D(1.6, 0, 0, 0, 1.25098, -0.997516, 0, 0.997516, 1.25098, 0.235637, 0.424252, 0.199523)
 mesh = SubResource("ArrayMesh_j6qtk")
 skeleton = NodePath("")
 
@@ -122,3 +152,75 @@ skeleton = NodePath("")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="oputer/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.781902, 0.623402, 0, -0.623402, 0.781902, -0.14727, -0.191356, -0.122272)
 shape = SubResource("BoxShape3D_m1afw")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.842162, 0.062)
+transparency = 0.5
+texture = SubResource("ViewportTexture_xm813")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(700, 500)
+size_2d_override = Vector2i(420, 300)
+size_2d_override_stretch = true
+
+[node name="Control" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.0235294, 0.0784314, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="Lines" type="VBoxContainer" parent="SubViewport/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SubViewport/Control/Lines"]
+layout_mode = 2
+text = "hello"
+
+[node name="ColorRect2" type="ColorRect" parent="SubViewport/Control"]
+material = SubResource("ShaderMaterial_cqo43")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

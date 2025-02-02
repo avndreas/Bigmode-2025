@@ -6,6 +6,13 @@ class_name Level
 
 var game_timer : Timer
 
+var lights_on : bool = true
+var lights_off_time : float = 0
+var oxygen_on : bool = true
+var oxygen_off_time : float = 0
+
+signal game_state_update(update : GameStateUpdate)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var random = RandomNumberGenerator.new()
@@ -37,29 +44,84 @@ func _end_game(won : bool) -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("action2"):
 		toggleLights()
+	if not lights_on:
+		lights_off_time += delta
+		var update := GameStateUpdate.new()
+		update.light = true
+		update.light_off_time = lights_off_time
+		update.light_on = lights_on
+		emit_signal("game_state_update", update)
+	else:
+		lights_off_time = 0
+		
+	if not oxygen_on:
+		oxygen_off_time += delta
+		var update := GameStateUpdate.new()
+		update.oxygen = true
+		update.oxygen_off_time = lights_off_time
+		update.oxygen_on = lights_on
+		emit_signal("game_state_update", update)
+	else:
+		oxygen_off_time = 0
 
 func toggleLights() -> void:
+	lights_on = not lights_on
+	
+	var update := GameStateUpdate.new()
+	update.light = true
+	update.light_off_time = lights_off_time
+	update.light_on = lights_on
+	emit_signal("game_state_update", update)
 	var rng = RandomNumberGenerator.new()
 	for l in lights.get_children():
 		await get_tree().create_timer(rng.randf_range(0.0, 0.1)).timeout
 		l.toggleLight()
 
 func turnOffLights() -> void:
+	lights_on = false
+	
+	var update := GameStateUpdate.new()
+	update.light = true
+	update.light_off_time = lights_off_time
+	update.light_on = lights_on
+	emit_signal("game_state_update", update)
 	var rng = RandomNumberGenerator.new()
 	for l in lights.get_children():
 		await get_tree().create_timer(rng.randf_range(0.0, 0.1)).timeout
 		l.setLightStatus(false)
 
 func turnOnLights() -> void:
+	lights_on = true
+	
+	var update := GameStateUpdate.new()
+	update.light = true
+	update.light_off_time = lights_off_time
+	update.light_on = lights_on
+	emit_signal("game_state_update", update)
 	var rng = RandomNumberGenerator.new()
 	for l in lights.get_children():
 		await get_tree().create_timer(rng.randf_range(0.0, 0.1)).timeout
 		l.setLightStatus(true)
 
 
-func _on_generatorpanel_event_triggered() -> void:
-	turnOffLights()
 
 
-func _on_generatorpanel_event_restored() -> void:
-	turnOnLights()
+#func _on_generatorpanel_event_triggered(on : bool, event:CriticalEvent) -> void:
+	#turnOffLights()
+
+
+
+#func _on_generatorpanel_event_restored(on : bool, event:CriticalEvent) -> void:
+	#turnOnLights()
+
+
+func _on_generatorpanel_event_state(on: bool, event: CriticalEvent) -> void:
+	var update := GameStateUpdate.new()
+	update.crit_event = event
+	emit_signal("game_state_update", update)
+	
+	if on:
+		turnOnLights()
+	else:
+		turnOffLights()
+		

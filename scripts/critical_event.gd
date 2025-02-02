@@ -7,10 +7,10 @@ var timer : Timer
 var label : Label3D
 var base_time : float = 30
 
-signal eventTriggered
-#signal eventState(bool, criticalEvent)
+#signal eventTriggered
+signal eventState(on: bool, event: CriticalEvent)
 #emit_signal("eventState", timer.time_left > 0, self)
-signal eventRestored
+#signal eventRestored
 
 var interact_timer : Timer
 @export var required_item : Item.Items = Item.Items.NONE
@@ -98,7 +98,8 @@ func _process(delta: float) -> void:
 	label.text = str(timer.time_left).pad_decimals(pad)
 	
 	if timer.time_left > 0 and time_before == 0:
-		emit_signal("eventRestored")
+		#emit_signal("eventRestored")
+		emit_signal("eventState", true, self)
 
 func reset_timer_to_max() -> void:
 	timer.stop()
@@ -143,7 +144,8 @@ func finish_interaction() -> void:
 	held_inv = null
 
 func timer_end() -> void:
-	emit_signal("eventTriggered")
+	#emit_signal("eventTriggered")
+	emit_signal("eventState", false, self)
 	
 	
 func set_text(body : Node3D, on: bool):
