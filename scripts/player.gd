@@ -20,6 +20,14 @@ var speed = SPEED
 var flashlight_on : bool = false
 #var flashlight : SpotLight3D
 
+@export var gloom_limit : float = 10
+var gloom : bool = false
+
+func _ready() -> void:
+	var parent = get_parent()
+	if parent is Level:
+		parent.game_state_update.connect(player_state_updater)
+
 
 
 func _input(event):
@@ -85,3 +93,15 @@ func _process(delta:float) -> void:
 	
 func _exit_tree() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+func player_state_updater(update : GameStateUpdate) -> void:
+	if update.light:
+		if not update.light_on:
+			gloom = true
+			if update.light_off_time > gloom_limit:
+					var parent = get_parent()
+					if parent is Level:
+						parent._end_game(false)
+		else:
+			gloom = false
+	pass
