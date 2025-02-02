@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ek48qm7ol6lw"]
+
+[ext_resource type="PackedScene" uid="uid://bcll652ksbo7h" path="res://assets/models/easel.glb" id="1_71bfg"]
+
+[node name="easel" instance=ExtResource("1_71bfg")]

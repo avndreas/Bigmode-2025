@@ -50,6 +50,7 @@ data = PackedVector3Array(0.75, 0.578977, 0.409329, -0.75, 0.621024, 0.409329, 0
 [node name="wooden-table" type="Node3D"]
 
 [node name="table" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.42, 0, 0, 0, 1.42, 0, 0, 0, 1.42, 0, 0, 0)
 mesh = SubResource("ArrayMesh_5a6t6")
 skeleton = NodePath("")
 

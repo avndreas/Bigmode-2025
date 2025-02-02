@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dar0k1r5iseq0" path="res://assets/battery/Battery_Outer.png" id="12_87os7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_chi0x"]
-radius = 0.4
+radius = 0.31
 height = 1.81
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lc6g1"]

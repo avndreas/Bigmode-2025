@@ -76,7 +76,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_taqkx")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_46w42"]
-size = Vector3(5, 5, 5)
+size = Vector3(4.3186, 5, 3)
 
 [node name="Door" type="Node3D"]
 script = ExtResource("1_3i8eo")
