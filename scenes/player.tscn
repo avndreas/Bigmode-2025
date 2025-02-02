@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bp2bgxhmng23o"]
+[gd_scene load_steps=19 format=3 uid="uid://bp2bgxhmng23o"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_rhd8k"]
 [ext_resource type="Shader" path="res://shaders/vignette_new.gdshader" id="2_2n8no"]
@@ -7,9 +7,13 @@
 [ext_resource type="Script" path="res://scripts/inventory_handler.gd" id="5_sgifl"]
 [ext_resource type="Shader" path="res://shaders/dither.gdshader" id="5_u36gy"]
 [ext_resource type="PackedScene" uid="uid://pgl5wknpodlv" path="res://scenes/pause_menu.tscn" id="6_yxeby"]
+[ext_resource type="Texture2D" uid="uid://cxg5xjn2a4cjp" path="res://assets/battery/5.png" id="7_dpro3"]
 [ext_resource type="Script" path="res://scripts/flashlight_battery.gd" id="7_y3dc8"]
-[ext_resource type="Texture2D" uid="uid://bcd5th3hpfqvy" path="res://assets/OuterBattery.png" id="8_gja5w"]
-[ext_resource type="Texture2D" uid="uid://rx3k7x86v7op" path="res://assets/InnerBattery.png" id="9_8dacj"]
+[ext_resource type="Texture2D" uid="uid://dpe1w13nro4j6" path="res://assets/battery/4.png" id="8_our40"]
+[ext_resource type="Texture2D" uid="uid://r8panw4f7pkh" path="res://assets/battery/3.png" id="9_sr3d4"]
+[ext_resource type="Texture2D" uid="uid://b7pw4dorwrh1t" path="res://assets/battery/2.png" id="10_c6reo"]
+[ext_resource type="Texture2D" uid="uid://bftyod2l6ltah" path="res://assets/battery/1.png" id="11_dvcq0"]
+[ext_resource type="Texture2D" uid="uid://dar0k1r5iseq0" path="res://assets/battery/Battery_Outer.png" id="12_87os7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_chi0x"]
 radius = 0.4
@@ -101,29 +105,65 @@ script = ExtResource("5_sgifl")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_yxeby")]
 
-[node name="Container" type="Control" parent="CanvasLayer"]
+[node name="Flashlight" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
+offset_left = -192.0
+offset_top = 100.0
+offset_right = -192.0
+offset_bottom = 100.0
 grow_horizontal = 0
-
-[node name="FlashlightBattery" type="TextureProgressBar" parent="CanvasLayer/Container"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -102.0
-offset_bottom = 162.0
-grow_horizontal = 0
-value = 100.0
-fill_mode = 3
-texture_under = ExtResource("8_gja5w")
-texture_progress = ExtResource("9_8dacj")
-texture_progress_offset = Vector2(5, 17.5)
-tint_progress = Color(0, 1, 0, 1)
 script = ExtResource("7_y3dc8")
+
+[node name="1" type="TextureRect" parent="CanvasLayer/Flashlight"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 150.0
+rotation = 1.5708
+texture = ExtResource("7_dpro3")
+expand_mode = 1
+
+[node name="2" type="TextureRect" parent="CanvasLayer/Flashlight"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 150.0
+rotation = 1.5708
+texture = ExtResource("8_our40")
+expand_mode = 1
+
+[node name="3" type="TextureRect" parent="CanvasLayer/Flashlight"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 150.0
+rotation = 1.5708
+texture = ExtResource("9_sr3d4")
+expand_mode = 1
+
+[node name="4" type="TextureRect" parent="CanvasLayer/Flashlight"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 150.0
+rotation = 1.5708
+texture = ExtResource("10_c6reo")
+expand_mode = 1
+
+[node name="5" type="TextureRect" parent="CanvasLayer/Flashlight"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 150.0
+rotation = 1.5708
+texture = ExtResource("11_dvcq0")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Flashlight"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 150.0
+rotation = 1.5708
+texture = ExtResource("12_87os7")
+expand_mode = 1
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443884, 0)
