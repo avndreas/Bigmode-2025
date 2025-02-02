@@ -165,7 +165,7 @@ rotation = 1.5708
 texture = ExtResource("12_87os7")
 expand_mode = 1
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="DarkLight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443884, 0)
 light_color = Color(0.375744, 0.377158, 0.575021, 1)
 light_energy = 0.23

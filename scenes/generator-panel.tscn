@@ -8,6 +8,7 @@ size = Vector3(0.095, 0.8, 0.48)
 [node name="Generator-panel" type="Node3D"]
 script = ExtResource("1_mbigt")
 crit_time = 60.0
+required_item = 2
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 4

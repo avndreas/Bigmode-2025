@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://g2cgdcjohore" path="res://assets/models/puter_hrum.png" id="2_j05gm"]
 [ext_resource type="Texture2D" uid="uid://cx6l4woxudy34" path="res://assets/models/puter_your mother.jpg" id="3_wbs1r"]
 [ext_resource type="Shader" path="res://shaders/textcrt.gdshader" id="4_dko8d"]
-[ext_resource type="LabelSettings" uid="uid://b3sxvn5jtw0vy" path="res://assets/puter_text_settings.tres" id="5_y5wmr"]
+[ext_resource type="LabelSettings" uid="uid://c05sw21k2q2gn" path="res://assets/puter_text_settings.tres" id="5_y5wmr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3aco"]
 resource_name = "Material.002"

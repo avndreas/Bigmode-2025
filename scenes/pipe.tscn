@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dqt0odenrm7dg" path="res://assets/models/pipe_pipe.png" id="2_i2x4p"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rc2pe"]
-height = 0.295
-radius = 0.03
+height = 0.415
+radius = 0.16
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jtdk"]
 resource_name = "Material"
@@ -50,6 +50,7 @@ shadow_mesh = SubResource("ArrayMesh_evn5e")
 
 [node name="pipe" type="RigidBody3D"]
 collision_layer = 12
+freeze = true
 script = ExtResource("1_6hcol")
 label_offset = Vector3(0, 0.5, 0)
 item_type = 1
