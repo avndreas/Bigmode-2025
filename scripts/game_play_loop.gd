@@ -78,6 +78,7 @@ func toggleLights() -> void:
 		l.toggleLight()
 
 func turnOffLights() -> void:
+	#print("turning lights off")
 	lights_on = false
 	
 	var update := GameStateUpdate.new()
@@ -91,6 +92,7 @@ func turnOffLights() -> void:
 		l.setLightStatus(false)
 
 func turnOnLights() -> void:
+	#print("turning lights on")
 	lights_on = true
 	
 	var update := GameStateUpdate.new()
@@ -115,7 +117,7 @@ func turnOnLights() -> void:
 	#turnOnLights()
 
 
-func _on_generatorpanel_event_state(on: bool, event: CriticalEvent) -> void:
+func _on_generator_event_state(on: bool, event: CriticalEvent) -> void:
 	var update := GameStateUpdate.new()
 	update.crit_event = event
 	emit_signal("game_state_update", update)

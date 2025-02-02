@@ -145,6 +145,7 @@ func finish_interaction() -> void:
 
 func timer_end() -> void:
 	#emit_signal("eventTriggered")
+	#print("hi")
 	emit_signal("eventState", false, self)
 	
 	

@@ -20,6 +20,7 @@
 background_mode = 1
 ambient_light_color = Color(0.123651, 0.066465, 0.16671, 1)
 ambient_light_energy = 16.0
+glow_enabled = true
 
 [node name="Tilemap-test" type="Node3D"]
 script = ExtResource("1_inb86")
@@ -259,3 +260,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23648, 0, 2.33479)
 
 [node name="easel" parent="." instance=ExtResource("13_dnr2y")]
 transform = Transform3D(-0.389992, 0, -0.920818, 0, 1, 0, 0.920818, 0, -0.389992, 4.45777, -3.8147e-06, -23.8018)
+
+[connection signal="eventState" from="Machines/generator2/Generator" to="." method="_on_generator_event_state"]
