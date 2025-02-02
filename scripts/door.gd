@@ -14,9 +14,8 @@ class_name Door
 @export var opened_rot : Vector3 = Vector3.ZERO
 
 @onready var closed_pos : Vector3 = Vector3.ZERO
-#@onready var current_goal_pos : Vector3 = closed_pos
+@onready var current_goal_pos : Vector3 = closed_pos
 @onready var closed_rot : Vector3 = Vector3.ZERO
-var currently_open : bool = false
 
 
 @export_category("activation_types")
@@ -172,42 +171,42 @@ func _ready() -> void:
 #func _process(delta: float) -> void:
 	#pass
 	
-#func _physics_process(delta: float) -> void:
-	##print("hi2")
-	#if door_body == null:
-		##print("ddasdasd")
-		#for child in get_children():
-			##print("child")
-			#if child is AnimatableBody3D:
-				#door_body = child
-				#closed_pos = door_body.position
-				##print("hi1")
-				#break
-		#return
-		#
-	#if door_body.position != current_goal_pos and not stop:
-		##print("door_moving")
-		#var move_dir : Vector3 = (current_goal_pos - door_body.position).normalized()
-		#var dist : float = current_goal_pos.distance_to(door_body.position)
-		#var movement_vector : Vector3 = movement_speed * delta * move_dir
-		#if movement_vector.length() > dist:
-			#movement_vector = movement_vector.normalized() * dist
-			##print("hwody")
-		##var collision : KinematicCollision3D = door_body.move_and_collide(movement_vector)
+func _physics_process(delta: float) -> void:
+	#print("hi2")
+	if door_body == null:
+		#print("ddasdasd")
+		for child in get_children():
+			#print("child")
+			if child is AnimatableBody3D:
+				door_body = child
+				closed_pos = door_body.position
+				#print("hi1")
+				break
+		return
+		
+	if door_body.position != current_goal_pos and not stop:
+		#print("door_moving")
+		var move_dir : Vector3 = (current_goal_pos - door_body.position).normalized()
+		var dist : float = current_goal_pos.distance_to(door_body.position)
+		var movement_vector : Vector3 = movement_speed * delta * move_dir
+		if movement_vector.length() > dist:
+			movement_vector = movement_vector.normalized() * dist
+			#print("hwody")
+		var collision : KinematicCollision3D = door_body.move_and_collide(movement_vector)
 		#door_body.constant_linear_velocity = movement_vector
-		##if not collision == null:
-			###print("collide")
-			###print(deg_to_rad(collision.get_angle()))
-			###print(collision.get_normal())
-			###print(movement_vector.normalized())
-			##print((-collision.get_normal()).angle_to(movement_vector.normalized()))
-			##print(collision.get_angle(0,movement_vector))
-			##if (-collision.get_normal()).angle_to(movement_vector.normalized()) < deg_to_rad(89) and \
-			##collision.get_angle(0,movement_vector) < deg_to_rad(89):
-				###print("hi")
-			###if collision.get_normal() == -movement_vector.normalized():
-				##stop = true
-				##print("stopped due to collision")
+		if not collision == null:
+			#print("collide")
+			#print(deg_to_rad(collision.get_angle()))
+			#print(collision.get_normal())
+			#print(movement_vector.normalized())
+			#print((-collision.get_normal()).angle_to(movement_vector.normalized()))
+			#print(collision.get_angle(0,movement_vector))
+			#if (-collision.get_normal()).angle_to(movement_vector.normalized()) < deg_to_rad(89) and \
+			#collision.get_angle(0,movement_vector) < deg_to_rad(89):
+				#print("hi")
+			#if collision.get_normal() == -movement_vector.normalized():
+			stop = true
+			print("stopped due to collision")
 
 func activate() -> void:
 	if player_activatable:
@@ -217,7 +216,8 @@ func activate() -> void:
 		if interaction_count_needed > interactions_done:
 			return
 		#print("hi")
-		if currently_open:
+		if opened_pos == current_goal_pos:
+		#if currently_open:
 			close()
 		else:
 			#print("opening")
@@ -226,18 +226,14 @@ func activate() -> void:
 func close(body : Node3D = null) -> void:
 	#print("close")
 	if (body == null or (body is CharacterBody3D and area_activatable)) and !locked_open:
-		#current_goal_pos = closed_pos
-		#stop = false
-		#print(anim_player)
-		anim_player.play_backwards("new_animation")
-		currently_open = false
+		current_goal_pos = closed_pos
+		stop = false
+
 	
 func open(body : Node3D = null) -> void:
 	#print("open")
 	if body == null or (body is CharacterBody3D and area_activatable):
-		#current_goal_pos = opened_pos
-		#stop = false
-		#print(anim_player)
-		anim_player.play("new_animation")
-		currently_open = true
+		current_goal_pos = opened_pos
+		stop = false
+
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://b2hxiesrt5t6n"]
+[gd_scene load_steps=10 format=4 uid="uid://ca6m7jwxwr32g"]
 
 [ext_resource type="Script" path="res://scripts/door.gd" id="1_3i8eo"]
 [ext_resource type="Texture2D" uid="uid://oln8dpyp7fp1" path="res://assets/models/door-large_atlas.png" id="1_mq8a2"]
@@ -21,7 +21,7 @@ cull_mode = 2
 albedo_texture = ExtResource("2_qlx56")
 roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_urfwr"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_taqkx"]
 _surfaces = [{
 "aabb": AABB(-0.124065, -0.146264, -1.33383, 1.16276, 0.283136, 2.79971),
 "format": 34896613377,
@@ -73,7 +73,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("//8AAAAA/////wAAAAD/v///AAAAAFTV///+/wAA//////7/AAD//////v8AAFTVAAAAAAAA//8AAAAAAAD/vwAAAAAAAFTVAAD+/wAA//8AAP7/AAD//wAA/v8AAFTV/v8AAMjm/7/+/wAAyOb/v/7/AADI5vvF/v8AAMjmVNX+////yOb///7////I5vvF/v///8jmVNUAAP7/yOb//wAA/v/I5vvFAAD+/8jmVNUAAAAAyOb/vwAAAADI5vvFAAAAAMjmVNWKHf7/AAD//4od/v8AAP//ih0AAP7//7+KHQAA/v//v4odAAD+//vFih3+//7//7+KHf7//v///4od/v/+//vFih0AAAAA//+KHQAAAAD/v4odAADI5v+/ih3+/8jm//904v7/////v3Ti/v//////dOL+////+8V04gAAAAD//3TiAAAAAP+/dOIAAAAA/7904v7/AAD//3Ti/v8AAP//dOIAAP///7904gAA////v3TiAAD///vFdOL+/8jm//904gAAyOb/v3TiAADI5v+//7//vwAA/3+qKqoq/7//v/9//7+qKqoq/7//vwAA/39UVaqq/7//v/9//79UVaqqAAD/fwAA/3/+HP4cqiqqKv9//7/+HP4cqiqqKv9//78AY/6cVFWqqgAA/38AY/6cVFWqqv+//7//f/+//3//fwAA/38AY/6c/3//f/9//78AY/6c/7//vwAA/38AAP9//3//v/9//3//f/+//hz+HP+//78AAP9/AAD/f/+//7//f/+//3//fwAA/3/+HP4c/3//vwAA/38AAP9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_urfwr")
+shadow_mesh = SubResource("ArrayMesh_taqkx")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_46w42"]
 size = Vector3(5, 5, 5)
@@ -81,10 +81,11 @@ size = Vector3(5, 5, 5)
 [node name="Door" type="Node3D"]
 script = ExtResource("1_3i8eo")
 opened_pos = Vector3(0, 2.5, 0)
-locked_open = null
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
 collision_layer = 6
+collision_mask = 0
+sync_to_physics = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
 transform = Transform3D(-1.10611, -1.67018e-07, 7.30059e-15, 0, -4.83496e-08, -1.10611, 1.67018e-07, -1.10611, 4.83496e-08, 0.500513, 1.55912, -0.00304057)
