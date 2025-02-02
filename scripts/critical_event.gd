@@ -18,6 +18,8 @@ var held_inv : Inventory
 
 var held_item : Item
 
+@export var text_range : float = 7
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,7 +36,7 @@ func _ready() -> void:
 	timer.start()
 	timer.autostart = false
 	UniverseSingleton.LabelSettings3D(label)
-	label.visible = true
+	label.visible = false
 	#label.text = str(timer.time_left)
 	label.position.y = 1
 	#label.text = ""
@@ -53,6 +55,24 @@ func _ready() -> void:
 	interact_timer.timeout.connect(finish_interaction) # set up the signal connection here
 	
 	add_child(interact_timer)
+	
+	
+	var area := Area3D.new()
+	#area.global_position = global_position
+	var temp_collision := CollisionShape3D.new()
+	var sphere_shape := SphereShape3D.new()
+	sphere_shape.radius = text_range
+	
+	temp_collision.shape = sphere_shape
+	area.add_child(temp_collision)
+	area.collision_mask = 0
+	area.collision_layer = 0
+	area.set_collision_mask_value(1,true)
+	area.body_entered.connect(set_text.bind(true))
+	area.body_exited.connect(set_text.bind(false))
+	add_child(area)
+	label.visible = false
+	
 	
 func round_place(num,places):
 	return (round(num*pow(10,places))/pow(10,places))
@@ -126,4 +146,8 @@ func timer_end() -> void:
 	emit_signal("eventTriggered")
 	
 	
+func set_text(body : Node3D, on: bool):
+	if body is CharacterBody3D:
+		print("set_text")
+		label.visible = on
 	
