@@ -146,6 +146,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66024, 0.00792533, -29.233
 
 [node name="Generator-panel" parent="Machines/generator2" instance=ExtResource("8_ykcji")]
 transform = Transform3D(0.922383, 0.386276, 0, -0.386276, 0.922383, 0, 0, 0, 1, -0.72248, 1.20475, 0.445326)
+required_item = 1
 
 [node name="generator3" parent="Machines" instance=ExtResource("6_qi71a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.597891, 0.00792533, -29.2331)
@@ -158,4 +159,5 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.44
 [node name="pipe" parent="Items" instance=ExtResource("8_k8ujg")]
 transform = Transform3D(0.799978, 0.600029, 0, -0.600029, 0.799978, 0, 0, 0, 1, -8.15467, 1.21957, 1.00244)
 
+[connection signal="eventRestored" from="Machines/generator2/Generator-panel" to="." method="_on_generatorpanel_event_restored"]
 [connection signal="eventTriggered" from="Machines/generator2/Generator-panel" to="." method="_on_generatorpanel_event_triggered"]

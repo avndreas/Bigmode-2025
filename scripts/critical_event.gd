@@ -8,6 +8,9 @@ var label : Label3D
 var base_time : float = 30
 
 signal eventTriggered
+#signal eventState(bool, criticalEvent)
+#emit_signal("eventState", timer.time_left > 0, self)
+signal eventRestored
 
 var interact_timer : Timer
 @export var required_item : Item.Items = Item.Items.NONE
@@ -56,6 +59,8 @@ func round_place(num,places):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	var time_before = timer.time_left
+	
 	#print(timer.time_left)
 	
 	var time_added_per_second : float = 3
@@ -72,6 +77,8 @@ func _process(delta: float) -> void:
 		pad = 2
 	label.text = str(timer.time_left).pad_decimals(pad)
 	
+	if timer.time_left > 0 and time_before == 0:
+		emit_signal("eventRestored")
 
 func reset_timer_to_max() -> void:
 	timer.stop()
@@ -110,7 +117,9 @@ func finish_interaction() -> void:
 			
 		if required_item == Item.Items.NONE:
 			reset_timer_to_max()
-			
+		
+		#emit_signal("eventRestored")
+		
 	held_inv = null
 
 func timer_end() -> void:

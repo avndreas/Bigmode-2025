@@ -59,7 +59,7 @@ spot_range = 10.015
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -1)
-collision_mask = 12
+collision_mask = 14
 collide_with_areas = true
 script = ExtResource("3_wb2xg")
 

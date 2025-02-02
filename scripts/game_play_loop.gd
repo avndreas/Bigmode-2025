@@ -49,6 +49,16 @@ func turnOffLights() -> void:
 		await get_tree().create_timer(rng.randf_range(0.0, 0.1)).timeout
 		l.setLightStatus(false)
 
+func turnOnLights() -> void:
+	var rng = RandomNumberGenerator.new()
+	for l in lights.get_children():
+		await get_tree().create_timer(rng.randf_range(0.0, 0.1)).timeout
+		l.setLightStatus(true)
+
 
 func _on_generatorpanel_event_triggered() -> void:
 	turnOffLights()
+
+
+func _on_generatorpanel_event_restored() -> void:
+	turnOnLights()

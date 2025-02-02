@@ -11,7 +11,7 @@ var pickup_item : Item3D
 @onready var inventory : Inventory = %Inventory
 
 
-@export var interact_range : float = 3
+@export var interact_range : float = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
