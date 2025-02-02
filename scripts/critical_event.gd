@@ -7,6 +7,8 @@ var timer : Timer
 var label : Label3D
 var base_time : float = 30
 
+signal eventTriggered
+
 var interact_timer : Timer
 @export var required_item : Item.Items = Item.Items.NONE
 var held_inv : Inventory
@@ -36,7 +38,8 @@ func _ready() -> void:
 	#print(get_tree().get_current_scene())
 	var level = get_tree().get_current_scene()
 	if level is Level:
-		timer.timeout.connect(level._end_game.bind(false))
+		#timer.timeout.connect(level._end_game.bind(false))
+		timer.timeout.connect(timer_end)
 		
 		
 	interact_timer = Timer.new()
@@ -110,6 +113,8 @@ func finish_interaction() -> void:
 			
 	held_inv = null
 
+func timer_end() -> void:
+	emit_signal("eventTriggered")
 	
 	
 	

@@ -1,12 +1,15 @@
 extends Node3D
 class_name Level
 
+@onready var lights: Node3D = $"./Lights"
+@onready var player: CharacterBody3D = $"./Player"
+
 var game_timer : Timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var random = RandomNumberGenerator.new()
-	var game_length = random.randfn(7, 0.7) * 60
+	var game_length = random.randfn(5, 0.7) * 60
 	game_timer = Timer.new()
 	add_child(game_timer)
 	#print(game_length)
@@ -28,3 +31,24 @@ func _end_game(won : bool) -> void:
 	get_tree().call_group("CriticalEvents", "stop_timer")
 	#CriticalEvents
 	Universe.switch_scene(1)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("action2"):
+		toggleLights()
+
+func toggleLights() -> void:
+	var rng = RandomNumberGenerator.new()
+	for l in lights.get_children():
+		await get_tree().create_timer(rng.randf_range(0.0, 0.1)).timeout
+		l.toggleLight()
+
+func turnOffLights() -> void:
+	var rng = RandomNumberGenerator.new()
+	for l in lights.get_children():
+		await get_tree().create_timer(rng.randf_range(0.0, 0.1)).timeout
+		l.setLightStatus(false)
+
+
+func _on_generatorpanel_event_triggered() -> void:
+	turnOffLights()

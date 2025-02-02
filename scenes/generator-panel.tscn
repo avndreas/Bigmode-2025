@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmy8fv66snys0"]
+
+[ext_resource type="Script" path="res://scripts/critical_event.gd" id="1_mbigt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_an7gi"]
+size = Vector3(0.095, 0.8, 0.48)
+
+[node name="Generator-panel" type="Node3D"]
+script = ExtResource("1_mbigt")
+crit_time = 10.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_an7gi")

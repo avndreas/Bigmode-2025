@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bp2bgxhmng23o" path="res://scenes/player.tscn" id="1_ukhir"]
 [ext_resource type="Script" path="res://scripts/critical_event.gd" id="2_2attc"]
 [ext_resource type="Script" path="res://scripts/door.gd" id="4_bhpmc"]
-[ext_resource type="PackedScene" uid="uid://d227xm7q6f6dq" path="res://scenes/pipe.tscn" id="5_k70rv"]
+[ext_resource type="PackedScene" uid="uid://d227xm7q6f6dq" path="res://scenes/pipe-test.tscn" id="5_k70rv"]
 [ext_resource type="PackedScene" uid="uid://cwnmn0oy548ix" path="res://scenes/fuse.tscn" id="6_2k2kr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ak0qb"]
