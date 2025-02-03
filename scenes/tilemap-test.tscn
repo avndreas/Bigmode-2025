@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d4m700c07k5eg"]
+[gd_scene load_steps=29 format=3 uid="uid://d4m700c07k5eg"]
 
 [ext_resource type="MeshLibrary" uid="uid://hmxaqws5yf02" path="res://assets/tilesets/extended-tileset.tres" id="1_2g3i3"]
 [ext_resource type="Script" path="res://scripts/game_play_loop.gd" id="1_inb86"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b51nyf0c4fw3m" path="res://scenes/wooden_table.tscn" id="12_wyxdx"]
 [ext_resource type="PackedScene" uid="uid://b648botiwkrl8" path="res://scenes/boiler.tscn" id="12_y6mqq"]
 [ext_resource type="PackedScene" uid="uid://8tahx8wrefr" path="res://scenes/horro.tscn" id="13_4n6m3"]
+[ext_resource type="PackedScene" uid="uid://bu4cev8poayo2" path="res://scenes/boiler-panel.tscn" id="13_bh7ld"]
 [ext_resource type="PackedScene" uid="uid://ek48qm7ol6lw" path="res://scenes/easel.tscn" id="13_dnr2y"]
 [ext_resource type="PackedScene" uid="uid://cwnmn0oy548ix" path="res://scenes/fuse.tscn" id="13_i8tbh"]
 [ext_resource type="PackedScene" uid="uid://pwdhof0mdim8" path="res://scenes/seat.tscn" id="13_uxcoe"]
@@ -178,6 +179,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.034
 
 [node name="boiler" parent="Machines" instance=ExtResource("12_y6mqq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4245, -2.38419e-07, -12.4115)
+
+[node name="BoilerPanel" parent="Machines/boiler" groups=["CriticalEvents"] instance=ExtResource("13_bh7ld")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.24672, 1.00765, 0.413358)
 
 [node name="fuse" parent="." instance=ExtResource("13_i8tbh")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -4.61287, 0.896124, 2.16416)
@@ -422,3 +426,4 @@ transform = Transform3D(0.271196, 0.78201, 0.561171, -0.340269, 0.623266, -0.704
 [connection signal="eventState" from="Machines/generator2/Generator" to="." method="_on_generator_event_state"]
 [connection signal="eventState" from="Machines/gas_pipes/gas-pipes4/Gas Pipes" to="." method="_on_gas_room_pipe_event_state"]
 [connection signal="eventState" from="Machines/life-support/Life Support" to="." method="_on_life_support_event_state"]
+[connection signal="eventState" from="Machines/boiler/BoilerPanel" to="." method="_on_boiler_panel_event_state"]

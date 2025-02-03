@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu4cev8poayo2"]
+
+[ext_resource type="Script" path="res://scripts/critical_event.gd" id="1_vubpw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_21c43"]
+size = Vector3(0.334229, 0.8, 0.623047)
+
+[node name="BoilerPanel" type="Node3D"]
+script = ExtResource("1_vubpw")
+crit_time = 60.0
+required_item = 2
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_21c43")

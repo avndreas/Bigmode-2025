@@ -14,6 +14,8 @@ var gas_on : bool = true
 var gas_off_time : float = 0
 var life_support_on : bool = true
 var life_support_off_time : float = 0
+var boiler_on : bool = true
+var boiler_off_time : float = 0
 
 signal game_state_update(update : GameStateUpdate)
 
@@ -77,6 +79,16 @@ func _process(delta: float) -> void:
 		emit_signal("game_state_update", update)
 	else:
 		gas_off_time = 0
+	
+	if not boiler_on:
+		boiler_off_time += delta
+		var update := GameStateUpdate.new()
+		update.boiler = true
+		update.boiler_off_time = lights_off_time
+		update.boiler_on = lights_on
+		emit_signal("game_state_update", update)
+	else:
+		boiler_off_time = 0
 	
 	if not life_support_on:
 		life_support_off_time += delta
@@ -172,4 +184,15 @@ func _on_life_support_event_state(on: bool, event: CriticalEvent) -> void:
 	if on:
 		print("Life support online.")
 	else:
-		print("Oxygen lowering...")
+		print("Life support offline...")
+
+
+func _on_boiler_panel_event_state(on: bool, event: CriticalEvent) -> void:
+	var update := GameStateUpdate.new()
+	update.crit_event = event
+	emit_signal("game_state_update", update)
+	
+	if on:
+		print("Boiler functional.")
+	else:
+		print("Boiler offline...")
