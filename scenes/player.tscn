@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bp2bgxhmng23o"]
+[gd_scene load_steps=24 format=3 uid="uid://bp2bgxhmng23o"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_rhd8k"]
 [ext_resource type="Shader" path="res://shaders/vignette_new.gdshader" id="2_2n8no"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dar0k1r5iseq0" path="res://assets/battery/Battery_Outer.png" id="12_87os7"]
 [ext_resource type="AudioStream" uid="uid://b451fmffmwhmu" path="res://assets/soundeffects/Footstep.mp3" id="15_l7c58"]
 [ext_resource type="AudioStream" uid="uid://bjshymbfki3qx" path="res://assets/soundeffects/Flashlight.mp3" id="16_3vxcv"]
+[ext_resource type="Shader" path="res://shaders/wavy.gdshader" id="16_1syww"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_chi0x"]
 radius = 0.31
@@ -46,6 +47,11 @@ shader = ExtResource("3_fxpim")
 shader_parameter/chaos = 1.0
 shader_parameter/radius = 2.0
 shader_parameter/attenuation = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1rehk"]
+shader = ExtResource("16_1syww")
+shader_parameter/frequency = 4.0
+shader_parameter/amplitude = 0.5
 
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 3
@@ -198,6 +204,15 @@ grow_vertical = 2
 
 [node name="Gloom" type="ColorRect" parent="Shaders"]
 material = SubResource("ShaderMaterial_6olgl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Woozy" type="ColorRect" parent="Shaders"]
+material = SubResource("ShaderMaterial_1rehk")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
