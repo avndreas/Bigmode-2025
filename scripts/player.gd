@@ -40,17 +40,17 @@ var flashlight_on : bool = false
 
 @export var gloom_limit : float = 10
 var gloom : bool = false
-@onready var gloom_shader : ColorRect = $Shaders/Gloom
+@onready var gloom_shader : ColorRect = $Shaders/Gloom/Gloom
 
 
 @export var life_limit : float = 10
 var not_enough_life : bool = false
-@onready var life_shader : ColorRect = $Shaders/Woozy
+@onready var life_shader : ColorRect = $Shaders/Life/Woozy
 
 var cold : bool = false
 var cold_time : float = 0
 @export var max_cold_time : float = 10
-@onready var cold_shader : ColorRect = $Shaders/Cold
+@onready var cold_shader : ColorRect = $Shaders/Cold/Cold
 @export var cold_speed_divisor : float = 1.5
 
 var rng : RandomNumberGenerator
@@ -208,5 +208,5 @@ func player_state_updater(update : GameStateUpdate) -> void:
 		pass
 		
 	if update.boiler:
-		#print("hi")
+		print("hi ", update.boiler_on)
 		cold = not update.boiler_on

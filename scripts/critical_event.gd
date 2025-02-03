@@ -152,6 +152,7 @@ func finish_interaction() -> void:
 		
 		#emit_signal("eventRestored")
 		
+		
 	held_inv = null
 
 func timer_end() -> void:

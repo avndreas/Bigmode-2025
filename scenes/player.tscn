@@ -8,13 +8,13 @@
 [ext_resource type="Script" path="res://scripts/inventory_handler.gd" id="5_sgifl"]
 [ext_resource type="Shader" path="res://shaders/dither.gdshader" id="5_u36gy"]
 [ext_resource type="PackedScene" uid="uid://pgl5wknpodlv" path="res://scenes/pause_menu.tscn" id="6_yxeby"]
-[ext_resource type="Texture2D" uid="uid://cxg5xjn2a4cjp" path="res://assets/battery/5.png" id="7_dpro3"]
+[ext_resource type="Texture2D" uid="uid://b6q0noomwlwdo" path="res://assets/battery/5.png" id="7_dpro3"]
 [ext_resource type="Script" path="res://scripts/flashlight_battery.gd" id="7_y3dc8"]
-[ext_resource type="Texture2D" uid="uid://dpe1w13nro4j6" path="res://assets/battery/4.png" id="8_our40"]
-[ext_resource type="Texture2D" uid="uid://r8panw4f7pkh" path="res://assets/battery/3.png" id="9_sr3d4"]
-[ext_resource type="Texture2D" uid="uid://b7pw4dorwrh1t" path="res://assets/battery/2.png" id="10_c6reo"]
-[ext_resource type="Texture2D" uid="uid://bftyod2l6ltah" path="res://assets/battery/1.png" id="11_dvcq0"]
-[ext_resource type="Texture2D" uid="uid://dar0k1r5iseq0" path="res://assets/battery/Battery_Outer.png" id="12_87os7"]
+[ext_resource type="Texture2D" uid="uid://brj5n28rif70r" path="res://assets/battery/4.png" id="8_our40"]
+[ext_resource type="Texture2D" uid="uid://cfsftftqpg4t4" path="res://assets/battery/3.png" id="9_sr3d4"]
+[ext_resource type="Texture2D" uid="uid://ds8l1s1maj0py" path="res://assets/battery/2.png" id="10_c6reo"]
+[ext_resource type="Texture2D" uid="uid://dgfqw44e7mfgu" path="res://assets/battery/1.png" id="11_dvcq0"]
+[ext_resource type="Texture2D" uid="uid://cuspmtftcmuqo" path="res://assets/battery/Battery_Outer.png" id="12_87os7"]
 [ext_resource type="AudioStream" uid="uid://b451fmffmwhmu" path="res://assets/soundeffects/Footstep.mp3" id="15_l7c58"]
 [ext_resource type="Shader" path="res://shaders/wavy.gdshader" id="16_1syww"]
 [ext_resource type="AudioStream" uid="uid://bjshymbfki3qx" path="res://assets/soundeffects/Flashlight.mp3" id="16_3vxcv"]
@@ -38,10 +38,16 @@ shader_parameter/resolution_downsampling = 4.0
 flip_faces = true
 size = Vector2(2, 2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o2csb"]
-shader = ExtResource("5_u36gy")
-shader_parameter/dither_intensity = 0.7
-shader_parameter/color_depth = Vector3(6, 10, 6)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oc2ba"]
+shader = ExtResource("17_c2swt")
+shader_parameter/brightness = 0.1
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 0.5
+shader_parameter/redVal = 1.0
+shader_parameter/greenVal = 1.0
+shader_parameter/blueVal = 1.0
+shader_parameter/tint_color = Color(0, 0.712499, 0.712864, 1)
+shader_parameter/tint_effect_factor = 0.481
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6olgl"]
 shader = ExtResource("3_fxpim")
@@ -54,16 +60,10 @@ shader = ExtResource("16_1syww")
 shader_parameter/frequency = 4.0
 shader_parameter/amplitude = 0.5
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oc2ba"]
-shader = ExtResource("17_c2swt")
-shader_parameter/brightness = 0.1
-shader_parameter/contrast = 1.0
-shader_parameter/saturation = 0.5
-shader_parameter/redVal = 1.0
-shader_parameter/greenVal = 1.0
-shader_parameter/blueVal = 1.0
-shader_parameter/tint_color = Color(0, 0.712499, 0.712864, 1)
-shader_parameter/tint_effect_factor = 0.481
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o2csb"]
+shader = ExtResource("5_u36gy")
+shader_parameter/dither_intensity = 0.7
+shader_parameter/color_depth = Vector3(6, 10, 6)
 
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 3
@@ -94,6 +94,56 @@ target_position = Vector3(0, 0, -1)
 collision_mask = 14
 collide_with_areas = true
 script = ExtResource("3_wb2xg")
+
+[node name="Shaders" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cold" type="CanvasLayer" parent="Shaders"]
+
+[node name="Cold1" type="ColorRect" parent="Shaders/Cold"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.282353, 0.533333, 1, 0.329412)
+
+[node name="Cold" type="ColorRect" parent="Shaders/Cold"]
+visible = false
+material = SubResource("ShaderMaterial_oc2ba")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Gloom" type="CanvasLayer" parent="Shaders"]
+
+[node name="Gloom" type="ColorRect" parent="Shaders/Gloom"]
+visible = false
+material = SubResource("ShaderMaterial_6olgl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Life" type="CanvasLayer" parent="Shaders"]
+
+[node name="Woozy" type="ColorRect" parent="Shaders/Life"]
+visible = false
+material = SubResource("ShaderMaterial_1rehk")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -146,52 +196,35 @@ grow_horizontal = 0
 script = ExtResource("7_y3dc8")
 
 [node name="1" type="TextureRect" parent="CanvasLayer/Flashlight"]
-layout_mode = 0
-offset_right = 300.0
-offset_bottom = 150.0
-rotation = 1.5708
+offset_right = 75.0
 texture = ExtResource("7_dpro3")
-expand_mode = 1
+expand_mode = 5
 
 [node name="2" type="TextureRect" parent="CanvasLayer/Flashlight"]
-layout_mode = 0
-offset_right = 300.0
-offset_bottom = 150.0
-rotation = 1.5708
+offset_right = 75.0
 texture = ExtResource("8_our40")
-expand_mode = 1
+expand_mode = 5
 
 [node name="3" type="TextureRect" parent="CanvasLayer/Flashlight"]
-layout_mode = 0
-offset_right = 300.0
-offset_bottom = 150.0
-rotation = 1.5708
+offset_right = 75.0
 texture = ExtResource("9_sr3d4")
-expand_mode = 1
+expand_mode = 5
 
 [node name="4" type="TextureRect" parent="CanvasLayer/Flashlight"]
-layout_mode = 0
-offset_right = 300.0
-offset_bottom = 150.0
-rotation = 1.5708
+offset_right = 75.0
 texture = ExtResource("10_c6reo")
-expand_mode = 1
+expand_mode = 5
 
 [node name="5" type="TextureRect" parent="CanvasLayer/Flashlight"]
-layout_mode = 0
-offset_right = 300.0
-offset_bottom = 150.0
-rotation = 1.5708
+offset_right = 77.5
 texture = ExtResource("11_dvcq0")
-expand_mode = 1
+expand_mode = 5
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Flashlight"]
 layout_mode = 0
-offset_right = 300.0
-offset_bottom = 150.0
-rotation = 1.5708
+offset_right = 200.0
+offset_bottom = 400.0
 texture = ExtResource("12_87os7")
-expand_mode = 1
 
 [node name="DarkLight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443884, 0)
@@ -200,52 +233,8 @@ light_energy = 0.23
 omni_range = 6.13
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_o2csb")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Shaders" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Gloom" type="ColorRect" parent="Shaders"]
-material = SubResource("ShaderMaterial_6olgl")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Woozy" type="ColorRect" parent="Shaders"]
-material = SubResource("ShaderMaterial_1rehk")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Cold1" type="ColorRect" parent="Shaders"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.282353, 0.533333, 1, 0.329412)
-
-[node name="Cold" type="ColorRect" parent="Shaders"]
-material = SubResource("ShaderMaterial_oc2ba")
-layout_mode = 1
+material = SubResource("ShaderMaterial_o2csb")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
