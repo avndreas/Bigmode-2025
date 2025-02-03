@@ -3,7 +3,7 @@ extends Node3D
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var timer: Timer = $Timer
 @onready var rock_barrier: RigidBody3D = $RockBarrier
-
+@onready var light_2: Node3D = $light2
 @onready var cover_rock: RigidBody3D = $Rocks/COVER_ROCK
 @onready var cover: MeshInstance3D = $Cover
 
@@ -45,10 +45,16 @@ func _on_timer_timeout() -> void:
 
 func _on_timer_2_timeout() -> void:
 	shake_camera()
+	for i in range(1, 10):
+		light_2.toggleLight()
+		await get_tree().create_timer(rng.randf_range(0.02, 0.3)).timeout
+	light_2.setLightStatus(true)
 	await get_tree().create_timer(3.0).timeout
 	shakeFade = 0.2
 	shake_camera()
 	move_rocks()
+	
+	light_2.setLightStatus(false)
 	await get_tree().create_timer(5.5).timeout
 	move_cover_rock()
 

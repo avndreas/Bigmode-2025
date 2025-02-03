@@ -59,7 +59,7 @@ data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1454, 0)
 
 [node name="COVER_ROCK" parent="Rocks" instance=ExtResource("5_s85qx")]
-transform = Transform3D(0.935909, 0.0504674, 0.348607, -0.33969, -0.132515, 0.931155, 0.0931885, -0.989895, -0.106878, -0.172229, 3.76102, -6.28243)
+transform = Transform3D(0.935909, 0.0504674, 0.348607, -0.33969, -0.132515, 0.931155, 0.0931885, -0.989895, -0.106878, -0.172229, 3.76102, -6.92477)
 freeze = true
 
 [node name="rock_small" parent="Rocks" instance=ExtResource("4_eblk8")]
@@ -183,7 +183,7 @@ transform = Transform3D(1.10825e-07, -6.4419e-08, 1, 0.368465, 0.929642, 1.90513
 shape = SubResource("BoxShape3D_se727")
 
 [node name="Cover" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75354, -6.96042)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75354, -7.16949)
 visible = false
 mesh = SubResource("BoxMesh_rgbah")
 surface_material_override/0 = SubResource("StandardMaterial3D_042kl")
