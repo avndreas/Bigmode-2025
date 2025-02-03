@@ -40,7 +40,7 @@ var gloom : bool = false
 
 @export var life_limit : float = 10
 var not_enough_life : bool = false
-@onready var life_shader : ColorRect
+@onready var life_shader : ColorRect = $Shaders/Woozy
 
 func _ready() -> void:
 	var parent = get_parent()
@@ -128,6 +128,8 @@ func _process(delta:float) -> void:
 	
 	#print(gloom)
 	gloom_shader.visible = gloom
+	print(not_enough_life)
+	life_shader.visible = not_enough_life
 
 	
 func _exit_tree() -> void:
@@ -148,9 +150,21 @@ func player_state_updater(update : GameStateUpdate) -> void:
 		else:
 			gloom = false
 			dark_light.visible = false
-	if update.life_support and update.gas:
-		if not update.life_support_on or update.gas_on:
-			# dying of life stuff here
-			pass
 
-	update.queue_free()
+	if (update.life_support and not update.life_support_on) or (update.gas and not update.gas_on):
+		print("dying due to bad life stuff")
+		not_enough_life = true
+		var time_val = max(update.life_support_off_time, update.gas_off_time)
+		var min_amp : float = 0.0
+		var max_amp : float = 0.2
+		life_shader.get_material().set_shader_parameter("amplitude",(max_amp-min_amp)/(life_limit-time_val))
+		
+		
+		if time_val > life_limit:
+				var parent = get_parent()
+				if parent is Level:
+					parent._end_game(false)
+		# dying of life stuff here
+	else:
+		not_enough_life = false
+		pass

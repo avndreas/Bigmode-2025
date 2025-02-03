@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://d31pe1fh1tsn4"]
+
+[ext_resource type="Script" path="res://scripts/opening_cutscene.gd" id="1_rdbbq"]
+[ext_resource type="MeshLibrary" uid="uid://hmxaqws5yf02" path="res://assets/tilesets/extended-tileset.tres" id="2_imyo1"]
+[ext_resource type="PackedScene" uid="uid://d3ol4tyvbgdpj" path="res://scenes/light.tscn" id="3_yyurr"]
+
+[node name="Opening-cutscene" type="Node3D"]
+script = ExtResource("1_rdbbq")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("2_imyo1")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 0, 5, 0, 65533, 5, 0, 65530, 5, 65535, 0, 655365, 65535, 65533, 655365, 65535, 65530, 655365, 65535, 65527, 655365, 65535, 65524, 655365, 0, 65524, 1, 0, 65527, 5, 2, 65522, 1441798, 65535, 65522, 655367, 65535, 65521, 1048576, 0, 65521, 1048583, 0, 65522, 1441794, 2, 65521, 1048581, 5, 65521, 1048581, 5, 65522, 1441797, 7, 65522, 1441792, 7, 65521, 0, 0, 2, 1441792, 65535, 2, 655360)
+}
+
+[node name="Rocks" type="Node3D" parent="."]
+
+[node name="light" parent="." instance=ExtResource("3_yyurr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.69545, 0)
+
+[node name="light2" parent="." instance=ExtResource("3_yyurr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.69545, -13.9884)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999138, 0, -0.0415095, 0, 1, 0, 0.0415095, 0, 0.999138, -0.252243, 1.95082, 1.01431)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
