@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://cv2sx1y1oob7w"]
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://cv2sx1y1oob7w"]
 
 [ext_resource type="Texture2D" uid="uid://d13t08e41vc40" path="res://assets/resources/51rI-P8RrkL.jpg" id="1_w5qlr"]
 [ext_resource type="PackedScene" uid="uid://bbgj7rjd3lnys" path="res://scenes/pipe.tscn" id="2_t2p0o"]
 [ext_resource type="Script" path="res://scripts/item.gd" id="3_xpgta"]
+[ext_resource type="AudioStream" uid="uid://4ho6rcglsswp" path="res://assets/soundeffects/Pipe.mp3" id="4_67suf"]
 
 [resource]
 script = ExtResource("3_xpgta")
@@ -11,3 +12,4 @@ UI_sprite = ExtResource("1_w5qlr")
 node_for_3D = ExtResource("2_t2p0o")
 description = "A pipe, used to fix the boiler, gas room, and life support."
 type = 1
+sound_fx = ExtResource("4_67suf")
