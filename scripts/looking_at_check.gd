@@ -10,7 +10,8 @@ var pickup_item : Item3D
 
 @onready var inventory : Inventory = %Inventory
 
-@onready var pickup_sound = $pickup_sound
+@onready var pickup_sound = $Pickup_sound
+
 
 
 @export var interact_range : float = 2

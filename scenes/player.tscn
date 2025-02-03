@@ -1,20 +1,21 @@
-[gd_scene load_steps=27 format=3 uid="uid://bp2bgxhmng23o"]
+[gd_scene load_steps=28 format=3 uid="uid://bp2bgxhmng23o"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_rhd8k"]
 [ext_resource type="Shader" path="res://shaders/vignette_new.gdshader" id="2_2n8no"]
 [ext_resource type="Texture2D" uid="uid://dte3wq3upbudu" path="res://assets/1545215.png" id="2_i80d8"]
 [ext_resource type="Shader" path="res://shaders/gloom.gdshader" id="3_fxpim"]
 [ext_resource type="Script" path="res://scripts/looking_at_check.gd" id="3_wb2xg"]
+[ext_resource type="AudioStream" uid="uid://dd3sin66q83ss" path="res://assets/soundeffects/Pickup.mp3" id="4_hyew7"]
 [ext_resource type="Script" path="res://scripts/inventory_handler.gd" id="5_sgifl"]
 [ext_resource type="Shader" path="res://shaders/dither.gdshader" id="5_u36gy"]
 [ext_resource type="PackedScene" uid="uid://pgl5wknpodlv" path="res://scenes/pause_menu.tscn" id="6_yxeby"]
-[ext_resource type="Texture2D" uid="uid://b6q0noomwlwdo" path="res://assets/battery/5.png" id="7_dpro3"]
+[ext_resource type="Texture2D" uid="uid://cxg5xjn2a4cjp" path="res://assets/battery/5.png" id="7_dpro3"]
 [ext_resource type="Script" path="res://scripts/flashlight_battery.gd" id="7_y3dc8"]
-[ext_resource type="Texture2D" uid="uid://brj5n28rif70r" path="res://assets/battery/4.png" id="8_our40"]
-[ext_resource type="Texture2D" uid="uid://cfsftftqpg4t4" path="res://assets/battery/3.png" id="9_sr3d4"]
-[ext_resource type="Texture2D" uid="uid://ds8l1s1maj0py" path="res://assets/battery/2.png" id="10_c6reo"]
-[ext_resource type="Texture2D" uid="uid://dgfqw44e7mfgu" path="res://assets/battery/1.png" id="11_dvcq0"]
-[ext_resource type="Texture2D" uid="uid://cuspmtftcmuqo" path="res://assets/battery/Battery_Outer.png" id="12_87os7"]
+[ext_resource type="Texture2D" uid="uid://dpe1w13nro4j6" path="res://assets/battery/4.png" id="8_our40"]
+[ext_resource type="Texture2D" uid="uid://r8panw4f7pkh" path="res://assets/battery/3.png" id="9_sr3d4"]
+[ext_resource type="Texture2D" uid="uid://b7pw4dorwrh1t" path="res://assets/battery/2.png" id="10_c6reo"]
+[ext_resource type="Texture2D" uid="uid://bftyod2l6ltah" path="res://assets/battery/1.png" id="11_dvcq0"]
+[ext_resource type="Texture2D" uid="uid://dar0k1r5iseq0" path="res://assets/battery/Battery_Outer.png" id="12_87os7"]
 [ext_resource type="AudioStream" uid="uid://b451fmffmwhmu" path="res://assets/soundeffects/Footstep.mp3" id="15_l7c58"]
 [ext_resource type="Shader" path="res://shaders/wavy.gdshader" id="16_1syww"]
 [ext_resource type="AudioStream" uid="uid://bjshymbfki3qx" path="res://assets/soundeffects/Flashlight.mp3" id="16_3vxcv"]
@@ -94,6 +95,9 @@ target_position = Vector3(0, 0, -1)
 collision_mask = 14
 collide_with_areas = true
 script = ExtResource("3_wb2xg")
+
+[node name="Pickup_sound" type="AudioStreamPlayer3D" parent="Camera3D/RayCast3D"]
+stream = ExtResource("4_hyew7")
 
 [node name="Shaders" type="Control" parent="."]
 layout_mode = 3
@@ -196,26 +200,31 @@ grow_horizontal = 0
 script = ExtResource("7_y3dc8")
 
 [node name="1" type="TextureRect" parent="CanvasLayer/Flashlight"]
+layout_mode = 0
 offset_right = 75.0
 texture = ExtResource("7_dpro3")
 expand_mode = 5
 
 [node name="2" type="TextureRect" parent="CanvasLayer/Flashlight"]
+layout_mode = 0
 offset_right = 75.0
 texture = ExtResource("8_our40")
 expand_mode = 5
 
 [node name="3" type="TextureRect" parent="CanvasLayer/Flashlight"]
+layout_mode = 0
 offset_right = 75.0
 texture = ExtResource("9_sr3d4")
 expand_mode = 5
 
 [node name="4" type="TextureRect" parent="CanvasLayer/Flashlight"]
+layout_mode = 0
 offset_right = 75.0
 texture = ExtResource("10_c6reo")
 expand_mode = 5
 
 [node name="5" type="TextureRect" parent="CanvasLayer/Flashlight"]
+layout_mode = 0
 offset_right = 77.5
 texture = ExtResource("11_dvcq0")
 expand_mode = 5
