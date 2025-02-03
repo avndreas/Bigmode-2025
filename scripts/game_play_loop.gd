@@ -21,7 +21,8 @@ signal game_state_update(update : GameStateUpdate)
 func _ready() -> void:
 	var random = RandomNumberGenerator.new()
 	random.randomize()
-	var game_length = random.randfn(5, 0.7) * 60
+	var game_length = random.randfn(5, 0.35) * 60
+	print(game_length)
 	game_timer = Timer.new()
 	add_child(game_timer)
 	#print(game_length)

@@ -176,11 +176,13 @@ func _exit_tree() -> void:
 func player_state_updater(update : GameStateUpdate) -> void:
 	if update.light:
 		if not update.light_on:
-			gloom = true
 			dark_light.visible = true
 			var gloom_min : float = 1.0
 			var gloom_max : float = 100.0
 			gloom_shader.get_material().set_shader_parameter("chaos",(gloom_max-gloom_min)/(gloom_limit-update.light_off_time))
+			if not gloom:
+				%Effects.set_text("It's getting a bit too dark")
+			gloom = true
 			if update.light_off_time > gloom_limit:
 					var parent = get_parent()
 					if parent is Level:
@@ -191,13 +193,16 @@ func player_state_updater(update : GameStateUpdate) -> void:
 
 	if (update.life_support and not update.life_support_on) or (update.gas and not update.gas_on):
 		#print("dying due to bad life stuff")
-		not_enough_life = true
 		var time_val = max(update.life_support_off_time, update.gas_off_time)
 		var min_amp : float = 0.0
 		var max_amp : float = 0.2
 		life_shader.get_material().set_shader_parameter("amplitude",(max_amp-min_amp)/(life_limit-time_val))
 		
-		
+		if not update.gas_on and update.gas_off_time < 0.1:
+			%Effects.set_text("There's a noxious smell in the air")
+		if not update.life_support_on and update.life_support_off_time < 0.1:
+			%Effects.set_text("The air seems to be growing thin")
+		not_enough_life = true
 		if time_val > life_limit:
 				var parent = get_parent()
 				if parent is Level:
@@ -209,4 +214,7 @@ func player_state_updater(update : GameStateUpdate) -> void:
 		
 	if update.boiler:
 		#print("hi ", update.boiler_on)
+		if not update.boiler_on and not cold:
+			%Effects.set_text("It's getting cold")
+			pass # trigger effect text
 		cold = not update.boiler_on
