@@ -7,8 +7,8 @@ extends CharacterBody3D
 @onready var dark_light: OmniLight3D = $DarkLight
 
 #Ibrahim Audio
-@onready var flashlightsound = $flashlightsound
 @onready var footsteps_audio = $footsteps_audio
+@onready var flashlight_audio = $flashlight_audio
 
 
 var step_timer = 0.0
@@ -96,7 +96,7 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("action1") and time_left_on_flashlight > 0:
 		#print("flashlight turning")
-		flashlightsound.play()
+		flashlight_audio.play()
 		flashlight_on = not flashlight_on
 
 	# Get the input direction and handle the movement/deceleration.
@@ -152,3 +152,5 @@ func player_state_updater(update : GameStateUpdate) -> void:
 		if not update.life_support_on or update.gas_on:
 			# dying of life stuff here
 			pass
+
+	update.queue_free()
