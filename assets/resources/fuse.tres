@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://bgegosc5d05qv"]
 
-[ext_resource type="Texture2D" uid="uid://cjokmn3eikdjm" path="res://assets/resources/fuse.png" id="1_kivx6"]
-[ext_resource type="PackedScene" uid="uid://d227xm7q6f6dq" path="res://scenes/pipe-test.tscn" id="2_6k1x1"]
+[ext_resource type="Texture2D" uid="uid://vh8csr6ldof4" path="res://assets/fuse.png" id="1_vuurw"]
+[ext_resource type="PackedScene" path="res://scenes/pipe-test.tscn" id="2_6k1x1"]
 [ext_resource type="Script" path="res://scripts/item.gd" id="3_mvb0x"]
 [ext_resource type="AudioStream" uid="uid://it22werlmsmi" path="res://assets/soundeffects/Fuse.mp3" id="4_s8pa8"]
 
 [resource]
 script = ExtResource("3_mvb0x")
 name = "Fuse"
-UI_sprite = ExtResource("1_kivx6")
+UI_sprite = ExtResource("1_vuurw")
 node_for_3D = ExtResource("2_6k1x1")
 description = "A fuse, used to fix the fusebox, boiler, and generator"
 type = 2

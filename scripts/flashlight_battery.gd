@@ -12,17 +12,34 @@ func _ready() -> void:
 	max_value = player.time_left_on_flashlight * 100
 	current_value = max_value
 	var node : Control
-	for child in get_children():
-		#print("hi")
-		#var node : TextureRect = child
-		var ratio :float = child.size.x / float(child.size.y)
-		child.size.y = (get_viewport().get_visible_rect().size.y * 1/10)
-		child.size.x = ratio * child.size.y
-	
-	
 	var offset = 20
-	position.x = get_viewport().get_visible_rect().size.x - offset
-	position.y = offset
+	
+	if rotation_degrees == 90:
+		for child in get_children():
+			#print("hi")
+			#var node : TextureRect = child
+			var ratio :float = child.size.x / float(child.size.y)
+			child.size.y = (get_viewport().get_visible_rect().size.y * 1/10)
+			child.size.x = ratio * child.size.y
+		
+		
+		position.x = get_viewport().get_visible_rect().size.x - offset
+		position.y = offset
+	else:
+		var outer : TextureRect = get_child(num_ticks)
+		var ratio : float = outer.size.x / float(outer.size.y)
+		
+		for child in get_children():
+			child.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			#print("hi")
+			#var node : TextureRect = child
+			child.size.y = (get_viewport().get_visible_rect().size.y * 1/6)
+			child.size.x = ratio * child.size.y
+		
+		outer = get_child(num_ticks)
+		
+		position.x = get_viewport().get_visible_rect().size.x - (offset + outer.size.x)
+		position.y = offset
 #
 #
 #
@@ -31,7 +48,7 @@ func _process(delta: float) -> void:
 	var value = player.time_left_on_flashlight * 100
 	#print(value)
 	
-	var percentage : float = (value*100.0)/float(max_value) 
+	var percentage : float = (value*100.0)/float(max_value)
 	
 	var temp :float = 100.0/num_ticks
 	

@@ -100,7 +100,7 @@ func _process(delta: float) -> void:
 	var pad : int = 0
 	if timer.time_left < 10: #threshold for visual limits
 		pad = 2
-	label.text = str(timer.time_left).pad_decimals(pad)
+	label.text = "Needs a " + Item.item_name_mapping[required_item]+"\n"+str(timer.time_left).pad_decimals(pad)
 	
 	if timer.time_left > 0 and time_before == 0:
 		#emit_signal("eventRestored")
@@ -163,6 +163,6 @@ func timer_end() -> void:
 	
 func set_text(body : Node3D, on: bool):
 	if body is CharacterBody3D:
-		print("set_text")
+		#print("set_text")
 		label.visible = on
 	

@@ -208,5 +208,5 @@ func player_state_updater(update : GameStateUpdate) -> void:
 		pass
 		
 	if update.boiler:
-		print("hi ", update.boiler_on)
+		#print("hi ", update.boiler_on)
 		cold = not update.boiler_on
