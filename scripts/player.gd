@@ -48,6 +48,7 @@ var cold : bool = false
 var cold_time : float = 0
 @export var max_cold_time : float = 10
 @onready var cold_shader : ColorRect = $Shaders/Cold
+@export var cold_speed_divisor : float = 1.5
 
 var rng : RandomNumberGenerator
 
@@ -104,6 +105,9 @@ func _physics_process(delta: float) -> void:
 		speed = SPRINT_SPEED
 	else:
 		speed = SPEED
+	
+	if cold:
+		speed = SPEED/cold_speed_divisor
 		
 	if Input.is_action_just_pressed("action1") and time_left_on_flashlight > 0:
 		#print("flashlight turning")
