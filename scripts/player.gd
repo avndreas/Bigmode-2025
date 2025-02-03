@@ -152,5 +152,3 @@ func player_state_updater(update : GameStateUpdate) -> void:
 		if not update.life_support_on or update.gas_on:
 			# dying of life stuff here
 			pass
-
-	update.queue_free()

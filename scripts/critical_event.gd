@@ -120,13 +120,19 @@ func begin_interaction(inventory : Inventory) -> void:
 		interact_timer.start()
 		held_inv = inventory
 		
-		
-		audio_stream.stream = inventory.get_item_of_type(required_item).sound_fx
+		var item = held_item
+		if !item:
+			item = inventory.get_item_of_type(required_item)
+			
+		if item:
+			audio_stream.stream = item.sound_fx
+			audio_stream.play()
 
 func halt_interaction() -> void:
 	#print("halting interaction")
 	interact_timer.stop()
 	held_inv = null
+	audio_stream.stop()
 	
 func finish_interaction() -> void:
 	#print("finishing interaction")
@@ -141,6 +147,8 @@ func finish_interaction() -> void:
 			
 		if required_item == Item.Items.NONE:
 			reset_timer_to_max()
+		
+		audio_stream.stop()
 		
 		#emit_signal("eventRestored")
 		
