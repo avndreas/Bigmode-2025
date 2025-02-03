@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://d31pe1fh1tsn4"]
+[gd_scene load_steps=19 format=3 uid="uid://d31pe1fh1tsn4"]
 
 [ext_resource type="Script" path="res://scripts/opening_cutscene.gd" id="1_rdbbq"]
 [ext_resource type="MeshLibrary" uid="uid://hmxaqws5yf02" path="res://assets/tilesets/extended-tileset.tres" id="2_imyo1"]
 [ext_resource type="PackedScene" uid="uid://d3ol4tyvbgdpj" path="res://scenes/light.tscn" id="3_yyurr"]
 [ext_resource type="PackedScene" uid="uid://3ed34sjly8rp" path="res://scenes/rock_small.tscn" id="4_eblk8"]
 [ext_resource type="PackedScene" uid="uid://dftq2a7t3hk20" path="res://scenes/rock_medium.tscn" id="5_s85qx"]
+[ext_resource type="AudioStream" uid="uid://b5tat2brl238x" path="res://assets/soundeffects/Openingvideo.mp3" id="6_decgf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tlgdr"]
 size = Vector3(4.32666, 0.499512, 12.2728)
@@ -187,6 +188,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75354, -7.16949)
 visible = false
 mesh = SubResource("BoxMesh_rgbah")
 surface_material_override/0 = SubResource("StandardMaterial3D_042kl")
+
+[node name="OpeningAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_decgf")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

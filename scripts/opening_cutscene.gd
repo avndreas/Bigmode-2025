@@ -6,6 +6,7 @@ extends Node3D
 @onready var light_2: Node3D = $light2
 @onready var cover_rock: RigidBody3D = $Rocks/COVER_ROCK
 @onready var cover: MeshInstance3D = $Cover
+@onready var opening_audio = $OpeningAudio
 
 
 var rocksFalling: bool = false
@@ -21,6 +22,7 @@ var shake_strength: float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer.start()
+	opening_audio.play()
 	cover.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
