@@ -7,13 +7,16 @@ extends CharacterBody3D
 @onready var dark_light: OmniLight3D = $DarkLight
 
 #Ibrahim Audio
-@onready var footsteps_audio = $footsteps_audio
 @onready var flashlight_audio = $flashlight_audio
+@onready var footsteps_audio = $footsteps_audio
+@onready var footsteps_sound1 = preload("res://assets/soundeffects/Step1.mp3")
+@onready var footsteps_sound2 = preload("res://assets/soundeffects/Step2.mp3")
+@onready var footsteps_sound3 = preload("res://assets/soundeffects/Step3.mp3")
 
 
 var step_timer = 0.0
-var walk_step_rate = 0.5  # Time between steps when walking
-var sprint_step_rate = 0.3  # Time between steps when sprinting
+var walk_step_rate = 0.7  # Time between steps when walking
+var sprint_step_rate = 0.45  # Time between steps when sprinting
 var current_step_rate = walk_step_rate
 
 
@@ -68,7 +71,15 @@ func _input(event):
 		camera.rotate_x(-event.relative.y * mouse_sensitivity_x / get_viewport().get_visible_rect().size.y)
 		camera.rotation.x = clampf(camera.rotation.x, -deg_to_rad(89), deg_to_rad(89)) # has the bounds on the up and down looking
 
-
+func play_random_step():
+	var random_number = randi() % 3
+	match random_number:
+		0: footsteps_audio.stream = footsteps_sound1
+		1: footsteps_audio.stream = footsteps_sound2
+		2: footsteps_audio.stream = footsteps_sound3
+	
+	footsteps_audio.pitch_scale = randf_range(1, 1.1 )
+	footsteps_audio.play()
 
 func _physics_process(delta: float) -> void:
 	
@@ -82,9 +93,9 @@ func _physics_process(delta: float) -> void:
 	if velocity.length() > 0.1:  # If moving
 		step_timer += delta
 		if step_timer >= current_step_rate:
-			footsteps_audio.pitch_scale = randf_range(0.5, 0.7)
-			footsteps_audio.play()
+			play_random_step()
 			step_timer = 0.0
+
 
 
 
