@@ -8,6 +8,9 @@ extends CharacterBody3D
 
 #Ibrahim Audio
 @onready var footstepsaudioplayer = $footstepsaudioplayer
+@onready var flashlightsound = $flashlightsound
+
+
 var step_timer = 0.0
 var walk_step_rate = 0.5  # Time between steps when walking
 var sprint_step_rate = 0.3  # Time between steps when sprinting
@@ -87,6 +90,7 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("action1") and time_left_on_flashlight > 0:
 		#print("flashlight turning")
+		flashlightsound.play()
 		flashlight_on = not flashlight_on
 
 	# Get the input direction and handle the movement/deceleration.
