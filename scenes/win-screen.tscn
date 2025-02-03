@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://lgjul71ba0r2"]
+[gd_scene load_steps=3 format=3 uid="uid://catcxjgq5vi7m"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_wfvwc"]
-[ext_resource type="Texture2D" uid="uid://c07m2cdqam4t5" path="res://assets/main_menu.png" id="2_bijd5"]
+[ext_resource type="Script" path="res://scenes/win_screen.gd" id="1_nye7h"]
+[ext_resource type="Texture2D" uid="uid://3ghardfnh6ee" path="res://assets/win-screen.png" id="2_xu4lj"]
 
-[node name="MainMenu" type="Control"]
+[node name="WinScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_wfvwc")
+script = ExtResource("1_nye7h")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_bijd5")
+texture = ExtResource("2_xu4lj")
 
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="."]
 layout_mode = 1
@@ -47,9 +47,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -80.0
-offset_top = -48.79
+offset_top = 155.915
 offset_right = 80.0
-offset_bottom = 140.21
+offset_bottom = 344.915
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -57,9 +57,10 @@ grow_vertical = 2
 layout_mode = 2
 alignment = 1
 
-[node name="Play" type="Button" parent="Control/AspectRatioContainer/VBoxContainer"]
+[node name="PlayAgain" type="Button" parent="Control/AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
-text = "Play"
+text = "Play Again
+"
 autowrap_mode = 3
 
 [node name="Credits" type="Button" parent="Control/AspectRatioContainer/VBoxContainer"]
@@ -70,6 +71,6 @@ text = "Credits"
 layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="Control/AspectRatioContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/AspectRatioContainer/VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="Control/AspectRatioContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Control/AspectRatioContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -15,11 +15,6 @@ extends Control
 	#pass
 
 
-func _on_play_pressed() -> void:
-	#await get_tree().create_timer(20).timeout
-	#print("Pressed play")
-	Universe.switch_scene(2)
-	pass
 
 func _on_credits_pressed() -> void:
 	Universe.switch_scene(3)
@@ -28,3 +23,8 @@ func _on_credits_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_play_again_pressed() -> void:
+	Universe.switch_scene(2)
+	pass
