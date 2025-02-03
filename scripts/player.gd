@@ -6,6 +6,14 @@ extends CharacterBody3D
 
 @onready var dark_light: OmniLight3D = $DarkLight
 
+#Ibrahim Audio
+@onready var footstepsaudioplayer = $footstepsaudioplayer
+var step_timer = 0.0
+var walk_step_rate = 0.5  # Time between steps when walking
+var sprint_step_rate = 0.3  # Time between steps when sprinting
+var current_step_rate = walk_step_rate
+
+
 var mouse_sensitivity_y : float = 4
 var mouse_sensitivity_x : float = 4
 var mouse_locked : bool = false
@@ -41,9 +49,24 @@ func _input(event):
 
 
 
-
-
 func _physics_process(delta: float) -> void:
+	
+	
+	
+	# Check if sprinting (assuming you use Input.is_action_pressed("sprint"))
+	if Input.is_action_pressed("sprint"):
+		current_step_rate = sprint_step_rate
+	else:
+		current_step_rate = walk_step_rate
+	if velocity.length() > 0.1:  # If moving
+		step_timer += delta
+		if step_timer >= current_step_rate:
+			footstepsaudioplayer.pitch_scale = randf_range(0.5, 0.7)
+			footstepsaudioplayer.play()
+			step_timer = 0.0
+
+
+
 
 	# Add the gravity.
 	if not is_on_floor():
