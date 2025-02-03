@@ -21,7 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://bjshymbfki3qx" path="res://assets/soundeffects/Flashlight.mp3" id="16_3vxcv"]
 [ext_resource type="Shader" path="res://shaders/cold.gdshader" id="17_c2swt"]
 [ext_resource type="Script" path="res://scripts/effects_text.gd" id="18_t8nf7"]
-[ext_resource type="AudioStream" uid="uid://dsm5tntbhydkg" path="res://assets/soundeffects/Kickingdoor.mp3" id="22_5per4"]
+[ext_resource type="AudioStream" uid="uid://bs5rokfkbwa5c" path="res://assets/soundeffects/Kickingdoor.mp3" id="22_5per4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_chi0x"]
 radius = 0.31
