@@ -4,12 +4,13 @@ class_name UniverseSingleton
 #@onready var universe: Node = $"."
 #@onready var timer_component: Timer = $TimerComponent
 
+
 @onready var this_scene = load("res://scenes/Universe.tscn")
 @onready var main_menu_scene = load("res://scenes/main_menu.tscn")
 #@onready var main_menu_scene = load("res://menus/title/3DMenuScene.tscn")
 @onready var level_one = load("res://scenes/test.tscn")
 #@onready var credits = load("res://menus/title/Credits.tscn")
-#@onready var opening_cutscene: = load("res://scenes/opening_cutscene.tscn")
+@onready var opening_cutscene: = load("res://scenes/opening-cutscene.tscn")
 @onready var tilemap_test = load("res://scenes/tilemap-test.tscn")
 #@onready var current_level = -1
 @onready var current_scene: Node
@@ -41,16 +42,16 @@ func _process(_delta: float) -> void:
 	if (get_tree().current_scene != null):
 		current_scene = get_tree().current_scene
 	if !initialized:
-		switch_scene(1)
+		switch_scene(0)
 		initialized = true
 	#print(get_tree().current_scene)
 	#pass
 
 func switch_scene(sceneNo: int) -> void:
 	match sceneNo:
-		#0:
-			#current_level = 0
-			#get_tree().change_scene_to_packed(opening_cutscene)
+		0:
+			get_tree().change_scene_to_packed(opening_cutscene)
+			in_game = false
 		1:
 			#current_level = 1
 			get_tree().change_scene_to_packed(main_menu_scene)

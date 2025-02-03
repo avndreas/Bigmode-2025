@@ -51,20 +51,19 @@ size = Vector3(2.41161, 2.63681, 2.98489)
 [sub_resource type="BoxShape3D" id="BoxShape3D_18se3"]
 size = Vector3(2.3442, 2.27272, 3.02152)
 
-[node name="rock_large" type="Node3D"]
+[node name="rock_large" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="Cube_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.429831)
 mesh = SubResource("ArrayMesh_3lks5")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_layer = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.530363, 1.58592, -0.38301)
 shape = SubResource("BoxShape3D_f5620")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.988049, 0, -0.154141, 0, 1, 0, 0.154141, 0, 0.988049, -0.555269, 1.33676, 0.0278797)
 shape = SubResource("BoxShape3D_18se3")

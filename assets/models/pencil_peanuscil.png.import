@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://blq5nij5k0ui3"
+path.s3tc="res://.godot/imported/pencil_peanuscil.png-8a79494998897a3390206bea8f8d85dd.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "a84e1d64cff8b813c4e9f777cd058764"
+}
+
+[deps]
+
+source_file="res://assets/models/pencil_peanuscil.png"
+dest_files=["res://.godot/imported/pencil_peanuscil.png-8a79494998897a3390206bea8f8d85dd.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

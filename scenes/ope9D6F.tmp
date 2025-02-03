@@ -1,0 +1,134 @@
+[gd_scene load_steps=14 format=3 uid="uid://d31pe1fh1tsn4"]
+
+[ext_resource type="Script" path="res://scripts/opening_cutscene.gd" id="1_rdbbq"]
+[ext_resource type="MeshLibrary" uid="uid://hmxaqws5yf02" path="res://assets/tilesets/extended-tileset.tres" id="2_imyo1"]
+[ext_resource type="PackedScene" uid="uid://d3ol4tyvbgdpj" path="res://scenes/light.tscn" id="3_yyurr"]
+[ext_resource type="PackedScene" uid="uid://3ed34sjly8rp" path="res://scenes/rock_small.tscn" id="4_eblk8"]
+[ext_resource type="PackedScene" uid="uid://dftq2a7t3hk20" path="res://scenes/rock_medium.tscn" id="5_s85qx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xbruy"]
+size = Vector3(0.462708, 0.473694, 0.466309)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tlgdr"]
+size = Vector3(4.32666, 0.499512, 7.40279)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8i6y"]
+size = Vector3(1.14307, 2.5632, 4.45398)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1fgci"]
+size = Vector3(6.62451, 2.5632, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_238e8"]
+size = Vector3(7.45349, 2.5632, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i8atr"]
+size = Vector3(1, 5.04254, 4.55688)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dqne6"]
+size = Vector3(1, 5.04254, 4.55688)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_se727"]
+size = Vector3(1, 5.04254, 4.55688)
+
+[node name="Opening-cutscene" type="Node3D"]
+script = ExtResource("1_rdbbq")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("2_imyo1")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+collision_layer = 0
+data = {
+"cells": PackedInt32Array(0, 0, 5, 0, 65533, 5, 0, 65530, 5, 65535, 0, 655365, 65535, 65533, 655365, 65535, 65530, 655365, 65535, 65527, 655365, 65535, 65524, 655365, 0, 65524, 1, 0, 65527, 5, 2, 65522, 1441798, 65535, 65522, 655367, 65535, 65521, 1048576, 0, 65521, 1048583, 0, 65522, 1441794, 2, 65521, 1048581, 5, 65521, 1048581, 5, 65522, 1441797, 7, 65522, 1441792, 7, 65521, 0, 0, 2, 1441792, 65535, 2, 655360)
+}
+
+[node name="rock1" type="RigidBody3D" parent="GridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.23857, -13.8739)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/rock1"]
+transform = Transform3D(0.921735, 0.387821, 0, -0.357218, 0.849001, -0.389349, -0.150998, 0.358876, 0.92109, 0.297339, -0.0213852, 0.0353699)
+shape = SubResource("BoxShape3D_xbruy")
+
+[node name="Rocks" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1454, 0)
+
+[node name="rock_small" parent="Rocks" instance=ExtResource("4_eblk8")]
+transform = Transform3D(1, 0, 0, 0, -0.0898156, -0.995958, 0, 0.995958, -0.0898156, 0.166715, 2.10385, -14.0186)
+
+[node name="rock_medium" parent="Rocks" instance=ExtResource("5_s85qx")]
+transform = Transform3D(0.726743, -0.68691, 0, 0.68691, 0.726743, 0, 0, 0, 1, 0.663427, 10.2369, -12.4362)
+
+[node name="rock_small2" parent="Rocks" instance=ExtResource("4_eblk8")]
+transform = Transform3D(1, 0, 0, 0, -0.0898156, -0.995958, 0, 0.995958, -0.0898156, -0.649218, 3.82802, -14.0186)
+
+[node name="rock_medium2" parent="Rocks" instance=ExtResource("5_s85qx")]
+transform = Transform3D(0.747056, 0.664761, 0, -0.664761, 0.747056, 0, 0, 0, 1, -0.700463, 6.33974, -13.6674)
+
+[node name="rock_small3" parent="Rocks" instance=ExtResource("4_eblk8")]
+transform = Transform3D(0.185769, -0.978622, 0.0882522, 0, -0.0898156, -0.995958, 0.982593, 0.185019, -0.016685, 0.082791, 3.47657, -12.4443)
+
+[node name="light" parent="." instance=ExtResource("3_yyurr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.69545, 0)
+
+[node name="light2" parent="." instance=ExtResource("3_yyurr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.69545, -13.9884)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999138, 0, -0.0415095, 0, 1, 0, 0.0415095, 0, 0.999138, -0.252243, 2.65137, 1.01431)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.520752, -0.250244, -11.8723)
+shape = SubResource("BoxShape3D_tlgdr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87192, 1.40535, -10.4712)
+shape = SubResource("BoxShape3D_f8i6y")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9581, 1.40535, -15.7977)
+shape = SubResource("BoxShape3D_1fgci")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.79643, 1.40535, -11.7313)
+shape = SubResource("BoxShape3D_238e8")
+
+[node name="RockBarrier" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7787, 1, 0)
+collision_layer = 2
+collision_mask = 2
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RockBarrier"]
+transform = Transform3D(0.802453, 0.596715, 0, -0.596715, 0.802453, 0, 0, 0, 1, 1.85314, 5.18198, -12.4249)
+shape = SubResource("BoxShape3D_i8atr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RockBarrier"]
+transform = Transform3D(0.676105, -0.736806, 0, 0.736806, 0.676105, 0, 0, 0, 1, -2.21653, 4.7841, -12.4249)
+shape = SubResource("BoxShape3D_dqne6")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RockBarrier"]
+transform = Transform3D(-2.95535e-08, 3.22068e-08, -1, 0.368465, 0.929642, 1.90513e-08, 0.929642, -0.368465, -3.93412e-08, -0.0199389, 6.04518, -16.3387)
+shape = SubResource("BoxShape3D_se727")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="RockBarrier"]
+transform = Transform3D(1.10825e-07, -6.4419e-08, 1, 0.368465, 0.929642, 1.90513e-08, -0.929642, 0.368465, 1.26764e-07, -0.0199389, 6.04518, -9.33528)
+shape = SubResource("BoxShape3D_se727")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
