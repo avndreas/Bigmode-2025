@@ -8,8 +8,6 @@ var game_timer : Timer
 
 var lights_on : bool = true
 var lights_off_time : float = 0
-var oxygen_on : bool = true
-var oxygen_off_time : float = 0
 var gas_on : bool = true
 var gas_off_time : float = 0
 var life_support_on : bool = true
@@ -50,55 +48,51 @@ func _end_game(won : bool) -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("action2"):
 		toggleLights()
+		
+	var send : bool = false
+	var update := GameStateUpdate.new()
+	
+	
 	if not lights_on:
 		lights_off_time += delta
-		var update := GameStateUpdate.new()
 		update.light = true
 		update.light_off_time = lights_off_time
 		update.light_on = lights_on
-		emit_signal("game_state_update", update)
+		#emit_signal("game_state_update", update)
+		send = send or true
 	else:
 		lights_off_time = 0
-		
-	if not oxygen_on:
-		oxygen_off_time += delta
-		var update := GameStateUpdate.new()
-		update.oxygen = true
-		update.oxygen_off_time = lights_off_time
-		update.oxygen_on = lights_on
-		emit_signal("game_state_update", update)
-	else:
-		oxygen_off_time = 0
 	
 	if not gas_on:
 		gas_off_time += delta
-		var update := GameStateUpdate.new()
 		update.gas = true
-		update.gas_off_time = lights_off_time
-		update.gas_on = lights_on
-		emit_signal("game_state_update", update)
+		update.gas_off_time = gas_off_time
+		update.gas_on = gas_on
+		send = send or true
+		#emit_signal("game_state_update", update)
 	else:
 		gas_off_time = 0
 	
 	if not boiler_on:
 		boiler_off_time += delta
-		var update := GameStateUpdate.new()
 		update.boiler = true
 		update.boiler_off_time = lights_off_time
 		update.boiler_on = lights_on
-		emit_signal("game_state_update", update)
+		send = send or true
 	else:
 		boiler_off_time = 0
 	
 	if not life_support_on:
 		life_support_off_time += delta
-		var update := GameStateUpdate.new()
 		update.life_support = true
-		update.life_support_off_time = lights_off_time
-		update.life_support_on = lights_on
-		emit_signal("game_state_update", update)
+		update.life_support_off_time = life_support_off_time
+		update.life_support_on = life_support_on
+		send = send or true
 	else:
 		life_support_off_time = 0
+		
+	if send:
+		emit_signal("game_state_update", update)
 
 func toggleLights() -> void:
 	lights_on = not lights_on
@@ -170,7 +164,9 @@ func _on_gas_room_pipe_event_state(on: bool, event: CriticalEvent) -> void:
 	update.crit_event = event
 	emit_signal("game_state_update", update)
 	
+	gas_on = on
 	if on:
+		gas_off_time = 0
 		print("Gas leak contained.")
 	else:
 		print("Gas leaking...")
@@ -181,7 +177,9 @@ func _on_life_support_event_state(on: bool, event: CriticalEvent) -> void:
 	update.crit_event = event
 	emit_signal("game_state_update", update)
 	
+	life_support_off_time = on
 	if on:
+		life_support_off_time = 0
 		print("Life support online.")
 	else:
 		print("Life support offline...")

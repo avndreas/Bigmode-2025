@@ -29,8 +29,8 @@ func _ready() -> void:
 		
 		temp_label = Label.new()
 		temp_label.label_settings = label_settings.duplicate()
-		temp_label.text = "Oxygen Generator: " + ("OK" if level.oxygen_on else ("ERROR: " + format_time(level.oxygen_off_time) + "s offline"))
-		temp_label.name = "Oxygen"
+		temp_label.text = "Life Support: " + ("OK" if level.life_support_on else ("ERROR: " + format_time(level.life_support_off_time) + "s offline"))
+		temp_label.name = "LifeSupport"
 		lines.add_child(temp_label)
 		
 		temp_label = Label.new()
@@ -44,7 +44,8 @@ func _ready() -> void:
 			var event_label = Label.new()
 			event_label.label_settings = label_settings.duplicate()
 			event_label.name = str(event)
-			#event_label.text = event.name + ": " + ("Online" if event.timer.time_left > 0 else "Offline")
+			#print(event)
+			event_label.text = event.name + ": " + ("Online" if event.timer.time_left > 0 else "Offline")
 			lines.add_child(event_label)
 
 #
@@ -70,6 +71,14 @@ func update_screen(game_update : GameStateUpdate) -> void:
 					else:
 						line.text = "Lights: ERROR: " + format_time(game_update.light_off_time) + "s offline"
 						line.label_settings.font_color = Color.RED
+				elif line.name == "Gas":
+					if game_update.gas_on:
+						line.text = "Gas: OK"
+						line.label_settings.font_color = Color.WHITE
+					else:
+						line.text = "Gas: ERROR: " + format_time(game_update.gas_off_time) + "s offline"
+						line.label_settings.font_color = Color.RED
+						
 		
 		
 		if game_update.crit_event:

@@ -6,9 +6,14 @@ var light_on : bool = true
 var light_off_time : float = 0
 
 
+var gas : bool = false
+var gas_on : bool = true
+var gas_off_time : float = 0
 
-var oxygen : bool = false
-var oxygen_on : bool = true
-var oxygen_off_time : float = 0
+
+var life_support : bool = false
+var life_support_on : bool = true
+var life_support_off_time : float = 0
+
 
 var crit_event : CriticalEvent = null

@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=4 uid="uid://b85i28to1u0d2"]
+[gd_scene load_steps=16 format=4 uid="uid://ccgap242wncfe"]
 
 [ext_resource type="Script" path="res://scripts/puter.gd" id="1_b1gye"]
 [ext_resource type="Texture2D" uid="uid://omefo4u45sc7" path="res://assets/models/puter_button and lever.png" id="1_vpkop"]
 [ext_resource type="Texture2D" uid="uid://g2cgdcjohore" path="res://assets/models/puter_hrum.png" id="2_j05gm"]
 [ext_resource type="Texture2D" uid="uid://cx6l4woxudy34" path="res://assets/models/puter_your mother.jpg" id="3_wbs1r"]
 [ext_resource type="Shader" path="res://shaders/textcrt.gdshader" id="4_dko8d"]
-[ext_resource type="LabelSettings" uid="uid://c05sw21k2q2gn" path="res://assets/puter_text_settings.tres" id="5_y5wmr"]
+[ext_resource type="LabelSettings" path="res://assets/puter_text_settings.tres" id="5_y5wmr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3aco"]
 resource_name = "Material.002"
@@ -160,7 +160,8 @@ shape = SubResource("BoxShape3D_m1afw")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.842162, 0.062)
-transparency = 0.5
+transparent = false
+render_priority = 10
 texture = SubResource("ViewportTexture_xm813")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Sprite3D"]
@@ -203,9 +204,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 40.0
+offset_left = 80.0
 offset_top = -20.0
-offset_right = 80.0
+offset_right = 128.0
 offset_bottom = 20.0
 grow_vertical = 2
 

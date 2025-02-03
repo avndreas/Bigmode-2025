@@ -35,6 +35,12 @@ var flashlight_on : bool = false
 
 @export var gloom_limit : float = 10
 var gloom : bool = false
+@onready var gloom_shader : ColorRect = $Shaders/Gloom
+
+
+@export var life_limit : float = 10
+var not_enough_life : bool = false
+@onready var life_shader : ColorRect
 
 func _ready() -> void:
 	var parent = get_parent()
@@ -119,6 +125,9 @@ func _process(delta:float) -> void:
 		%Flashlight.visible = true
 	else:
 		%Flashlight.visible = false
+	
+	#print(gloom)
+	gloom_shader.visible = gloom
 
 	
 func _exit_tree() -> void:
@@ -129,6 +138,9 @@ func player_state_updater(update : GameStateUpdate) -> void:
 		if not update.light_on:
 			gloom = true
 			dark_light.visible = true
+			var gloom_min : float = 1.0
+			var gloom_max : float = 100.0
+			gloom_shader.get_material().set_shader_parameter("chaos",(gloom_max-gloom_min)/(gloom_limit-update.light_off_time))
 			if update.light_off_time > gloom_limit:
 					var parent = get_parent()
 					if parent is Level:
@@ -136,4 +148,9 @@ func player_state_updater(update : GameStateUpdate) -> void:
 		else:
 			gloom = false
 			dark_light.visible = false
-	pass
+	if update.life_support and update.gas:
+		if not update.life_support_on or update.gas_on:
+			# dying of life stuff here
+			pass
+
+	update.queue_free()
