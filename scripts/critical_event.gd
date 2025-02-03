@@ -7,6 +7,8 @@ var timer : Timer
 var label : Label3D
 var base_time : float = 30
 
+var audio_stream : AudioStreamPlayer2D
+
 #signal eventTriggered
 signal eventState(on: bool, event: CriticalEvent)
 #emit_signal("eventState", timer.time_left > 0, self)
@@ -74,6 +76,9 @@ func _ready() -> void:
 	label.visible = false
 	
 	
+	audio_stream = AudioStreamPlayer2D.new()
+	add_child(audio_stream)
+	
 func round_place(num,places):
 	return (round(num*pow(10,places))/pow(10,places))
 
@@ -114,12 +119,10 @@ func begin_interaction(inventory : Inventory) -> void:
 		#print("starting interaction timer")
 		interact_timer.start()
 		held_inv = inventory
-	#pass
-	#if (item == null and required_item == Item.Items.NONE) or \
-							#(item and item.type == required_item): # a null check on the item
-		#interact_timer.start()
-		# figure out the timer conenction stuff here to dynamincally connect and disconnect from the player initiating it or something?
 		
+		
+		audio_stream.stream = inventory.get_item_of_type(required_item).sound_fx
+
 func halt_interaction() -> void:
 	#print("halting interaction")
 	interact_timer.stop()

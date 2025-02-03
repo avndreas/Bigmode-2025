@@ -13,6 +13,8 @@ static var item_name_mapping : Dictionary = {Items.PIPE : "Pipe", Items.FUSE : "
 
 @export var type : Items
 
+@export var sound_fx : AudioStreamMP3 
+
 
 func get_info() -> Dictionary:
 	return {}
