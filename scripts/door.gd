@@ -4,9 +4,13 @@ class_name Door
 
 ### a door
 
+##Ibrahim Sound Stuff
+@onready var opensound = $opensound
+@onready var closesound = $closesound
+
+
 ### SPECIAL EXPORT STUFF
 #https://forum.godotengine.org/t/conditionally-show-exported-variables/43678/4
-
 @export_category("door_movement")
 
 @export var movement_speed : float = 5
@@ -225,6 +229,8 @@ func close(body : Node3D = null) -> void:
 	#print("close")
 	if (body == null or (body is CharacterBody3D and area_activatable)) and !locked_open:
 		current_goal_pos = closed_pos
+		await get_tree().create_timer(0.4).timeout
+		closesound.play()
 		stop = false
 
 	
@@ -232,6 +238,7 @@ func open(body : Node3D = null) -> void:
 	#print("open")
 	if body == null or (body is CharacterBody3D and area_activatable):
 		current_goal_pos = opened_pos
+		opensound.play()
 		stop = false
 
 	
