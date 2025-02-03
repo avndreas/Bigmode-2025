@@ -43,7 +43,10 @@ func _end_game(won : bool) -> void:
 	print("game_end: ", won)
 	get_tree().call_group("CriticalEvents", "stop_timer")
 	#CriticalEvents
-	Universe.switch_scene(1)
+	if won:
+		Universe.switch_scene(3)
+	else:
+		Universe.switch_scene(1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

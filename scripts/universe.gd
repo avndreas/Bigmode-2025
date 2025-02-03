@@ -12,6 +12,7 @@ class_name UniverseSingleton
 #@onready var credits = load("res://menus/title/Credits.tscn")
 @onready var opening_cutscene: = load("res://scenes/opening-cutscene.tscn")
 @onready var tilemap_test = load("res://scenes/tilemap-test.tscn")
+@onready var win_screen = load("res://scenes/win-screen.tscn")
 #@onready var current_level = -1
 @onready var current_scene: Node
 
@@ -61,9 +62,10 @@ func switch_scene(sceneNo: int) -> void:
 			#get_tree().change_scene_to_packed(level_one)
 			get_tree().change_scene_to_packed(tilemap_test)
 			in_game = true
-		#3:
+		3:
 			#current_level = 3
-			#get_tree().change_scene_to_packed(credits)
+			get_tree().change_scene_to_packed(win_screen)
+			in_game = false
 	pass
 	
 static func LabelSettings3D(label : Label3D) -> Label3D:
