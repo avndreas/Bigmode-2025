@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://sb00ca4tea4s"]
+
+[ext_resource type="PackedScene" uid="uid://bs7vih7w7fkoy" path="res://assets/models/paperfix.glb" id="1_4nayt"]
+
+[node name="paperfix" instance=ExtResource("1_4nayt")]
