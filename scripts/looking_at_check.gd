@@ -10,6 +10,8 @@ var pickup_item : Item3D
 
 @onready var inventory : Inventory = %Inventory
 
+@onready var pickup_sound = $pickup_sound
+
 
 @export var interact_range : float = 2
 
@@ -98,6 +100,7 @@ func _process(_delta: float) -> void:
 					#print("hi")
 					inventory.inv.add_item(pickup_item.pickup())
 					inventory.refresh_inventory()
+					pickup_sound.play()
 					pass
 					
 			if Input.is_action_just_released("interact"):
