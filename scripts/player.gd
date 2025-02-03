@@ -7,8 +7,8 @@ extends CharacterBody3D
 @onready var dark_light: OmniLight3D = $DarkLight
 
 #Ibrahim Audio
-@onready var footstepsaudioplayer = $footstepsaudioplayer
 @onready var flashlightsound = $flashlightsound
+@onready var footsteps_audio = $footsteps_audio
 
 
 var step_timer = 0.0
@@ -70,8 +70,8 @@ func _physics_process(delta: float) -> void:
 	if velocity.length() > 0.1:  # If moving
 		step_timer += delta
 		if step_timer >= current_step_rate:
-			footstepsaudioplayer.pitch_scale = randf_range(0.5, 0.7)
-			footstepsaudioplayer.play()
+			footsteps_audio.pitch_scale = randf_range(0.5, 0.7)
+			footsteps_audio.play()
 			step_timer = 0.0
 
 
