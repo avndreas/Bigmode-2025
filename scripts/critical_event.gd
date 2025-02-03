@@ -22,6 +22,11 @@ var held_item : Item
 
 @export var text_range : float = 7
 
+@export var failure_sound : AudioStream
+var failure_audio_stream : AudioStreamPlayer3D
+@export var idle_sound : AudioStream
+var idle_audio_stream : AudioStreamPlayer3D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -79,6 +84,22 @@ func _ready() -> void:
 	audio_stream = AudioStreamPlayer2D.new()
 	add_child(audio_stream)
 	
+	failure_audio_stream = AudioStreamPlayer3D.new()
+	if failure_sound:
+		#print("no failure sound")
+		failure_audio_stream.stream = failure_sound
+		add_child(failure_audio_stream)
+		failure_audio_stream.autoplay = false
+	
+	
+	idle_audio_stream = AudioStreamPlayer3D.new()
+	if idle_sound:
+		#print("no idle sound")
+		idle_audio_stream.stream = idle_sound
+		add_child(idle_audio_stream)
+		idle_audio_stream.autoplay = true
+		idle_audio_stream.play()
+	
 func round_place(num,places):
 	return (round(num*pow(10,places))/pow(10,places))
 
@@ -93,6 +114,7 @@ func _process(delta: float) -> void:
 	#var num : float = timer.time_left
 	#if held_item:
 		#num = min(timer.time_left+(time_added_per_second*delta),base_time)
+
 		
 	if held_item:
 		timer.start(min(timer.time_left+(time_added_per_second*delta),base_time))
@@ -105,6 +127,7 @@ func _process(delta: float) -> void:
 	if timer.time_left > 0 and time_before == 0:
 		#emit_signal("eventRestored")
 		emit_signal("eventState", true, self)
+		idle_audio_stream.play()
 
 func reset_timer_to_max() -> void:
 	timer.stop()
@@ -159,6 +182,8 @@ func timer_end() -> void:
 	#emit_signal("eventTriggered")
 	#print("hi")
 	emit_signal("eventState", false, self)
+	idle_audio_stream.stop()
+	failure_audio_stream.play()
 	
 	
 func set_text(body : Node3D, on: bool):

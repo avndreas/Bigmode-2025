@@ -1,38 +1,47 @@
-[gd_scene load_steps=36 format=3 uid="uid://d4m700c07k5eg"]
+[gd_scene load_steps=45 format=3 uid="uid://d4m700c07k5eg"]
 
-[ext_resource type="MeshLibrary" uid="uid://hmxaqws5yf02" path="res://assets/tilesets/extended-tileset.tres" id="1_2g3i3"]
+[ext_resource type="MeshLibrary" uid="uid://bm3085hdjmrh4" path="res://assets/tilesets/extended-tileset.tres" id="1_2g3i3"]
 [ext_resource type="Script" path="res://scripts/game_play_loop.gd" id="1_inb86"]
 [ext_resource type="PackedScene" uid="uid://bp2bgxhmng23o" path="res://scenes/player.tscn" id="2_5f7ms"]
 [ext_resource type="PackedScene" uid="uid://c4lhw44v4npyg" path="res://assets/models/table.tscn" id="3_b78mr"]
-[ext_resource type="PackedScene" uid="uid://d3ol4tyvbgdpj" path="res://scenes/light.tscn" id="4_8xsgj"]
+[ext_resource type="PackedScene" path="res://scenes/light.tscn" id="4_8xsgj"]
 [ext_resource type="PackedScene" uid="uid://ccgap242wncfe" path="res://scenes/puter.tscn" id="5_fvvyl"]
-[ext_resource type="PackedScene" uid="uid://cxact0acg16ju" path="res://scenes/generator.tscn" id="6_qi71a"]
+[ext_resource type="PackedScene" path="res://scenes/generator.tscn" id="6_qi71a"]
+[ext_resource type="AudioStream" uid="uid://yk6ojynid1q8" path="res://assets/soundeffects/GeneratorShutdown.mp3" id="7_at1sw"]
 [ext_resource type="PackedScene" uid="uid://bbgj7rjd3lnys" path="res://scenes/pipe.tscn" id="8_k8ujg"]
-[ext_resource type="PackedScene" uid="uid://dmy8fv66snys0" path="res://scenes/generator-panel.tscn" id="8_ykcji"]
-[ext_resource type="PackedScene" uid="uid://ca6m7jwxwr32g" path="res://scenes/door_large.tscn" id="9_inxf8"]
-[ext_resource type="PackedScene" uid="uid://lmfh028rrdta" path="res://scenes/door_small.tscn" id="9_ryvn4"]
-[ext_resource type="PackedScene" uid="uid://crqdav3l68dwt" path="res://scenes/gas_pipes.tscn" id="9_tbxiy"]
-[ext_resource type="PackedScene" uid="uid://durnai60du7u1" path="res://scenes/gas.tscn" id="10_12ujl"]
-[ext_resource type="PackedScene" uid="uid://bn5robvlw17fw" path="res://scenes/life-support-panel.tscn" id="12_odk50"]
-[ext_resource type="PackedScene" uid="uid://b51nyf0c4fw3m" path="res://scenes/wooden_table.tscn" id="12_wyxdx"]
-[ext_resource type="PackedScene" uid="uid://b648botiwkrl8" path="res://scenes/boiler.tscn" id="12_y6mqq"]
-[ext_resource type="PackedScene" uid="uid://8tahx8wrefr" path="res://scenes/horro.tscn" id="13_4n6m3"]
-[ext_resource type="PackedScene" uid="uid://bu4cev8poayo2" path="res://scenes/boiler-panel.tscn" id="13_bh7ld"]
-[ext_resource type="PackedScene" uid="uid://ek48qm7ol6lw" path="res://scenes/easel.tscn" id="13_dnr2y"]
-[ext_resource type="PackedScene" uid="uid://cwnmn0oy548ix" path="res://scenes/fuse.tscn" id="13_i8tbh"]
-[ext_resource type="PackedScene" uid="uid://pwdhof0mdim8" path="res://scenes/seat.tscn" id="13_uxcoe"]
-[ext_resource type="PackedScene" uid="uid://c6r3sxuh4q3xm" path="res://scenes/bible.tscn" id="14_8ynbq"]
-[ext_resource type="PackedScene" uid="uid://oyfrje77j2uc" path="res://scenes/le_can.tscn" id="15_e4061"]
-[ext_resource type="PackedScene" uid="uid://dj20c17s6x1vo" path="res://scenes/life_support.tscn" id="16_6ufxx"]
-[ext_resource type="PackedScene" uid="uid://bdsevdabue6ut" path="res://scenes/toilet.tscn" id="20_nn5w6"]
-[ext_resource type="PackedScene" uid="uid://qqfsi3rt40fb" path="res://scenes/rock_large.tscn" id="21_1vovq"]
+[ext_resource type="AudioStream" uid="uid://dc1hnklftp1ag" path="res://assets/soundeffects/GeneratorRunning.mp3" id="8_lkl6g"]
+[ext_resource type="PackedScene" path="res://scenes/generator-panel.tscn" id="8_ykcji"]
+[ext_resource type="PackedScene" path="res://scenes/door_large.tscn" id="9_inxf8"]
+[ext_resource type="AudioStream" uid="uid://beq8y3upxou24" path="res://assets/soundeffects/Gas_Hiss.mp3" id="9_rufnp"]
+[ext_resource type="PackedScene" path="res://scenes/door_small.tscn" id="9_ryvn4"]
+[ext_resource type="PackedScene" path="res://scenes/gas_pipes.tscn" id="9_tbxiy"]
+[ext_resource type="PackedScene" path="res://scenes/gas.tscn" id="10_12ujl"]
+[ext_resource type="AudioStream" uid="uid://dbto5s3j25tpw" path="res://assets/soundeffects/GasRoom.mp3" id="10_fkh43"]
+[ext_resource type="PackedScene" path="res://scenes/life-support-panel.tscn" id="12_odk50"]
+[ext_resource type="PackedScene" path="res://scenes/wooden_table.tscn" id="12_wyxdx"]
+[ext_resource type="PackedScene" path="res://scenes/boiler.tscn" id="12_y6mqq"]
+[ext_resource type="PackedScene" path="res://scenes/horro.tscn" id="13_4n6m3"]
+[ext_resource type="PackedScene" path="res://scenes/boiler-panel.tscn" id="13_bh7ld"]
+[ext_resource type="PackedScene" path="res://scenes/easel.tscn" id="13_dnr2y"]
+[ext_resource type="PackedScene" path="res://scenes/fuse.tscn" id="13_i8tbh"]
+[ext_resource type="PackedScene" path="res://scenes/seat.tscn" id="13_uxcoe"]
+[ext_resource type="PackedScene" path="res://scenes/bible.tscn" id="14_8ynbq"]
+[ext_resource type="AudioStream" uid="uid://bmeoorr4mjlid" path="res://assets/soundeffects/Lifesupportfail.mp3" id="15_18l8f"]
+[ext_resource type="PackedScene" path="res://scenes/le_can.tscn" id="15_e4061"]
+[ext_resource type="PackedScene" path="res://scenes/life_support.tscn" id="16_6ufxx"]
+[ext_resource type="AudioStream" uid="uid://d1xw2yl6mustb" path="res://assets/soundeffects/Lifesupport.mp3" id="16_arh7c"]
+[ext_resource type="AudioStream" uid="uid://do4wo5yno3i0b" path="res://assets/soundeffects/BoilerFail.mp3" id="19_aau5s"]
+[ext_resource type="PackedScene" path="res://scenes/toilet.tscn" id="20_nn5w6"]
+[ext_resource type="AudioStream" uid="uid://c0643r6lxjib1" path="res://assets/soundeffects/BoilerRoom.mp3" id="20_xdyof"]
+[ext_resource type="PackedScene" path="res://scenes/rock_large.tscn" id="21_1vovq"]
 [ext_resource type="PackedScene" uid="uid://dftq2a7t3hk20" path="res://scenes/rock_medium.tscn" id="22_xc4vw"]
-[ext_resource type="PackedScene" uid="uid://3ed34sjly8rp" path="res://scenes/rock_small.tscn" id="23_l5xv3"]
-[ext_resource type="PackedScene" uid="uid://dj1p3y06jk4ki" path="res://scenes/broom.tscn" id="29_h3hbi"]
+[ext_resource type="PackedScene" path="res://scenes/rock_small.tscn" id="23_l5xv3"]
+[ext_resource type="PackedScene" path="res://scenes/broom.tscn" id="29_h3hbi"]
 [ext_resource type="PackedScene" path="res://scenes/trashcan.tscn" id="29_y1p0j"]
 [ext_resource type="PackedScene" path="res://scenes/peanuscil.tscn" id="30_gwnd1"]
-[ext_resource type="PackedScene" uid="uid://bvksn0uwqh32o" path="res://scenes/paperfix.tscn" id="31_05q51"]
-[ext_resource type="PackedScene" uid="uid://6ol331366um7" path="res://scenes/cabinet.tscn" id="33_a5nxd"]
+[ext_resource type="PackedScene" path="res://scenes/paperfix.tscn" id="31_05q51"]
+[ext_resource type="PackedScene" path="res://scenes/cabinet.tscn" id="33_a5nxd"]
+[ext_resource type="AudioStream" uid="uid://cgajcqkbxvlte" path="res://assets/soundeffects/Ambience_Long.mp3" id="42_4ij6u"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5vy31"]
 
@@ -144,6 +153,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66024, 0.00792533, -29.233
 transform = Transform3D(0.922383, 0.386276, 0, -0.386276, 0.922383, 0, 0, 0, 1, -0.72248, 1.20475, 0.445326)
 crit_time = 90.0
 text_range = 4.0
+failure_sound = ExtResource("7_at1sw")
+idle_sound = ExtResource("8_lkl6g")
 
 [node name="generator3" parent="Machines" instance=ExtResource("6_qi71a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.597891, 0.00792533, -29.2331)
@@ -158,7 +169,9 @@ transform = Transform3D(-0.0402189, 0, -0.999191, 0, 1, 0, 0.999191, 0, -0.04021
 
 [node name="Gas Pipes" parent="Machines/gas_pipes/gas-pipes4" groups=["CriticalEvents"] instance=ExtResource("10_12ujl")]
 transform = Transform3D(-0.0402189, 0, 0.999191, 0, 1, 0, -0.999191, 0, -0.0402189, 0.137163, 1.20401, -0.205059)
-crit_time = 10.0
+crit_time = 30.0
+failure_sound = ExtResource("9_rufnp")
+idle_sound = ExtResource("10_fkh43")
 
 [node name="gas-pipes5" parent="Machines/gas_pipes" instance=ExtResource("9_tbxiy")]
 transform = Transform3D(-0.0508891, 0, -0.998704, 0, 1, 0, 0.998704, 0, -0.0508891, 2.01729, 0, -15.4912)
@@ -180,13 +193,16 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.50
 
 [node name="Life Support" parent="Machines/life-support" groups=["CriticalEvents"] instance=ExtResource("12_odk50")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0345058, 1.75673, 0.295231)
+failure_sound = ExtResource("15_18l8f")
+idle_sound = ExtResource("16_arh7c")
 
 [node name="boiler" parent="Machines" instance=ExtResource("12_y6mqq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4245, -2.38419e-07, -12.4115)
 
 [node name="Boiler" parent="Machines/boiler" groups=["CriticalEvents"] instance=ExtResource("13_bh7ld")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.24672, 1.00765, 0.413358)
-crit_time = 2.0
+failure_sound = ExtResource("19_aau5s")
+idle_sound = ExtResource("20_xdyof")
 
 [node name="Bible" parent="Machines/boiler" instance=ExtResource("14_8ynbq")]
 transform = Transform3D(-0.944011, -0.329889, -0.00405306, -0.329886, 0.94402, -0.00141628, 0.00429338, 6.23019e-08, -0.999991, -1.19466, 0.910257, 14.815)
@@ -536,6 +552,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3659, 0, -11.4611)
 
 [node name="gas-pipes2" parent="Decorations" instance=ExtResource("9_tbxiy")]
 transform = Transform3D(-0.971163, 0, -0.238415, 0, 1, 0, 0.238415, 0, -0.971163, -25.9971, -1.19209e-07, -15.3654)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("42_4ij6u")
+autoplay = true
 
 [connection signal="eventState" from="Machines/generator2/Generator" to="." method="_on_generator_event_state"]
 [connection signal="eventState" from="Machines/gas_pipes/gas-pipes4/Gas Pipes" to="." method="_on_gas_room_pipe_event_state"]
