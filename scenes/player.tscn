@@ -41,33 +41,6 @@ shader_parameter/resolution_downsampling = 4.0
 flip_faces = true
 size = Vector2(2, 2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oc2ba"]
-shader = ExtResource("17_c2swt")
-shader_parameter/brightness = 0.1
-shader_parameter/contrast = 1.0
-shader_parameter/saturation = 0.5
-shader_parameter/redVal = 1.0
-shader_parameter/greenVal = 1.0
-shader_parameter/blueVal = 1.0
-shader_parameter/tint_color = Color(0, 0.712499, 0.712864, 1)
-shader_parameter/tint_effect_factor = 0.481
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6olgl"]
-shader = ExtResource("3_fxpim")
-shader_parameter/chaos = 1.0
-shader_parameter/radius = 2.0
-shader_parameter/attenuation = 2.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1rehk"]
-shader = ExtResource("16_1syww")
-shader_parameter/frequency = 4.0
-shader_parameter/amplitude = 0.5
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jlydg"]
-shader = ExtResource("5_u36gy")
-shader_parameter/dither_intensity = 1.0
-shader_parameter/color_depth = Vector3(4, 4, 4)
-
 [sub_resource type="LabelSettings" id="LabelSettings_2a1tx"]
 font_size = 24
 
@@ -120,7 +93,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_msju8"]
 resource_name = "fade_out"
-length = 2.0
+length = 5.0
 step = 0.3
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -131,7 +104,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2)
+"times": PackedFloat32Array(0, 5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -142,7 +115,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2)
+"times": PackedFloat32Array(0, 5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -153,7 +126,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2)
+"times": PackedFloat32Array(0, 5)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -164,7 +137,7 @@ tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2)
+"times": PackedFloat32Array(0, 5)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_je4aw"]
@@ -177,6 +150,33 @@ _data = {
 shader = ExtResource("5_u36gy")
 shader_parameter/dither_intensity = 0.7
 shader_parameter/color_depth = Vector3(6, 10, 6)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oc2ba"]
+shader = ExtResource("17_c2swt")
+shader_parameter/brightness = 0.1
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 0.5
+shader_parameter/redVal = 1.0
+shader_parameter/greenVal = 1.0
+shader_parameter/blueVal = 1.0
+shader_parameter/tint_color = Color(0, 0.712499, 0.712864, 1)
+shader_parameter/tint_effect_factor = 0.481
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6olgl"]
+shader = ExtResource("3_fxpim")
+shader_parameter/chaos = 1.0
+shader_parameter/radius = 2.0
+shader_parameter/attenuation = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1rehk"]
+shader = ExtResource("16_1syww")
+shader_parameter/frequency = 4.0
+shader_parameter/amplitude = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jlydg"]
+shader = ExtResource("5_u36gy")
+shader_parameter/dither_intensity = 1.0
+shader_parameter/color_depth = Vector3(4, 4, 4)
 
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 3
@@ -213,6 +213,138 @@ script = ExtResource("3_wb2xg")
 [node name="Pickup_sound" type="AudioStreamPlayer3D" parent="Camera3D/RayCast3D"]
 stream = ExtResource("4_hyew7")
 max_db = -5.0
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="UI/CenterContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("2_i80d8")
+expand_mode = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/CenterContainer2"]
+layout_mode = 2
+texture = ExtResource("2_i80d8")
+
+[node name="Inventory" type="GridContainer" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+columns = 10
+script = ExtResource("5_sgifl")
+
+[node name="Flashlight" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -192.0
+offset_top = 100.0
+offset_right = -192.0
+offset_bottom = 100.0
+grow_horizontal = 0
+script = ExtResource("7_y3dc8")
+
+[node name="1" type="TextureRect" parent="UI/Flashlight"]
+layout_mode = 0
+offset_right = 75.0
+texture = ExtResource("11_dvcq0")
+expand_mode = 5
+
+[node name="2" type="TextureRect" parent="UI/Flashlight"]
+layout_mode = 0
+offset_right = 75.0
+texture = ExtResource("10_c6reo")
+expand_mode = 5
+
+[node name="3" type="TextureRect" parent="UI/Flashlight"]
+layout_mode = 0
+offset_right = 75.0
+texture = ExtResource("9_sr3d4")
+expand_mode = 5
+
+[node name="4" type="TextureRect" parent="UI/Flashlight"]
+layout_mode = 0
+offset_right = 75.0
+texture = ExtResource("8_our40")
+expand_mode = 5
+
+[node name="5" type="TextureRect" parent="UI/Flashlight"]
+layout_mode = 0
+offset_right = 77.5
+texture = ExtResource("7_dpro3")
+expand_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="UI/Flashlight"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 400.0
+texture = ExtResource("12_87os7")
+
+[node name="Effects" type="CenterContainer" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -480.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("18_t8nf7")
+
+[node name="Label" type="Label" parent="UI/Effects"]
+layout_mode = 2
+text = "testasdasda"
+label_settings = SubResource("LabelSettings_2a1tx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Effects"]
+libraries = {
+"": SubResource("AnimationLibrary_je4aw")
+}
+
+[node name="DarkLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443884, 0)
+light_color = Color(0.375744, 0.377158, 0.575021, 1)
+light_energy = 0.23
+omni_range = 6.13
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_o2csb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="footsteps_audio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("15_l7c58")
+volume_db = -25.0
+
+[node name="flashlight_audio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("16_3vxcv")
+volume_db = -48.055
+
+[node name="Stomp" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("22_5per4")
+max_db = 1.0
 
 [node name="Shaders" type="Control" parent="."]
 layout_mode = 3
@@ -274,136 +406,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Pause" type="CanvasLayer" parent="."]
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CenterContainer"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-texture = ExtResource("2_i80d8")
-expand_mode = 1
-
-[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer2"]
-layout_mode = 2
-texture = ExtResource("2_i80d8")
-
-[node name="Inventory" type="GridContainer" parent="CanvasLayer"]
-unique_name_in_owner = true
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-grow_vertical = 0
-columns = 10
-script = ExtResource("5_sgifl")
-
-[node name="Flashlight" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -192.0
-offset_top = 100.0
-offset_right = -192.0
-offset_bottom = 100.0
-grow_horizontal = 0
-script = ExtResource("7_y3dc8")
-
-[node name="1" type="TextureRect" parent="CanvasLayer/Flashlight"]
-layout_mode = 0
-offset_right = 75.0
-texture = ExtResource("11_dvcq0")
-expand_mode = 5
-
-[node name="2" type="TextureRect" parent="CanvasLayer/Flashlight"]
-layout_mode = 0
-offset_right = 75.0
-texture = ExtResource("10_c6reo")
-expand_mode = 5
-
-[node name="3" type="TextureRect" parent="CanvasLayer/Flashlight"]
-layout_mode = 0
-offset_right = 75.0
-texture = ExtResource("9_sr3d4")
-expand_mode = 5
-
-[node name="4" type="TextureRect" parent="CanvasLayer/Flashlight"]
-layout_mode = 0
-offset_right = 75.0
-texture = ExtResource("8_our40")
-expand_mode = 5
-
-[node name="5" type="TextureRect" parent="CanvasLayer/Flashlight"]
-layout_mode = 0
-offset_right = 77.5
-texture = ExtResource("7_dpro3")
-expand_mode = 5
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Flashlight"]
-layout_mode = 0
-offset_right = 200.0
-offset_bottom = 400.0
-texture = ExtResource("12_87os7")
-
-[node name="Effects" type="CenterContainer" parent="CanvasLayer"]
-unique_name_in_owner = true
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -480.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("18_t8nf7")
-
-[node name="Label" type="Label" parent="CanvasLayer/Effects"]
-layout_mode = 2
-text = "testasdasda"
-label_settings = SubResource("LabelSettings_2a1tx")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Effects"]
-libraries = {
-"": SubResource("AnimationLibrary_je4aw")
-}
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_yxeby")]
-
-[node name="DarkLight" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443884, 0)
-light_color = Color(0.375744, 0.377158, 0.575021, 1)
-light_energy = 0.23
-omni_range = 6.13
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_o2csb")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="footsteps_audio" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("15_l7c58")
-volume_db = -25.0
-
-[node name="flashlight_audio" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("16_3vxcv")
-volume_db = -48.055
-
-[node name="Stomp" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("22_5per4")
-max_db = 1.0
+[node name="PauseMenu" parent="Pause" instance=ExtResource("6_yxeby")]
