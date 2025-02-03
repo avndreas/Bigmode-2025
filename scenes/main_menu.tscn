@@ -7,15 +7,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1280.0
-offset_top = 720.0
-offset_right = -1280.0
-offset_bottom = -720.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wfvwc")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,34 +19,66 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer"]
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -94.5
+offset_right = 80.0
+offset_bottom = 94.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/AspectRatioContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="AspectRatioContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Control/AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 text = "BANANANANANANA
 Game"
 horizontal_alignment = 1
 
-[node name="Play" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="Control/AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 text = "Play"
 autowrap_mode = 3
 
-[node name="Options" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="Control/AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 text = "Options"
 
-[node name="Credits" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+[node name="Credits" type="Button" parent="Control/AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 text = "Credits"
 
-[node name="Quit" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="Control/AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Control/AspectRatioContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/AspectRatioContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Control/AspectRatioContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Control/AspectRatioContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
