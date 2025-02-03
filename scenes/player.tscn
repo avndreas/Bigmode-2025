@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bp2bgxhmng23o"]
+[gd_scene load_steps=25 format=3 uid="uid://bp2bgxhmng23o"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_rhd8k"]
 [ext_resource type="Shader" path="res://shaders/vignette_new.gdshader" id="2_2n8no"]
@@ -16,8 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://bftyod2l6ltah" path="res://assets/battery/1.png" id="11_dvcq0"]
 [ext_resource type="Texture2D" uid="uid://dar0k1r5iseq0" path="res://assets/battery/Battery_Outer.png" id="12_87os7"]
 [ext_resource type="AudioStream" uid="uid://b451fmffmwhmu" path="res://assets/soundeffects/Footstep.mp3" id="15_l7c58"]
-[ext_resource type="AudioStream" uid="uid://bjshymbfki3qx" path="res://assets/soundeffects/Flashlight.mp3" id="16_3vxcv"]
 [ext_resource type="Shader" path="res://shaders/wavy.gdshader" id="16_1syww"]
+[ext_resource type="AudioStream" uid="uid://bjshymbfki3qx" path="res://assets/soundeffects/Flashlight.mp3" id="16_3vxcv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_chi0x"]
 radius = 0.31
@@ -222,6 +222,7 @@ grow_vertical = 2
 
 [node name="footsteps_audio" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("15_l7c58")
+volume_db = -25.0
 
 [node name="flashlight_audio" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("16_3vxcv")
