@@ -50,8 +50,6 @@ func _end_game(won : bool) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("action2"):
-		toggleLights()
 		
 	var send : bool = false
 	var update := GameStateUpdate.new()
