@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 	if rocksFalling:
 		rock_barrier.position.y -= delta * 8.0
 	
-	if Input.is_action_pressed("jump"):
+	if Input.is_action_pressed("jump") or Input.is_action_pressed("action1"):
 		Universe.switch_scene(1)
 
 

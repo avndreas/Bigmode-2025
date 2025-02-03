@@ -160,6 +160,7 @@ shape = SubResource("BoxShape3D_m1afw")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.842162, 0.062)
+transparency = 0.5
 transparent = false
 render_priority = 10
 texture = SubResource("ViewportTexture_xm813")

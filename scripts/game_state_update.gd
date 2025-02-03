@@ -15,5 +15,9 @@ var life_support : bool = false
 var life_support_on : bool = true
 var life_support_off_time : float = 0
 
+var boiler : bool = false
+var boiler_on : bool = true
+var boiler_off_time : float = 0
+
 
 var crit_event : CriticalEvent = null

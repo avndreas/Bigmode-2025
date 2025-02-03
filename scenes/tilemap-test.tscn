@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://d4m700c07k5eg"]
 
-[ext_resource type="MeshLibrary" uid="uid://hmxaqws5yf02" path="res://assets/tilesets/extended-tileset.tres" id="1_2g3i3"]
+[ext_resource type="MeshLibrary" uid="uid://bm3085hdjmrh4" path="res://assets/tilesets/extended-tileset.tres" id="1_2g3i3"]
 [ext_resource type="Script" path="res://scripts/game_play_loop.gd" id="1_inb86"]
 [ext_resource type="PackedScene" uid="uid://bp2bgxhmng23o" path="res://scenes/player.tscn" id="2_5f7ms"]
 [ext_resource type="PackedScene" uid="uid://c4lhw44v4npyg" path="res://assets/models/table.tscn" id="3_b78mr"]
@@ -179,8 +179,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.034
 [node name="boiler" parent="Machines" instance=ExtResource("12_y6mqq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4245, -2.38419e-07, -12.4115)
 
-[node name="BoilerPanel" parent="Machines/boiler" groups=["CriticalEvents"] instance=ExtResource("13_bh7ld")]
+[node name="Boiler" parent="Machines/boiler" groups=["CriticalEvents"] instance=ExtResource("13_bh7ld")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.24672, 1.00765, 0.413358)
+crit_time = 2.0
 
 [node name="Bible" parent="Machines/boiler" instance=ExtResource("14_8ynbq")]
 transform = Transform3D(-0.944011, -0.329889, -0.00405306, -0.329886, 0.94402, -0.00141628, 0.00429338, 6.23019e-08, -0.999991, -1.19466, 0.910257, 14.815)
@@ -480,4 +481,4 @@ transform = Transform3D(-0.269239, 0, -0.963073, 0, 1, 0, 0.963073, 0, -0.269239
 [connection signal="eventState" from="Machines/generator2/Generator" to="." method="_on_generator_event_state"]
 [connection signal="eventState" from="Machines/gas_pipes/gas-pipes4/Gas Pipes" to="." method="_on_gas_room_pipe_event_state"]
 [connection signal="eventState" from="Machines/life-support/Life Support" to="." method="_on_life_support_event_state"]
-[connection signal="eventState" from="Machines/boiler/BoilerPanel" to="." method="_on_boiler_panel_event_state"]
+[connection signal="eventState" from="Machines/boiler/Boiler" to="." method="_on_boiler_panel_event_state"]

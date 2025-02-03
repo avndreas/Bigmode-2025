@@ -20,24 +20,24 @@ func _ready() -> void:
 		var label_settings = load("res://assets/puter_text_settings.tres")
 		
 		
-		var temp_label := Label.new()
-		temp_label.label_settings = label_settings.duplicate()
-		temp_label.text = "Lights: " + ("OK" if level.lights_on else ("ERROR: " + format_time(level.lights_off_time) + "s offline"))
-		temp_label.name = "Lights"
-		lines.add_child(temp_label)
-		
-		
-		temp_label = Label.new()
-		temp_label.label_settings = label_settings.duplicate()
-		temp_label.text = "Life Support: " + ("OK" if level.life_support_on else ("ERROR: " + format_time(level.life_support_off_time) + "s offline"))
-		temp_label.name = "LifeSupport"
-		lines.add_child(temp_label)
-		
-		temp_label = Label.new()
-		temp_label.label_settings = label_settings.duplicate()
-		temp_label.text = "Gas Pipes: " + ("OK" if level.gas_on else ("ERROR: " + format_time(level.gas_off_time) + "s offline"))
-		temp_label.name = "Gas"
-		lines.add_child(temp_label)
+		#var temp_label := Label.new()
+		#temp_label.label_settings = label_settings.duplicate()
+		#temp_label.text = "Lights: " + ("OK" if level.lights_on else ("ERROR: " + format_time(level.lights_off_time) + "s offline"))
+		#temp_label.name = "Lights"
+		#lines.add_child(temp_label)
+		#
+		#
+		#temp_label = Label.new()
+		#temp_label.label_settings = label_settings.duplicate()
+		#temp_label.text = "Life Support: " + ("OK" if level.life_support_on else ("ERROR: " + format_time(level.life_support_off_time) + "s offline"))
+		#temp_label.name = "LifeSupport"
+		#lines.add_child(temp_label)
+		#
+		#temp_label = Label.new()
+		#temp_label.label_settings = label_settings.duplicate()
+		#temp_label.text = "Gas: " + ("OK" if level.gas_on else ("ERROR: " + format_time(level.gas_off_time) + "s offline"))
+		#temp_label.name = "Gas"
+		#lines.add_child(temp_label)
 		
 		var crit_events = get_tree().get_nodes_in_group("CriticalEvents")
 		for event in crit_events:
@@ -61,23 +61,23 @@ func update_screen(game_update : GameStateUpdate) -> void:
 		
 	if level:
 		
-		if game_update.light:
-			for line : Label in lines.get_children():
-				
-				if line.name == "Lights":
-					if game_update.light_on:
-						line.text = "Lights: OK"
-						line.label_settings.font_color = Color.WHITE
-					else:
-						line.text = "Lights: ERROR: " + format_time(game_update.light_off_time) + "s offline"
-						line.label_settings.font_color = Color.RED
-				elif line.name == "Gas":
-					if game_update.gas_on:
-						line.text = "Gas: OK"
-						line.label_settings.font_color = Color.WHITE
-					else:
-						line.text = "Gas: ERROR: " + format_time(game_update.gas_off_time) + "s offline"
-						line.label_settings.font_color = Color.RED
+		#if game_update.light:
+			#for line : Label in lines.get_children():
+				#
+				#if line.name == "Lights":
+					#if game_update.light_on:
+						#line.text = "Lights: OK"
+						#line.label_settings.font_color = Color.WHITE
+					#else:
+						#line.text = "Lights: ERROR: " + format_time(game_update.light_off_time) + "s offline"
+						#line.label_settings.font_color = Color.RED
+				#elif line.name == "Gas":
+					#if game_update.gas_on:
+						#line.text = "Gas: OK"
+						#line.label_settings.font_color = Color.WHITE
+					#else:
+						#line.text = "Gas: ERROR: " + format_time(game_update.gas_off_time) + "s offline"
+						#line.label_settings.font_color = Color.RED
 						
 		
 		

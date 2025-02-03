@@ -76,8 +76,8 @@ func _process(delta: float) -> void:
 	if not boiler_on:
 		boiler_off_time += delta
 		update.boiler = true
-		update.boiler_off_time = lights_off_time
-		update.boiler_on = lights_on
+		update.boiler_off_time = boiler_off_time
+		update.boiler_on = boiler_on
 		send = send or true
 	else:
 		boiler_off_time = 0
@@ -136,17 +136,6 @@ func turnOnLights() -> void:
 		l.setLightStatus(true)
 
 
-
-
-#func _on_generatorpanel_event_triggered(on : bool, event:CriticalEvent) -> void:
-	#turnOffLights()
-
-
-
-#func _on_generatorpanel_event_restored(on : bool, event:CriticalEvent) -> void:
-	#turnOnLights()
-
-
 func _on_generator_event_state(on: bool, event: CriticalEvent) -> void:
 	var update := GameStateUpdate.new()
 	update.crit_event = event
@@ -177,7 +166,7 @@ func _on_life_support_event_state(on: bool, event: CriticalEvent) -> void:
 	update.crit_event = event
 	emit_signal("game_state_update", update)
 	
-	life_support_off_time = on
+	life_support_on = on
 	if on:
 		life_support_off_time = 0
 		print("Life support online.")
@@ -190,7 +179,9 @@ func _on_boiler_panel_event_state(on: bool, event: CriticalEvent) -> void:
 	update.crit_event = event
 	emit_signal("game_state_update", update)
 	
+	boiler_on = on
 	if on:
+		boiler_off_time = 0
 		print("Boiler functional.")
 	else:
 		print("Boiler offline...")

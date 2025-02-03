@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bp2bgxhmng23o"]
+[gd_scene load_steps=27 format=3 uid="uid://bp2bgxhmng23o"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_rhd8k"]
 [ext_resource type="Shader" path="res://shaders/vignette_new.gdshader" id="2_2n8no"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://b451fmffmwhmu" path="res://assets/soundeffects/Footstep.mp3" id="15_l7c58"]
 [ext_resource type="Shader" path="res://shaders/wavy.gdshader" id="16_1syww"]
 [ext_resource type="AudioStream" uid="uid://bjshymbfki3qx" path="res://assets/soundeffects/Flashlight.mp3" id="16_3vxcv"]
+[ext_resource type="Shader" path="res://shaders/cold.gdshader" id="17_c2swt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_chi0x"]
 radius = 0.31
@@ -53,10 +54,22 @@ shader = ExtResource("16_1syww")
 shader_parameter/frequency = 4.0
 shader_parameter/amplitude = 0.5
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oc2ba"]
+shader = ExtResource("17_c2swt")
+shader_parameter/brightness = 0.1
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 0.5
+shader_parameter/redVal = 1.0
+shader_parameter/greenVal = 1.0
+shader_parameter/blueVal = 1.0
+shader_parameter/tint_color = Color(0, 0.712499, 0.712864, 1)
+shader_parameter/tint_effect_factor = 0.481
+
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 3
 input_ray_pickable = false
 script = ExtResource("1_rhd8k")
+max_cold_time = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_chi0x")
@@ -213,6 +226,25 @@ grow_vertical = 2
 
 [node name="Woozy" type="ColorRect" parent="Shaders"]
 material = SubResource("ShaderMaterial_1rehk")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cold1" type="ColorRect" parent="Shaders"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.282353, 0.533333, 1, 0.329412)
+
+[node name="Cold" type="ColorRect" parent="Shaders"]
+material = SubResource("ShaderMaterial_oc2ba")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -17,6 +17,8 @@ var sprint_step_rate = 0.3  # Time between steps when sprinting
 var current_step_rate = walk_step_rate
 
 
+@onready var camera : Camera3D = $Camera3D
+
 var mouse_sensitivity_y : float = 4
 var mouse_sensitivity_x : float = 4
 var mouse_locked : bool = false
@@ -42,19 +44,28 @@ var gloom : bool = false
 var not_enough_life : bool = false
 @onready var life_shader : ColorRect = $Shaders/Woozy
 
+var cold : bool = false
+var cold_time : float = 0
+@export var max_cold_time : float = 10
+@onready var cold_shader : ColorRect = $Shaders/Cold
+
+var rng : RandomNumberGenerator
+
 func _ready() -> void:
 	var parent = get_parent()
 	dark_light.visible = false
 	if parent is Level:
 		parent.game_state_update.connect(player_state_updater)
+	rng = RandomNumberGenerator.new()
+	rng.randomize()
 
 
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode >= Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity_y / get_viewport().get_visible_rect().size.x)
-		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity_x / get_viewport().get_visible_rect().size.y)
-		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(89), deg_to_rad(89)) # has the bounds on the up and down looking
+		camera.rotate_x(-event.relative.y * mouse_sensitivity_x / get_viewport().get_visible_rect().size.y)
+		camera.rotation.x = clampf(camera.rotation.x, -deg_to_rad(89), deg_to_rad(89)) # has the bounds on the up and down looking
 
 
 
@@ -128,8 +139,20 @@ func _process(delta:float) -> void:
 	
 	#print(gloom)
 	gloom_shader.visible = gloom
-	print(not_enough_life)
+	#print(not_enough_life)
 	life_shader.visible = not_enough_life
+	
+	cold_shader.visible = cold
+	if cold:
+		#print("hi")
+		var min_strength = 0
+		var max_strength = 0.2
+		var shake_strength = min((max_strength-min_strength)/(max_cold_time-cold_time), max_strength)
+		camera.h_offset = rng.randf_range(-shake_strength, shake_strength)
+		camera.v_offset = rng.randf_range(-shake_strength, shake_strength)
+	else:
+		camera.h_offset = 0
+		camera.v_offset = 0
 
 	
 func _exit_tree() -> void:
@@ -152,7 +175,7 @@ func player_state_updater(update : GameStateUpdate) -> void:
 			dark_light.visible = false
 
 	if (update.life_support and not update.life_support_on) or (update.gas and not update.gas_on):
-		print("dying due to bad life stuff")
+		#print("dying due to bad life stuff")
 		not_enough_life = true
 		var time_val = max(update.life_support_off_time, update.gas_off_time)
 		var min_amp : float = 0.0
@@ -168,3 +191,7 @@ func player_state_updater(update : GameStateUpdate) -> void:
 	else:
 		not_enough_life = false
 		pass
+		
+	if update.boiler:
+		#print("hi")
+		cold = not update.boiler_on
