@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://lgjul71ba0r2"]
+[gd_scene load_steps=5 format=3 uid="uid://lgjul71ba0r2"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_wfvwc"]
 [ext_resource type="Texture2D" uid="uid://c07m2cdqam4t5" path="res://assets/main_menu.png" id="2_bijd5"]
+[ext_resource type="Shader" path="res://shaders/dither.gdshader" id="3_jjmmb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_saesa"]
+shader = ExtResource("3_jjmmb")
+shader_parameter/dither_intensity = 1.0
+shader_parameter/color_depth = Vector3(4, 4, 4)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -22,6 +28,15 @@ grow_vertical = 2
 texture = ExtResource("2_bijd5")
 
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_saesa")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

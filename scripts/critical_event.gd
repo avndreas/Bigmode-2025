@@ -98,7 +98,8 @@ func _ready() -> void:
 		idle_audio_stream.stream = idle_sound
 		add_child(idle_audio_stream)
 		idle_audio_stream.autoplay = false
-		idle_audio_stream.max_distance = 5
+		idle_audio_stream.max_distance = 7
+		idle_audio_stream.max_db = 0
 		idle_audio_stream.play()
 	
 func round_place(num,places):

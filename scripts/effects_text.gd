@@ -6,7 +6,7 @@ func _ready() -> void:
 	var height = get_viewport().get_visible_rect().size.y
 	position.y = height/2
 	size.y = height/2
-	#$Label.visible = false
+	$Label.visible = false
 	#pass # Replace with function body.
 
 #

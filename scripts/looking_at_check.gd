@@ -89,6 +89,9 @@ func _process(_delta: float) -> void:
 					
 			if Input.is_action_just_pressed("interact"):
 				if activation_item:
+					if activation_item is Door and activation_item.player_activatable and not activation_item.area_activatable:
+						#print("hi")
+						$"../../Stomp".play()
 					#print("activate")
 					activation_item.activate()
 

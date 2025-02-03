@@ -1,11 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://d31pe1fh1tsn4"]
+[gd_scene load_steps=21 format=3 uid="uid://d31pe1fh1tsn4"]
 
 [ext_resource type="Script" path="res://scripts/opening_cutscene.gd" id="1_rdbbq"]
 [ext_resource type="MeshLibrary" uid="uid://hmxaqws5yf02" path="res://assets/tilesets/extended-tileset.tres" id="2_imyo1"]
-[ext_resource type="PackedScene" uid="uid://d3ol4tyvbgdpj" path="res://scenes/light.tscn" id="3_yyurr"]
-[ext_resource type="PackedScene" uid="uid://3ed34sjly8rp" path="res://scenes/rock_small.tscn" id="4_eblk8"]
+[ext_resource type="PackedScene" path="res://scenes/light.tscn" id="3_yyurr"]
+[ext_resource type="PackedScene" path="res://scenes/rock_small.tscn" id="4_eblk8"]
 [ext_resource type="PackedScene" uid="uid://dftq2a7t3hk20" path="res://scenes/rock_medium.tscn" id="5_s85qx"]
 [ext_resource type="AudioStream" uid="uid://b5tat2brl238x" path="res://assets/soundeffects/Openingvideo.mp3" id="6_decgf"]
+[ext_resource type="Shader" path="res://shaders/dither.gdshader" id="7_fixyo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tlgdr"]
 size = Vector3(4.32666, 0.499512, 12.2728)
@@ -43,6 +44,11 @@ size = Vector3(2.585, 3.665, 0.715)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_042kl"]
 albedo_color = Color(0, 0, 0, 1)
 metallic_specular = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4rhck"]
+shader = ExtResource("7_fixyo")
+shader_parameter/dither_intensity = 1.0
+shader_parameter/color_depth = Vector3(4, 4, 4)
 
 [node name="Opening-cutscene" type="Node3D"]
 script = ExtResource("1_rdbbq")
@@ -191,6 +197,16 @@ surface_material_override/0 = SubResource("StandardMaterial3D_042kl")
 
 [node name="OpeningAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_decgf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_4rhck")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
