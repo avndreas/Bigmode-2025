@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj1p3y06jk4ki"]
+
+[ext_resource type="PackedScene" uid="uid://bq6f0vjawk7sn" path="res://assets/models/broom.glb" id="1_im7c0"]
+
+[node name="broom" instance=ExtResource("1_im7c0")]
