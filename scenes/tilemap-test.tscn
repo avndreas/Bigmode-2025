@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d4m700c07k5eg"]
+[gd_scene load_steps=31 format=3 uid="uid://d4m700c07k5eg"]
 
 [ext_resource type="MeshLibrary" uid="uid://hmxaqws5yf02" path="res://assets/tilesets/extended-tileset.tres" id="1_2g3i3"]
 [ext_resource type="Script" path="res://scripts/game_play_loop.gd" id="1_inb86"]
@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://ek48qm7ol6lw" path="res://scenes/easel.tscn" id="13_dnr2y"]
 [ext_resource type="PackedScene" uid="uid://cwnmn0oy548ix" path="res://scenes/fuse.tscn" id="13_i8tbh"]
 [ext_resource type="PackedScene" uid="uid://pwdhof0mdim8" path="res://scenes/seat.tscn" id="13_uxcoe"]
+[ext_resource type="PackedScene" uid="uid://c6r3sxuh4q3xm" path="res://scenes/bible.tscn" id="14_8ynbq"]
+[ext_resource type="PackedScene" uid="uid://oyfrje77j2uc" path="res://scenes/le_can.tscn" id="15_e4061"]
 [ext_resource type="PackedScene" uid="uid://dj20c17s6x1vo" path="res://scenes/life_support.tscn" id="16_6ufxx"]
 [ext_resource type="PackedScene" uid="uid://bdsevdabue6ut" path="res://scenes/toilet.tscn" id="20_nn5w6"]
 [ext_resource type="PackedScene" uid="uid://qqfsi3rt40fb" path="res://scenes/rock_large.tscn" id="21_1vovq"]
@@ -183,13 +185,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4245, -2.38419e-07, -12.41
 [node name="BoilerPanel" parent="Machines/boiler" groups=["CriticalEvents"] instance=ExtResource("13_bh7ld")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.24672, 1.00765, 0.413358)
 
+[node name="Bible" parent="Machines/boiler" instance=ExtResource("14_8ynbq")]
+transform = Transform3D(-0.944011, -0.329889, -0.00405306, -0.329886, 0.94402, -0.00141628, 0.00429338, 6.23019e-08, -0.999991, -1.19466, 0.910257, 14.815)
+
 [node name="fuse" parent="." instance=ExtResource("13_i8tbh")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -4.61287, 0.896124, 2.16416)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -4.61287, 0.897426, 2.16416)
 
 [node name="Items" type="Node3D" parent="."]
 
 [node name="pipe" parent="Items" instance=ExtResource("8_k8ujg")]
-transform = Transform3D(0.0042065, 0.999991, 0, -0.999991, 0.0042065, 0, 0, 0, 1, -4.21214, 0.915084, 2.26539)
+transform = Transform3D(0.0042065, 0.999991, 0, -0.999991, 0.0042065, 0, 0, 0, 1, -4.52086, 0.915084, 1.9649)
 
 [node name="Doors" type="Node3D" parent="."]
 
@@ -422,6 +427,15 @@ transform = Transform3D(0.192817, -0.896456, 0.398985, 0.390067, 0.443134, 0.807
 
 [node name="rock_small21" parent="Decorations/Rocks" instance=ExtResource("23_l5xv3")]
 transform = Transform3D(0.271196, 0.78201, 0.561171, -0.340269, 0.623266, -0.7041, -0.900372, 0, 0.435121, -7.6001, 0.048493, 5.03681)
+
+[node name="le can" parent="Decorations" instance=ExtResource("15_e4061")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.64478, 0.977886, 2.36026)
+
+[node name="le can2" parent="Decorations" instance=ExtResource("15_e4061")]
+transform = Transform3D(0.479305, 0, -0.877649, 0, 1, 0, 0.877649, 0, 0.479305, -5.03741, 0.964968, 2.54116)
+
+[node name="le can3" parent="Decorations" instance=ExtResource("15_e4061")]
+transform = Transform3D(-0.269239, 0, -0.963073, 0, 1, 0, 0.963073, 0, -0.269239, -4.86651, 0.964968, 2.43008)
 
 [connection signal="eventState" from="Machines/generator2/Generator" to="." method="_on_generator_event_state"]
 [connection signal="eventState" from="Machines/gas_pipes/gas-pipes4/Gas Pipes" to="." method="_on_gas_room_pipe_event_state"]
