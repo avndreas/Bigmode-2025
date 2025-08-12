@@ -1,5 +1,4 @@
 # Bigmode Game Jam 2025
- dunkey's stupid game jam
 
 ### Game Jam Page
 https://itch.io/jam/bigmode-game-jam-2025
