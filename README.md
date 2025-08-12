@@ -1,4 +1,4 @@
-# omori shippuden
+# Bigmode Game Jam 2025
  dunkey's stupid game jam
 
 ### Game Jam Page
